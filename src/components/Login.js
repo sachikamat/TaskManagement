@@ -1,19 +1,36 @@
-import React from 'react'
-import {Paper, Button, TextField, Grid, FormControlLabel} from '@material-ui/core';
+import {useNavigate} from 'react-router-dom';
+import {Paper, Button, TextField, Grid, FormControlLabel,makeStyles} from '@material-ui/core';
 import { CheckBox } from '@material-ui/icons';
+import Navbar from "./Navbar/Navbar";
+import '../App.css';
+
+const useStyles=makeStyles(theme=>({
+  paperStyle:{padding:30, width:280, margin:'20px auto'},
+  login_btn:{backgroundColor: "#00d563", color:'white',fontWeight:400,marginTop:30,marginBottom:30},
+  logoStyle:{height:60,width:60,margin:20}
+})
+)
 
 export default function Login() {
+  const classes=useStyles() 
 
-  const paperStyle={padding:30, width:280, margin:'20px auto',bgcolor:'#00d563'}
-  const login_btn={backgroundColor: "#00d563", color:'white',fontWeight:400,marginTop:30,marginBottom:30}
-  const logoStyle={height:60,width:60,margin:20}
+  //navigation to dashboard after clicking on login button  
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = '/dashboard'; 
+    navigate(path);
+  }
+  //
   return (
-    
-    <Grid>
-      <Paper elevation={10} style={paperStyle}>
+    <>
+    <header className="App-header">
+        <Navbar/>
+    </header>
+    <Grid className='login_container'>
+      <Paper elevation={10} className={classes.paperStyle}>
           <Grid>
             
-            <img src="asterLogo.png" alt="" style={logoStyle} />
+            <img src="asterLogo.png" alt="" className={classes.logoStyle} />
             <h1 style={{fontSize:20}}>LOG IN</h1>
           </Grid>
           <TextField name='username' id='username' label='Username' type='email' placeholder='Enter username' fullWidth required style={{marginBottom:20}} ></TextField>
@@ -27,8 +44,9 @@ export default function Login() {
             }
               label='Remember me' 
           />
-          <Button variant="contained" type='submit' style={login_btn} fullWidth required>Login</Button>
+          <Button variant="contained" type='submit' className={classes.login_btn} onClick={routeChange} fullWidth required>Login</Button>
       </Paper>
     </Grid>  
+    </>
   )
 }
