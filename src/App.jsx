@@ -8,6 +8,7 @@ import AddUser from "./components/Pages/AddUser";
 import AddTask from './components/Pages/AddTask'
 import { ChangePassword } from "./components/Pages/ChangePassword";
 import TasksInfo from "./components/Pages/TasksInfo";
+import { UserTask } from "./components/Pages/UserTask";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
         <SideBar>
         {/* <Navbar/> */}
           <Routes>
-            <Route exact path='/settings/logout' element={<TasksInfo/>}/>
             <Route exact path='/' element={<Login />} />
             <Route exact path='/dashboard' element={<Dashboard />} />
             <Route exact path='/users/adduser' element={<AddUser />} />
             <Route exact path='/tasks/addtasks' element={<AddTask />} />
             <Route exact path='/settings/2fa' element={<ChangePassword/>}/>
+            <Route exact path='/settings/logout' element={<UserTask/>}/>
+            <Route exact path='/task/taskInfo/:id' element={<TasksInfo/>}/>
           </Routes>
         </SideBar>
       </Router>

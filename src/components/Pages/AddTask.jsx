@@ -62,10 +62,10 @@ export default function AddTask() {
 
       <Grid container>
         <Grid container className='gridContainer' >
-          <Grid item xs={4} md={2} >
+          <Grid item xs={12} md={2} >
             <Typography >User</Typography>
           </Grid>
-          <Grid item xs={8} md={10} >
+          <Grid item xs={12} md={10} >
             <FormControl fullWidth>
                 <Select
                   id='selectedUser'
@@ -95,19 +95,19 @@ export default function AddTask() {
         </Grid>
 
         <Grid container  className='gridContainer'  >
-          <Grid item xs={4} md={2} >
-            <Typography >Subject</Typography>
+          <Grid item xs={12} md={2} >
+            <Typography >Task</Typography>
           </Grid> 
-          <Grid item xs={8} md={10}>
+          <Grid item xs={12} md={10}>
             <TextField id='taskSubject' size='small' variant='outlined' fullWidth></TextField>
           </Grid>   
         </Grid>
 
         <Grid container className='gridContainer'  >
-          <Grid item xs={4} md={2} >
+          <Grid item xs={12} md={2} >
             <Typography >Priority</Typography>
           </Grid>
-          <Grid item xs={8} md={10} >
+          <Grid item xs={12} md={10} >
             <FormControl fullWidth>
                 <Select
                   id='selectedPriority'
@@ -137,19 +137,19 @@ export default function AddTask() {
         </Grid>
 
         <Grid container  className='gridContainer'  >
-          <Grid item xs={4} md={2} >
+          <Grid item xs={12} md={2} >
             <Typography >Description</Typography>
           </Grid> 
-          <Grid item xs={8} md={10}>
+          <Grid item xs={12} md={10}>
             <TextField id='taskDescription' multiline minRows={3} variant='outlined' fullWidth></TextField>
           </Grid>   
         </Grid>
         
         <Grid container className='gridContainer'  >
-          <Grid item xs={4} md={2} >
+          <Grid item xs={12} md={2} >
             <Typography >Status</Typography>
           </Grid>
-          <Grid item xs={8} md={10} >
+          <Grid item xs={12} md={10} >
             <FormControl fullWidth>
                 <Select
                   id='selectedStatus'
