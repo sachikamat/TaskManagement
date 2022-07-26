@@ -1,38 +1,16 @@
 import React, { useState } from 'react';
-import {Paper,Button, Grid, Typography, makeStyles, FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@material-ui/core';
-import './Dashboard.css'
-
+import {Paper, Grid, Typography,  FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@material-ui/core';
+import './Pages.css'
+import Buttons from '../Button';
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
   typography: {
     allVariants:{
       fontFamily: 'Josefin Sans',
-      // textAlign:'center'
     }
   },
 });
 
-//defining styles for various components
-const useStyles=makeStyles(theme=>({
-  paperStyle:{
-    padding:20, maxWidth:600, margin:'5px auto',fontFamily:'Josefin Sans'
-  },
-  gridContainer:{
-    paddingRight:40,
-    paddingLeft:40,
-    paddingBottom:25
-
-  },
-  login_btn:{
-    backgroundColor: "#00d563", 
-    color:'white',
-    fontWeight:400,
-  },
-  formHeading:{
-    padding:20,
-    textAlign:'center'
-  }
-}))
 
 //defining an array of roles for the dropdown menu
 const users=[
@@ -45,7 +23,8 @@ const users=[
 const priorities=[
   'Low',
   'Medium',
-  'High'
+  'High',
+  'Urgent'
 ]
 
 const statusAll=[
@@ -55,9 +34,6 @@ const statusAll=[
 ]
 
 export default function AddTask() {
-
-  const classes=useStyles()     //allows you to use styles as objects. You can use classes.anyStyle
-
 
   //select bhako role ko value chaiyema use this---
   const [user, setUser] = useState('Select user')
@@ -80,11 +56,12 @@ export default function AddTask() {
   return (
     <>
     <ThemeProvider theme={theme} >
-    <Paper className={classes.paperStyle}>
-      <Typography className={classes.formHeading } variant='h4' >ADD TASK</Typography>
+    <div className='mainDiv'>
+    <Paper className='paperStyle'>
+      <Typography className='formHeading' variant='h4' >ADD TASK</Typography>
 
       <Grid container>
-        <Grid container className={classes.gridContainer}  >
+        <Grid container className='gridContainer' >
           <Grid item xs={4} md={2} >
             <Typography >User</Typography>
           </Grid>
@@ -117,7 +94,7 @@ export default function AddTask() {
           </Grid>
         </Grid>
 
-        <Grid container  className={classes.gridContainer}  >
+        <Grid container  className='gridContainer'  >
           <Grid item xs={4} md={2} >
             <Typography >Subject</Typography>
           </Grid> 
@@ -126,7 +103,7 @@ export default function AddTask() {
           </Grid>   
         </Grid>
 
-        <Grid container className={classes.gridContainer}  >
+        <Grid container className='gridContainer'  >
           <Grid item xs={4} md={2} >
             <Typography >Priority</Typography>
           </Grid>
@@ -159,7 +136,7 @@ export default function AddTask() {
           </Grid>
         </Grid>
 
-        <Grid container  className={classes.gridContainer}  >
+        <Grid container  className='gridContainer'  >
           <Grid item xs={4} md={2} >
             <Typography >Description</Typography>
           </Grid> 
@@ -168,7 +145,7 @@ export default function AddTask() {
           </Grid>   
         </Grid>
         
-        <Grid container className={classes.gridContainer}  >
+        <Grid container className='gridContainer'  >
           <Grid item xs={4} md={2} >
             <Typography >Status</Typography>
           </Grid>
@@ -201,12 +178,14 @@ export default function AddTask() {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} md={12} className={classes.gridContainer}>
-          <Button id='addTask_btn' variant="contained" type='submit' className={classes.login_btn} required>Add</Button>
-        </Grid>
+        
 
       </Grid>
+      <Grid container xs={12} md={12} className='gridButton'>
+          <Buttons button_name='ADD' button_id='addTask_btn' />
+        </Grid>
     </Paper>
+    </div>
     </ThemeProvider>
     </>
   )

@@ -1,19 +1,30 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
-import Login from "./components/Login"
+// import Navbar from "./components/Navbar/Navbar"
+import Login from "./components/Pages/Login"
 import Dashboard from "./components/Dashboard/Dashboard"
-
+import SideBar from "./components/Navbar/SideBar";
+import AddUser from "./components/Pages/AddUser";
+import AddTask from './components/Pages/AddTask'
+import { ChangePassword } from "./components/Pages/ChangePassword";
+import TasksInfo from "./components/Pages/TasksInfo";
 
 function App() {
   return (
     
     <div className="App">
       <Router>
-      
-        <Routes>
-          <Route exact path='/' element={<Login />} />
-          <Route exact path='/dashboard' element={<Dashboard />} />
-        </Routes>
+        <SideBar>
+        {/* <Navbar/> */}
+          <Routes>
+            <Route exact path='/settings/logout' element={<TasksInfo/>}/>
+            <Route exact path='/' element={<Login />} />
+            <Route exact path='/dashboard' element={<Dashboard />} />
+            <Route exact path='/users/adduser' element={<AddUser />} />
+            <Route exact path='/tasks/addtasks' element={<AddTask />} />
+            <Route exact path='/settings/2fa' element={<ChangePassword/>}/>
+          </Routes>
+        </SideBar>
       </Router>
     </div>
   );

@@ -1,13 +1,18 @@
 import {useNavigate} from 'react-router-dom';
 import {Paper, Button, TextField, Grid, FormControlLabel,makeStyles} from '@material-ui/core';
 import { CheckBox } from '@material-ui/icons';
-import Navbar from "./Navbar/Navbar";
-import '../App.css';
+import Navbar from "../Navbar/Navbar";
 
 const useStyles=makeStyles(theme=>({
-  paperStyle:{padding:30, width:280, margin:'20px auto'},
+  paperStyle:{
+    padding:30, 
+    maxWidth:300, 
+    textAlign:'center',
+    margin:' auto'
+  },
   login_btn:{backgroundColor: "#00d563", color:'white',fontWeight:400,marginTop:30,marginBottom:30},
-  logoStyle:{height:60,width:60,margin:20}
+  logoStyle:{height:60,width:60,margin:20},
+  
 })
 )
 
@@ -23,14 +28,12 @@ export default function Login() {
   //
   return (
     <>
-    <header className="App-header">
-        <Navbar/>
-    </header>
-    <Grid className='login_container'>
+   
+      <div className='mainDiv'>
+      <Navbar/>
       <Paper elevation={10} className={classes.paperStyle}>
-          <Grid>
-            
-            <img src="asterLogo.png" alt="" className={classes.logoStyle} />
+          <Grid item>
+            <img src={process.env.PUBLIC_URL+'/asterLogo.png'} alt="" className={classes.logoStyle} />
             <h1 style={{fontSize:20}}>LOG IN</h1>
           </Grid>
           <TextField name='username' id='username' label='Username' type='email' placeholder='Enter username' fullWidth required style={{marginBottom:20}} ></TextField>
@@ -46,7 +49,9 @@ export default function Login() {
           />
           <Button variant="contained" type='submit' className={classes.login_btn} onClick={routeChange} fullWidth required>Login</Button>
       </Paper>
-    </Grid>  
+      
+      </div>
+    
     </>
   )
 }
