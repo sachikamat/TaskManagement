@@ -1,12 +1,11 @@
+import { Button,  } from '@mui/material';
 import { Visibility } from '@material-ui/icons'
 import { Table, TableContainer,Paper, TableBody,TableCell, TableHead, TableRow, Typography, createTheme, ThemeProvider  } from '@mui/material'
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 import './Pages.css'
-
-function createData(taskID,taskTitle,taskDescription,taskStatus,taskAction){
-    return {taskID,taskTitle,taskDescription,taskStatus,taskAction}
-}
+import SideBar from '../Navbar/SideBar'
 
 const theme = createTheme({
   typography: {
@@ -19,57 +18,87 @@ const theme = createTheme({
 
 const Action = ({handleAction})=>(
   <>
-    <button onClick={handleAction} >Action {<Visibility/>} </button>
+    <Button onClick={handleAction} >View  {<Visibility/>} </Button>
   </>
 )
-const rows=[
-    createData(1,'Login Form','Please work on creating a login form today.','Pending','action'),
-    createData(2,'Find bugs','Please work on making the code bug free','On-going','action')
-]
 
 export const UserTask = () => {
-  let navigate = useNavigate()
-  const routeChange = () =>{
-    let path='/task/taskInfo/:id'
-    navigate(path)
-  }
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/tasks")
+      .then((res) => {
+        console.log(res);
+        setTasks(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+
+  let navigate = useNavigate();
+  const routeChange = (id) => {
+    let path = `/task/taskInfo/${id}`;
+    navigate(path);
+  };
   return (
     <>
-      <div className='mainDiv'>
-        
-        <TableContainer component={Paper} className='paperStyle' sx={{maxWidth:700}} >
-        <Typography className='formHeading' variant='h5' >YOUR TASKS</Typography>
-            <Table>
-            <TableHead className='gridLine'>
+    <SideBar>
+      <div className="mainDiv">
+        <TableContainer
+          component={Paper}
+          className="paperStyle"
+          sx={{ maxWidth: 700, maxHeight: 500 }}
+        >
+          <Typography className="formHeading" variant="h5">
+            YOUR TASKS
+          </Typography>
+          <Table>
+            <TableHead className="gridLine">
               <TableRow>
                 <ThemeProvider theme={theme}>
-                  <TableCell><Typography>ID</Typography></TableCell>
-                  <TableCell><Typography>TASK</Typography></TableCell>
-                  <TableCell><Typography>DESCRIPTION</Typography></TableCell>
-                  <TableCell><Typography>STATUS</Typography></TableCell>
-                  <TableCell><Typography>ACTION</Typography></TableCell>
+                  <TableCell>
+                    <Typography>ID</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>TASK</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>DESCRIPTION</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>STATUS</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>ACTION</Typography>
+                  </TableCell>
                 </ThemeProvider>
               </TableRow>
             </TableHead>
             <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.taskID}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.taskID}
-              </TableCell>
-              <TableCell>{row.taskTitle}</TableCell>
-              <TableCell>{row.taskDescription}</TableCell>
-              <TableCell>{row.taskStatus}</TableCell>
-              <TableCell><Action handleAction={routeChange} /> </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-            </Table>
+              {tasks.map((task) => (
+                <TableRow
+                  key={task.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {task.id}
+                  </TableCell>
+                  <TableCell>{task.task}</TableCell>
+                  <TableCell>{task.description}</TableCell>
+                  <TableCell>{task.status}</TableCell>
+                  <TableCell>
+                    <Action handleAction={()=>routeChange(task.id)} />{" "}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </TableContainer>
       </div>
+      </SideBar>
     </>
-  )
-}
+  );
+};
