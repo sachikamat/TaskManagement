@@ -1,0 +1,16 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "uname":"Sachi Kamat",
+      "phone":"01-4334288",
+      "email":"sachikamat@gmail.com"
+    },
+    {
+      "id": 2,
+      "uname":"Indu Kamat",
+      "phone":"01-4231697",
+      "email":"indukamat@gmail.com"
+    }
+  ]
+}

@@ -40,9 +40,6 @@ main {
   height: 100vh;
   overflow-y: auto;
   border-right: 1px solid black;
-  /* border-left: 3px solid; */
-  
-  
 }
 
 .top_section {
@@ -170,7 +167,6 @@ main {
 
 .addtasks-card {
   flex-basis: 225px;
-  /* box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25); */
   border-radius: 10px;
   display: flex;
   flex-direction: column;

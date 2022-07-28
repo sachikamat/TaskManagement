@@ -1,14 +1,12 @@
-import React from 'react' ;
-// import AddUser from '../Pages/AddUser';
-// import AddTask from '../Pages/AddTask';
-// import Navbar from "../Navbar/Navbar";
+import React from "react";
+import SideBar from "../Navbar/SideBar";
 
 export default function Dashboard() {
   return (
     <>
-      
-      {/* <AddTask/> */}
-      {/* <AddUser/>       */}
+      <SideBar>
+        
+      </SideBar>
     </>
-  )
+  );
 }

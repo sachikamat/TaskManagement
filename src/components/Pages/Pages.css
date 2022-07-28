@@ -30,7 +30,7 @@
 }
 
 .gridLine{
-    background-color:rgba(0, 0, 0, 0.133);
+    background-color:#00d5636c;
 }
 
 .selectStyle{
@@ -38,3 +38,4 @@
     width:150px;
     margin-left:40px;
 }
+

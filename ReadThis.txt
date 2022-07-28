@@ -8,7 +8,7 @@
 Now installations,
 
 1. npm install
-2. npm install @material-ui/core
+2. npm install @mui/material
 If you get error:
 i. npm config set legacy-peer-deps true
 ii.npm audit fix or npm audit fix --force

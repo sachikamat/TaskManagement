@@ -5,13 +5,8 @@ import { BiCog } from "react-icons/bi";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
-
 const routes = [
-  {
-    path: "/welcomeuser",
-    name: "Welcome User!!!",
-    icon: <FaUser />,
-  },
+  
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -63,7 +58,7 @@ const routes = [
     exact: true,
     subRoutes: [
       {
-        path: "/settings/logout",
+        path: "/settings/profile",
         name: "Logout ",
         icon: <FaUser />,
       },
@@ -75,53 +70,12 @@ const routes = [
      
     ],
   },
-  {
-    path: "/devby",
-    name: "Developed by",
-   
-  },
-  {
-    path: "/amp",
-    name: "Abhaya Mani Paudel",
-    icon: <FaUser />,
-  },
-  {
-    path: "/jvk",
-    name: "Jeevika Shakya",
-    icon: <FaUser />,
-  },
-  {
-    path: "/sk",
-    name: "Sachi Kamat",
-    icon: <FaUser />,
-  },
-  {
-    path: "/kp",
-    name: "Kamal Pandit",
-    icon: <FaUser />,
-  },
+  
  
 ];
-
 const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  // const inputAnimation = {
-  //   hidden: {
-  //     width: 0,
-  //     padding: 0,
-  //     transition: {
-  //       duration: 0.2,
-  //     },
-  //   },
-  //   show: {
-  //     width: "140px",
-  //     padding: "5px 15px",
-  //     transition: {
-  //       duration: 0.2,
-  //     },
-  //   },
-  // };
 
   const showAnimation = {
     hidden: {

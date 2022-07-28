@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import {Paper, Grid, Typography,  FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@material-ui/core';
+import {Paper, Grid, Typography,  FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@mui/material';
 import './Pages.css'
 import Buttons from '../Button';
+import SideBar from '../Navbar/SideBar'
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
   typography: {
@@ -55,6 +56,7 @@ export default function AddTask() {
 
   return (
     <>
+    <SideBar>
     <ThemeProvider theme={theme} >
     <div className='mainDiv'>
     <Paper className='paperStyle'>
@@ -187,6 +189,7 @@ export default function AddTask() {
     </Paper>
     </div>
     </ThemeProvider>
+    </SideBar>
     </>
   )
 }

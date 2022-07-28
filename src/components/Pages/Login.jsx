@@ -1,7 +1,15 @@
 import {useNavigate} from 'react-router-dom';
 import {Paper, Button, TextField, Grid, FormControlLabel,makeStyles} from '@material-ui/core';
-import { CheckBox } from '@material-ui/icons';
+import { Checkbox } from '@mui/material';
 import Navbar from "../Navbar/Navbar";
+
+// const theme= createTheme({
+//   textfield:{
+//     allVariants:{
+//       marginBottom:20
+//     }
+//   }
+// })
 
 const useStyles=makeStyles(theme=>({
   paperStyle:{
@@ -10,9 +18,15 @@ const useStyles=makeStyles(theme=>({
     textAlign:'center',
     margin:' auto'
   },
-  login_btn:{backgroundColor: "#00d563", color:'white',fontWeight:400,marginTop:30,marginBottom:30},
+  login_btn:{backgroundColor: "#00d563", color:'white',fontWeight:400,marginTop:20,marginBottom:30},
   logoStyle:{height:60,width:60,margin:20},
-  
+  heading:{
+    fontSize:20
+  },
+  checkboxStyle:{
+    display:'flex',
+    marginLeft:5
+  }
 })
 )
 
@@ -29,28 +43,32 @@ export default function Login() {
   return (
     <>
    
-      <div className='mainDiv'>
       <Navbar/>
+      {/* <ThemeProvider theme={theme}> */}
       <Paper elevation={10} className={classes.paperStyle}>
           <Grid item>
             <img src={process.env.PUBLIC_URL+'/asterLogo.png'} alt="" className={classes.logoStyle} />
-            <h1 style={{fontSize:20}}>LOG IN</h1>
+            <h1 className={classes.heading}>LOG IN</h1>
           </Grid>
           <TextField name='username' id='username' label='Username' type='email' placeholder='Enter username' fullWidth required style={{marginBottom:20}} ></TextField>
           <TextField name='password' id='password' label='Password' type='password' placeholder='Enter password' fullWidth required style={{marginBottom:20}}></TextField>
+          <div className={classes.checkboxStyle}>
           <FormControlLabel
+            sx={{left:0}}
             control={
-              <CheckBox
+              <Checkbox
               name='checked'
-              color='primary'
+              defaultChecked
               />
             }
               label='Remember me' 
           />
+          </div>
           <Button variant="contained" type='submit' className={classes.login_btn} onClick={routeChange} fullWidth required>Login</Button>
+          
       </Paper>
-      
-      </div>
+      {/* </ThemeProvider> */}
+    
     
     </>
   )
