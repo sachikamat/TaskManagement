@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {Paper, Grid, Typography,  FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@mui/material';
 import './Pages.css'
-import Buttons from '../Button';
-import SideBar from '../Navbar/SideBar'
+import Buttons from '../Layout/Button';
+import Wrapper from '../Layout/Wrapper';
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
   typography: {
@@ -35,162 +35,164 @@ const statusAll=[
 ]
 
 export default function AddTask() {
-
   //select bhako role ko value chaiyema use this---
-  const [user, setUser] = useState('Select user')
-  const [priority, setPriority] = useState('Select priority')
-  const [status, setStatus] = useState('Select status')
-
+  const [user, setUser] = useState("Select user");
+  const [priority, setPriority] = useState("Select priority");
+  const [status, setStatus] = useState("Select status");
 
   const handleChange = (event) => {
     setUser(event.target.value);
   };
   //---//
-  const handleChangePriority  = (event) => {
+  const handleChangePriority = (event) => {
     setPriority(event.target.value);
   };
 
-  const handleChangeStatus  = (event) => {
+  const handleChangeStatus = (event) => {
     setStatus(event.target.value);
   };
 
   return (
     <>
-    <SideBar>
-    <ThemeProvider theme={theme} >
-    <div className='mainDiv'>
-    <Paper className='paperStyle'>
-      <Typography className='formHeading' variant='h4' >ADD TASK</Typography>
+      <Wrapper adminSidebar>
+        <ThemeProvider theme={theme}>
+          {/* <div className='mainDiv'> */}
+          <Paper className="paperStyle">
+            <Typography className="formHeading" variant="h4">
+              ADD TASK
+            </Typography>
 
-      <Grid container>
-        <Grid container className='gridContainer' >
-          <Grid item xs={12} md={2} >
-            <Typography >User</Typography>
-          </Grid>
-          <Grid item xs={12} md={10} >
-            <FormControl fullWidth>
-                <Select
-                  id='selectedUser'
-                  value={user}
-                  variant='outlined'
-                  onChange={handleChange}
-                  defaultValue={user}
-                  style={{height:40}}
-                >
-                  <MenuItem value="Select user">
-                    <em style={{fontStyle:'normal',color:'gray' }}>Select user</em>
-                  </MenuItem>
-                  {users.map(user=>{
-                    return(
-                      <MenuItem
-                      key={user}
+            <Grid container>
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={2}>
+                  <Typography>User</Typography>
+                </Grid>
+                <Grid item xs={12} md={10}>
+                  <FormControl fullWidth>
+                    <Select
+                      id="selectedUser"
                       value={user}
-                      >
-                        {user}
+                      variant="outlined"
+                      onChange={handleChange}
+                      defaultValue={user}
+                      style={{ height: 40 }}
+                    >
+                      <MenuItem value="Select user">
+                        <em style={{ fontStyle: "normal", color: "gray" }}>
+                          Select user
+                        </em>
                       </MenuItem>
-                    )
-                  })
-                }
-                </Select>
-              </FormControl>
-          </Grid>
-        </Grid>
+                      {users.map((user) => {
+                        return (
+                          <MenuItem key={user} value={user}>
+                            {user}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+                </Grid>
+              </Grid>
 
-        <Grid container  className='gridContainer'  >
-          <Grid item xs={12} md={2} >
-            <Typography >Task</Typography>
-          </Grid> 
-          <Grid item xs={12} md={10}>
-            <TextField id='taskSubject' size='small' variant='outlined' fullWidth></TextField>
-          </Grid>   
-        </Grid>
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={2}>
+                  <Typography>Task</Typography>
+                </Grid>
+                <Grid item xs={12} md={10}>
+                  <TextField
+                    id="taskSubject"
+                    size="small"
+                    variant="outlined"
+                    fullWidth
+                  ></TextField>
+                </Grid>
+              </Grid>
 
-        <Grid container className='gridContainer'  >
-          <Grid item xs={12} md={2} >
-            <Typography >Priority</Typography>
-          </Grid>
-          <Grid item xs={12} md={10} >
-            <FormControl fullWidth>
-                <Select
-                  id='selectedPriority'
-                  variant='outlined'
-                  value={priority}
-                  onChange={handleChangePriority}
-                  defaultValue={priority}
-                  style={{height:40}}
-                >
-                  <MenuItem value="Select priority">
-                    <em style={{fontStyle:'normal',color:'gray' }}>Select priority</em>
-                  </MenuItem>
-                  {priorities.map(priority=>{
-                    return(
-                      <MenuItem
-                      key={priority}
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={2}>
+                  <Typography>Priority</Typography>
+                </Grid>
+                <Grid item xs={12} md={10}>
+                  <FormControl fullWidth>
+                    <Select
+                      id="selectedPriority"
+                      variant="outlined"
                       value={priority}
-                      >
-                        {priority}
+                      onChange={handleChangePriority}
+                      defaultValue={priority}
+                      style={{ height: 40 }}
+                    >
+                      <MenuItem value="Select priority">
+                        <em style={{ fontStyle: "normal", color: "gray" }}>
+                          Select priority
+                        </em>
                       </MenuItem>
-                    )
-                  })
-                }
-                </Select>
-              </FormControl>
-          </Grid>
-        </Grid>
+                      {priorities.map((priority) => {
+                        return (
+                          <MenuItem key={priority} value={priority}>
+                            {priority}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+                </Grid>
+              </Grid>
 
-        <Grid container  className='gridContainer'  >
-          <Grid item xs={12} md={2} >
-            <Typography >Description</Typography>
-          </Grid> 
-          <Grid item xs={12} md={10}>
-            <TextField id='taskDescription' multiline minRows={3} variant='outlined' fullWidth></TextField>
-          </Grid>   
-        </Grid>
-        
-        <Grid container className='gridContainer'  >
-          <Grid item xs={12} md={2} >
-            <Typography >Status</Typography>
-          </Grid>
-          <Grid item xs={12} md={10} >
-            <FormControl fullWidth>
-                <Select
-                  id='selectedStatus'
-                  variant='outlined'
-                  value={status}
-                  onChange={handleChangeStatus}
-                  defaultValue={status}
-                  style={{height:40}}
-                >
-                  <MenuItem value="Select status">
-                    <em style={{fontStyle:'normal',color:'gray' }}>Select status</em>
-                  </MenuItem>
-                  {statusAll.map(status=>{
-                    return(
-                      <MenuItem
-                      key={status}
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={2}>
+                  <Typography>Description</Typography>
+                </Grid>
+                <Grid item xs={12} md={10}>
+                  <TextField
+                    id="taskDescription"
+                    multiline
+                    minRows={3}
+                    variant="outlined"
+                    fullWidth
+                  ></TextField>
+                </Grid>
+              </Grid>
+
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={2}>
+                  <Typography>Status</Typography>
+                </Grid>
+                <Grid item xs={12} md={10}>
+                  <FormControl fullWidth>
+                    <Select
+                      id="selectedStatus"
+                      variant="outlined"
                       value={status}
-                      >
-                        {status}
+                      onChange={handleChangeStatus}
+                      defaultValue={status}
+                      style={{ height: 40 }}
+                    >
+                      <MenuItem value="Select status">
+                        <em style={{ fontStyle: "normal", color: "gray" }}>
+                          Select status
+                        </em>
                       </MenuItem>
-                    )
-                  })
-                }
-                </Select>
-              </FormControl>
-          </Grid>
-        </Grid>
-
-        
-
-      </Grid>
-      <Grid container xs={12} md={12} className='gridButton'>
-          <Buttons button_name='ADD' button_id='addTask_btn' />
-        </Grid>
-    </Paper>
-    </div>
-    </ThemeProvider>
-    </SideBar>
+                      {statusAll.map((status) => {
+                        return (
+                          <MenuItem key={status} value={status}>
+                            {status}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid container xs={12} md={12} className="gridButton">
+              <Buttons button_name="ADD" button_id="addTask_btn" />
+            </Grid>
+          </Paper>
+          {/* </div> */}
+        </ThemeProvider>
+      </Wrapper>
     </>
-  )
+  );
 }
 

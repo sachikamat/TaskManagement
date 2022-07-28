@@ -1,10 +1,9 @@
 import { Grid, Paper, TextField, Typography,makeStyles, createTheme, ThemeProvider,Button,InputAdornment} from '@material-ui/core'
 import {useState} from 'react'
-import Buttons from '../Button';
+import Buttons from '../Layout/Button';
 import {Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
-import SideBar from '../Navbar/SideBar'
-
+import Wrapper from '../Layout/Wrapper';
 
 const theme = createTheme({
   typography: {
@@ -37,78 +36,83 @@ export const ChangePassword = () => {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <SideBar>
-        <div className="mainDiv">
-          <Paper className={classes.paperStyle}>
-            <Typography className="formHeading" variant="h5">
-              CHANGE PASSWORD
-            </Typography>
-            <Grid container className="gridContainer">
-              <Grid item xs={4}>
-                <Typography>Username:</Typography>
+      <Wrapper adminSidebar>
+        <ThemeProvider theme={theme}>
+          <div className="mainDiv">
+            <Paper className={classes.paperStyle}>
+              <Typography className="formHeading" variant="h5">
+                CHANGE PASSWORD
+              </Typography>
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={4}>
+                  <Typography>Username:</Typography>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <TextField
+                    name="uname"
+                    size="small"
+                    variant="outlined"
+                    fullWidth
+                  ></TextField>
+                </Grid>
               </Grid>
-              <Grid item xs={8}>
-                <TextField
-                  size="small"
-                  variant="outlined"
-                  fullWidth
-                ></TextField>
-              </Grid>
-            </Grid>
 
-            <Grid container className="gridContainer">
-              <Grid item xs={4}>
-                <Typography>New Password:</Typography>
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={4}>
+                  <Typography>New Password:</Typography>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <TextField
+                    size="small"
+                    type={showPassword ? "text" : "password"}
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <Button onClick={handlePasswordToggle}>
+                            {!showPassword ? <VisibilityOff /> : <Visibility />}
+                          </Button>
+                        </InputAdornment>
+                      ),
+                    }}
+                    fullWidth
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={8}>
-                <TextField
-                  size="small"
-                  type={showPassword ? "text" : "password"}
-                  variant="outlined"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Button onClick={handlePasswordToggle}>
-                          {!showPassword ? <VisibilityOff /> : <Visibility />}
-                        </Button>
-                      </InputAdornment>
-                    ),
-                  }}
-                  fullWidth
-                />
-              </Grid>
-            </Grid>
 
-            <Grid container className="gridContainer">
-              <Grid item xs={4}>
-                <Typography>Confirm Password:</Typography>
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={4}>
+                  <Typography>Confirm Password:</Typography>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <TextField
+                    size="small"
+                    type={showCPassword ? "text" : "password"}
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <Button onClick={handlePasswordConfirmToggle}>
+                            {!showCPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </Button>
+                        </InputAdornment>
+                      ),
+                    }}
+                    fullWidth
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={8}>
-                <TextField
-                  size="small"
-                  type={showCPassword ? "text" : "password"}
-                  variant="outlined"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Button onClick={handlePasswordConfirmToggle}>
-                          {!showCPassword ? <VisibilityOff /> : <Visibility />}
-                        </Button>
-                      </InputAdornment>
-                    ),
-                  }}
-                  fullWidth
-                />
+              <Grid container xs={12} md={12} className="gridButton">
+                <Buttons button_name="Submit" button_id="changePassword_btn" />
               </Grid>
-            </Grid>
-            <Grid container xs={12} md={12} className="gridButton">
-              <Buttons button_name="Submit" button_id="changePassword_btn" />
-            </Grid>
-          </Paper>
-        </div>
-        </SideBar>
-      </ThemeProvider>
+            </Paper>
+          </div>
+        </ThemeProvider>
+      </Wrapper>
     </>
   );
 };

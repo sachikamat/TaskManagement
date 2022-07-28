@@ -1,0 +1,6 @@
+.container_wrapper{
+    display:flex;
+}
+.wrapper_children{
+    margin:auto 
+}

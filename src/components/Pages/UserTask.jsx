@@ -5,7 +5,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 import './Pages.css'
-import SideBar from '../Navbar/SideBar'
+import Wrapper from '../Layout/Wrapper';
 
 const theme = createTheme({
   typography: {
@@ -40,13 +40,13 @@ export const UserTask = () => {
 
   let navigate = useNavigate();
   const routeChange = (id) => {
-    let path = `/task/taskInfo/${id}`;
+    let path = `/user/tasks/taskInfo/${id}`;
     navigate(path);
   };
   return (
     <>
-    <SideBar>
-      <div className="mainDiv">
+  <Wrapper userSideBar>
+        <div className="mainDiv">
         <TableContainer
           component={Paper}
           className="paperStyle"
@@ -98,7 +98,7 @@ export const UserTask = () => {
           </Table>
         </TableContainer>
       </div>
-      </SideBar>
+      </Wrapper>
     </>
   );
 };

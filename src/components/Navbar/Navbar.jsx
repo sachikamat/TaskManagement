@@ -1,6 +1,5 @@
-import React from 'react';
-// import logo from './asterdio.png'
 import "./Navbar.css"
+
 function Navbar(){
     const navStyle={height:40,marginBottom:0}
     return(

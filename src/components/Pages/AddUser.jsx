@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {Paper,  TextField, Grid, Typography, makeStyles, FormControl, Select, MenuItem,IconButton, createTheme, ThemeProvider,Button,InputAdornment} from '@material-ui/core';
 import {AccountCircleRounded,PhotoCamera,Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
-import Buttons from '../Button';
-import SideBar from '../Navbar/SideBar'
+import Buttons from '../Layout/Button';
+import Wrapper from '../Layout/Wrapper';
 
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
@@ -77,8 +77,9 @@ export default function AddUser() {
 
   return (
     <>
+
       <ThemeProvider theme={theme}>
-        <SideBar>
+        <Wrapper adminSidebar>
         <div className="mainDiv">
           <Paper className={classes.paperStyle}>
             <Typography
@@ -204,7 +205,7 @@ export default function AddUser() {
             </Grid>
           </Paper>
         </div>
-        </SideBar>
+        </Wrapper>
       </ThemeProvider>
     </>
   );

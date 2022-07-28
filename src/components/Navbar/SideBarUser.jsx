@@ -4,62 +4,34 @@ import { MdMessage } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import SidebarMenu from "./SidebarMenu";
+import SidebarMenuUser from "./SidebarMenuUser";
+
 const routes = [
   
   {
-    path: "/admin/dashboard",
+    path: "/user/dashboard",
     name: "Dashboard",
     icon: <FaHome />,
   },
+  
   {
-    path: "/admin/users",
-    name: "Users",
-    icon: <FaUser />,
-    subRoutes: [
-      {
-        path: "/admin/adduser",
-        name: "Add User ",
-        icon: <FaUser />,
-      },
-      
-      {
-        path: "/admin/manageuser",
-        name: "Manage User",
-        icon: <FaUser />,
-      },
-    ],
-  },
-  {
-    path: "/tasks",
+    path: "/user/tasks",
     name: "Tasks",
     icon: <MdMessage />,
     exact: true,
-    subRoutes: [
-      {
-        path: "/admin/addtasks",
-        name: "Add Tasks ",
-        icon: <FaUser />,
-      },
-      {
-        path: "/admin/managetasks",
-        name: "Manage Tasks",
-        icon: <FaLock />,
-      },
-     
-    ],
+    
   },
 
   
   {
-    path: "/settings",
+    path: "/user/settings",
     name: "Settings",
     icon: <BiCog />,
     exact: true,
     subRoutes: [
       
       {
-        path: "/admin/settings/2fa",
+        path: "/user/settings/2fa",
         name: "Change Password",
         icon: <FaLock />,
       },
@@ -74,9 +46,26 @@ const routes = [
   
  
 ];
-const SideBar = ({ children }) => {
+
+const SideBarUser = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  // const inputAnimation = {
+  //   hidden: {
+  //     width: 0,
+  //     padding: 0,
+  //     transition: {
+  //       duration: 0.2,
+  //     },
+  //   },
+  //   show: {
+  //     width: "140px",
+  //     padding: "5px 15px",
+  //     transition: {
+  //       duration: 0.2,
+  //     },
+  //   },
+  // };
 
   const showAnimation = {
     hidden: {
@@ -94,11 +83,10 @@ const SideBar = ({ children }) => {
       },
     },
   };
-  const navStyle={height:30,padding:20,paddingLeft:12}
-
 
   return (
     <>
+    
       <div className="main-container">
         <motion.div
           animate={{
@@ -112,9 +100,6 @@ const SideBar = ({ children }) => {
           }}
           className={`sidebar `}
         >
-          <div className='logo' style={navStyle}>
-                    <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />
-                </div>
           <div className="top_section">
             <AnimatePresence>
               {isOpen && (
@@ -125,7 +110,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  Asterdio Inc.
+                 Hi User!
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -134,11 +119,32 @@ const SideBar = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
+          {/* <div className="userprofile">
+            <FaUser/>Welcome!!!User
+          </div> */}
+
+          {/* <div className="search">
+            <div className="search_icon">
+              <BiSearch />
+            </div>
+            <AnimatePresence>
+              {isOpen && (
+                <motion.input
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={inputAnimation}
+                  type="text"
+                  placeholder="Search"
+                />
+              )}
+            </AnimatePresence>
+          </div> */}
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {
                 return (
-                  <SidebarMenu
+                  <SidebarMenuUser
                     setIsOpen={setIsOpen}
                     route={route}
                     showAnimation={showAnimation}
@@ -176,8 +182,9 @@ const SideBar = ({ children }) => {
 
         <main>{children}</main>
       </div>
+    
     </>
   );
 };
 
-export default SideBar;
+export default SideBarUser;

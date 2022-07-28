@@ -2,10 +2,10 @@ import { Paper, Typography,FormControl, Select, MenuItem} from '@material-ui/cor
 import { Table, TableContainer, TableCell, TableRow, createTheme, ThemeProvider  } from '@mui/material'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Buttons from '../Button'
+import Buttons from '../Layout/Button'
 import './Pages.css'
-import SideBar from '../Navbar/SideBar'
 import { useParams } from 'react-router-dom'
+import Wrapper from '../Layout/Wrapper'
 
 // import {Divider} from '@mui/material';
 
@@ -44,9 +44,9 @@ const TasksInfo = () => {
   };
   return (
     <>
+    <Wrapper userSideBar>
       <ThemeProvider theme={theme}>
-        
-        <SideBar>
+       
           <div className="mainDiv">   
             <TableContainer
               component={Paper}
@@ -122,8 +122,8 @@ const TasksInfo = () => {
               </Table>
             </TableContainer>
           </div>
-        </SideBar>
       </ThemeProvider>
+      </Wrapper>
     </>
   );
 };
