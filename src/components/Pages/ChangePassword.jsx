@@ -1,9 +1,10 @@
 import { Grid, Paper, TextField, Typography,makeStyles, createTheme, ThemeProvider,Button,InputAdornment} from '@material-ui/core'
 import {useState} from 'react'
-import Buttons from '../Layout/Button';
+import SubmitButton from '../Layout/SubmitButton';
 import {Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
 import Wrapper from '../Layout/Wrapper';
+import { useParams } from 'react-router-dom';
 
 const theme = createTheme({
   typography: {
@@ -22,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ChangePassword = () => {
+  const {currentUser} = useParams()
+  console.log(currentUser,'cUser')
+
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -34,11 +38,17 @@ export const ChangePassword = () => {
     setCShowPassword(!showCPassword);
   };
 
+  const findUser = ()=>{
+    return (currentUser==='admin')? true:false
+  }
+
   return (
     <>
-      <Wrapper adminSidebar>
+      <Wrapper adminSidebar={findUser()} userSideBar={!findUser()}>
+        
         <ThemeProvider theme={theme}>
           <div className="mainDiv">
+          <p>{findUser()}</p>
             <Paper className={classes.paperStyle}>
               <Typography className="formHeading" variant="h5">
                 CHANGE PASSWORD
@@ -107,7 +117,7 @@ export const ChangePassword = () => {
                 </Grid>
               </Grid>
               <Grid container xs={12} md={12} className="gridButton">
-                <Buttons button_name="Submit" button_id="changePassword_btn" />
+                <SubmitButton button_name="Submit" button_id="changePassword_btn" />
               </Grid>
             </Paper>
           </div>

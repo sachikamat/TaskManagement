@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Paper, Grid, Typography,  FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@mui/material';
 import './Pages.css'
-import Buttons from '../Layout/Button';
+import SubmitButton from '../Layout/SubmitButton';
 import Wrapper from '../Layout/Wrapper';
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
@@ -186,7 +186,7 @@ export default function AddTask() {
               </Grid>
             </Grid>
             <Grid container xs={12} md={12} className="gridButton">
-              <Buttons button_name="ADD" button_id="addTask_btn" />
+              <SubmitButton button_name="ADD" button_id="addTask_btn" />
             </Grid>
           </Paper>
           {/* </div> */}

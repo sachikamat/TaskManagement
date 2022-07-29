@@ -35,7 +35,7 @@ export default function Login() {
   //navigation to dashboard after clicking on login button
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = "/dashboard";
+    let path = "/admin/dashboard";
     navigate(path);
   };
   //

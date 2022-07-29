@@ -2,7 +2,7 @@ import { Paper, Typography,FormControl, Select, MenuItem} from '@material-ui/cor
 import { Table, TableContainer, TableCell, TableRow, createTheme, ThemeProvider  } from '@mui/material'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Buttons from '../Layout/Button'
+import SubmitButton from '../Layout/SubmitButton'
 import './Pages.css'
 import { useParams } from 'react-router-dom'
 import Wrapper from '../Layout/Wrapper'
@@ -113,7 +113,7 @@ const TasksInfo = () => {
                   </TableCell>
                   <TableCell>
                     {" "}
-                    <Buttons
+                    <SubmitButton
                       button_name="Update Status"
                       button_id="updateStatus_btn"
                     />

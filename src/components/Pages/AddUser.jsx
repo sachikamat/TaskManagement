@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Paper,  TextField, Grid, Typography, makeStyles, FormControl, Select, MenuItem,IconButton, createTheme, ThemeProvider,Button,InputAdornment} from '@material-ui/core';
 import {AccountCircleRounded,PhotoCamera,Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
-import Buttons from '../Layout/Button';
+import SubmitButton from '../Layout/SubmitButton';
 import Wrapper from '../Layout/Wrapper';
 
 //defining theme to overRide the default topography fontFamily
@@ -201,7 +201,7 @@ export default function AddUser() {
               </Grid>
             </Grid>
             <Grid container xs={12} md={12} className="gridButton">
-              <Buttons button_name="ADD" button_id="addTask_btn" />
+              <SubmitButton button_name="ADD" button_id="addTask_btn" />
             </Grid>
           </Paper>
         </div>

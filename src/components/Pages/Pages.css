@@ -39,3 +39,7 @@
     margin-left:40px;
 }
 
+.actionButtonsView{
+    display:flex;
+    justify-content:space-between
+}

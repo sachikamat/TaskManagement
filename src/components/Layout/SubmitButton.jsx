@@ -2,7 +2,7 @@
 import {Button} from '@mui/material';
 import React from 'react'
 
-const Buttons = ({button_id,button_name,handleChange}) => {
+const SubmitButton = ({button_id,button_name,handleChange}) => {
   return (
     <>
     {/* <ThemeProvider theme={theme}> */}
@@ -12,4 +12,4 @@ const Buttons = ({button_id,button_name,handleChange}) => {
   )
 }
 
-export default Buttons
+export default SubmitButton

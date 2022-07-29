@@ -11,6 +11,7 @@ import Test from "./components/Pages/Test";
 import './App.css';
 import ManageUser from "./components/Pages/ManageUser";
 import ManageTask from "./components/Pages/ManageTask";
+// import { ActionDialogBox } from "./components/Layout/ActionButton";
 
 function App() {
   return (
@@ -23,10 +24,9 @@ function App() {
             <Route exact path="/admin/manageuser" element={<ManageUser/> } />
             <Route exact path="/admin/addtasks" element={<AddTask />} />
             <Route exact path="/admin/managetasks" element={<ManageTask/> } />
-            <Route exact path="/admin/settings/2fa" element={<ChangePassword />} />
+            <Route exact path="/:currentUser/settings/2fa" element={<ChangePassword />} />
             <Route exact path="/user/dashboard" element={<UserDashboard/> } />
             <Route exact path="/user/tasks" element={<UserTask />} />
-            <Route exact path="/user/settings/2fa" element={<ChangePassword />} />
             <Route exact path="/user/tasks/taskInfo/:id" element={<TasksInfo />} />
             <Route exact path="/test" element={<Test />} />
           </Routes>

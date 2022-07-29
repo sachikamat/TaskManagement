@@ -244,10 +244,12 @@ th{
 .admin{
   height:250px;
   margin-top: 10vh ;
-  background-color: rgb(67, 191, 248);
+  background-color: rgb(255, 255, 255);
   margin-right: 1vh;
-
+  width: 80vh;
+  border-radius: 20px;
 }
+
 .view-details{
   padding: 4px;
   background-color: #007BFF;
@@ -256,6 +258,556 @@ th{
   border-radius: 6px;
 }
 
+
+/* 29th July. integration */
+.edit-details {
+  padding: 4px;
+  background-color: var(--blue);
+  color: #FFFFFF;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-right: 2px;
+
+
+}
+
+.delete-details {
+  padding: 4px;
+  background-color: var(--red);
+  color: #FFFFFF;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+
+}
+
+.activeinactive-details {
+  padding: 4px;
+  background-color: var(--green);
+  color: #FFFFFF;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+}
+
+#blur.active {
+  background: #fff;
+
+  filter: blur(0px);
+  pointer-events: none;
+  user-select: none;
+  color: #fff !important;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 50px;
+
+  box-shadow: 0 3px 1000000px rgb(0 0 0 / 0.2);
+
+  background: #FFFFFF;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+  color: #000000 !important;
+}
+
+
+.tasks-card {
+
+  font-size: 28px;
+
+}
+
+.tasks-card:hover {
+  background-color: var(--hoverblue);
+  cursor: pointer;
+
+}
+
+.row {
+  justify-content: space-around;
+}
+
+
+.trhover:hover {
+  background-color: var(--hoverblue);
+  cursor: pointer;
+
+}
+
+.admin-user h4 {
+  border-bottom: 1px solid grey;
+}
+
+.trhover img {
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+}
+
+.xyz {
+  overflow-y: scroll;
+
+
+}
+
+.xyz::-webkit-scrollbar {
+  width: 1px;
+}
+
+.tasks-card {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.number {
+  padding: 4px;
+  margin-right: 4px;
+  color: black;
+  background-color: rgb(229, 229, 229);
+  font-size: 16px;
+}
+
+.h1style {
+  text-align: center;
+  color: white;
+}
+
+.tasks-tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+
+}
+
+.desctext {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.tasktext {
+  font-size: 16px;
+  color: black;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+
+}
+
+.nav .active {
+
+  color: #83bdfc;
+  /* text-decoration: revert; */
+  background: var(--blue);
+  color: white;
+  padding-right: 50px;
+  padding-left: 50px;
+  border-radius: 10px;
+}
+
+.nav-tabs {
+  justify-content: space-evenly;
+}
+
+.content .content-main .content-form .tab-content .active {
+  background: none;
+}
+
+.noticecard {
+  border-bottom: 0.1px solid rgb(213, 213, 213);
+}
+
+.datep {
+  /* padding: 20px; */
+  font-size: large;
+  font-weight: 400;
+}
+
+.date-board {
+  margin-right: 2px;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: rgb(209, 209, 209);
+}
+
+.date-boxes {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.dtp ul li {
+  list-style-type: disc;
+}
+
+.container .row {
+  margin-top: -50px;
+}
+
+.date-board:hover {
+  background-color: var(--blue);
+  color: white;
+  /* border: 1px solid black ; */
+}
+
+.date-board:active {
+  /* border: 1px solid black; */
+  background-color: var(--blue);
+  color: white;
+}
+
+.ttw {
+  background: white;
+  /* box-shadow: 10px 0px 1px 10px rgb(236, 236, 236); */
+  border-radius: 20px;
+  border: 1px solid black;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.descimage img {
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: floralwhite;
+  border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(222, 222, 222);
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+
+}
+
+.xyz::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 100px;
+}
+
+/* Track */
+.xyz::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 100px;
+}
+
+/* Handle */
+.xyz::-webkit-scrollbar-thumb {
+  background: rgb(222, 222, 222);
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+.xyz::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.admin-user {
+  width: 160vh;
+  border-radius: 20px;
+
+}
+
+.tabletoptext {
+  padding-bottom: 10px;
+}
+
+#blur.active {
+  background: #b8b5b5;
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+  color: #000000 !important;
+}
+
+/* Popup style */
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: auto;
+}
+
+.close-icon {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(15% - 30px);
+  top: calc(100vh - 85vh - 33px);
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+}
+
+.card-container .card {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 306px;
+  height: 130px;
+  padding: 24px;
+  border-radius: 10px;
+  margin: 12px;
+  display: flex;
+
+}
+
+.card-container .card:hover {
+  border-color: #000000;
+
+}
+
+.card-container .card .card-left {
+  width: 82px;
+  height: 82px;
+  margin-right: 5px;
+}
+
+.card-container .card .card-right {
+  width: 122px;
+  height: 82px;
+}
+
+.card .card-right .days-no {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: #212121;
+  margin-bottom: 5px;
+}
+
+.card .card-right .leave-type-card {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #808080;
+}
+
+.card .card-left .total-leave {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #808080;
+
+}
+
+.card-container {
+  max-width: 100%;
+
+  justify-content: flex-start;
+  margin-top: 4vh;
+
+}
+
+.card-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+/* Track */
+.card-container::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+
+/* Handle */
+.card-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.card-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.card-container ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.card-container i {
+  padding: 14px;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 28px 12px 0;
+}
+
+.card-container .bx1 {
+  background-color: #DFEDFB;
+  color: var(--blue);
+}
+
+.card-container .bx2 {
+  background-color: #FADFFB;
+  color: #B424E7;
+}
+
+.card-container .bx3 {
+  background-color: #FFE5E5;
+  color: var(--inred);
+}
+
+.card-container .bx4 {
+  background-color: #FFEED5;
+  color: #E86F00;
+}
+
+.card-container .bx5 {
+  background-color: #E4FFD8;
+  color: var(--green);
+}
+
+.card-container .bx6 {
+  background-color: #FEFFC9;
+  color: var(--yellow);
+}
+
+.container-properties {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.paddingadjustedclass {
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+  margin-top: 5px;
+}
+
+.inactiveactive-details {
+  padding: 4px;
+  background-color: var(--inred);
+  color: #FFFFFF;
+  padding: 1px 10px;
+  border-radius: 6px;
+}
+
+.close {
+  padding: 1px 6px 2px;
+  border-radius: 10px;
+}
+
+.close:hover {
+  background-color: var(--inred);
+  color: white;
+}
+
+
+.delete-details:hover {
+  background-color: var(--inred);
+  border: unset;
+}
+
+.delete-details:active {
+  background-color: var(--inred);
+  border: unset;
+}
+
+.delete-details:disabled {
+  background-color: var(--inred);
+  border: unset;
+}
+
+.delete-button {
+  background-color: var(--red);
+}
+
+.delete-button:hover {
+  background-color: var(--red);
+
+}
+
+.view-details:hover {
+  background-color: var(--hoveryellow);
+  border: unset;
+}
+
+.view-details:active {
+  background-color: var(--hoveryellow);
+  border: unset;
+}
+
+.view-details:disabled {
+  background-color: var(--hoveryellow);
+  border: unset;
+}
+
+.noticecard span {
+  float: right;
+}
+
+.paddingtoptd {
+  padding-top: 20px !important;
+}
+
+/* ADDED BY SACHI */
+
+.user-task-card {
+  background-color: white;
+}
+
+.noticecard{
+  color:black;
+}
 
 
 

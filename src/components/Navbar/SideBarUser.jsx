@@ -83,6 +83,7 @@ const SideBarUser = ({ children }) => {
       },
     },
   };
+  const navStyle={height:30,padding:20,paddingLeft:12}
 
   return (
     <>
@@ -100,6 +101,9 @@ const SideBarUser = ({ children }) => {
           }}
           className={`sidebar `}
         >
+           <div className='logo' style={navStyle}>
+                    <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />
+                </div>
           <div className="top_section">
             <AnimatePresence>
               {isOpen && (
