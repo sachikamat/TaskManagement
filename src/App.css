@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
-@import 'bootstrap/dist/css/bootstrap.min.css';
+/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css'; */
 *{
   font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
+  
+  --yellow: #d9e40d;
+  --white: #ffffff;
+  --red: #c21a17;
+  --inred: #f02b11;
+  --green:#66d715;
+  --blue: #007BFF;
+  --hoverblue:#83bdfc;
+  
   
 }
 
@@ -101,6 +110,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 15px 10px;
+  color: #00D563;
  
   
   
@@ -132,7 +142,9 @@ main {
   color: white;
 }
 
-.routes {
+.routes .icon{
+  color: #00D563;
+} {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -294,6 +306,7 @@ th{
   margin-right: 1vh;
   width: 80vh;
   border-radius: 20px;
+  border: 5px solid #00D563;
 }
 
 .view-details{
@@ -331,8 +344,9 @@ th{
   padding: 4px;
   background-color: var(--green);
   color: #FFFFFF;
-  padding: 6px 10px;
+  padding: 1px 10px;
   border-radius: 6px;
+  text-decoration: none;
 
 }
 
@@ -429,6 +443,8 @@ th{
 .h1style {
   text-align: center;
   color: white;
+  font-size: 48px;
+  color: #00D563;
 }
 
 .tasks-tabs {
@@ -571,8 +587,10 @@ th{
 
 
 .admin-user {
-  width: 160vh;
+  width: 1050px;
   border-radius: 20px;
+  max-height: 40vh;
+  border: 5px solid #00D563;
 
 }
 
@@ -639,6 +657,7 @@ th{
   border-radius: 10px;
   margin: 12px;
   display: flex;
+  border: 5px solid #00D563;
 
 }
 
@@ -762,6 +781,7 @@ th{
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: -10px;
 }
 
 
@@ -779,6 +799,7 @@ th{
   color: #FFFFFF;
   padding: 1px 10px;
   border-radius: 6px;
+  text-decoration: none;
 }
 
 .close {
@@ -833,8 +854,11 @@ th{
 
 .noticecard span {
   float: right;
+  margin-left: 20vh;
 }
-
+.noticecard-text h6{
+  padding: 1vh;
+}
 .paddingtoptd {
   padding-top: 20px !important;
 }
@@ -853,6 +877,12 @@ th{
 
 .noticecard{
   color:black;
+  display: flex;
+}
+.noticecard:hover {
+  background-color: var(--hoverblue);
+  cursor: pointer;
+
 }
 /* MANAGE TASKS TABLE */
 .table_header{
@@ -879,4 +909,19 @@ th{
 .table_header .action_col{
   text-align: center;
   background-color:#6c7ae0;;
+}
+.pd-ul{
+  padding-bottom: 2vh;
+}
+.member-card{
+  border-bottom: 0.1px solid rgb(213, 213, 213);
+}
+.userh1{
+  margin-top: -15vh;
+}
+.link_text{
+  color: #00D563;
+}
+.routes .icon{
+  color: #00D563;
 }

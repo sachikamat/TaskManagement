@@ -6,6 +6,7 @@ import SubmitButton from '../Layout/SubmitButton'
 import './Pages.css'
 import { useParams } from 'react-router-dom'
 import Wrapper from '../Layout/Wrapper'
+import React from "react";
 
 // import {Divider} from '@mui/material';
 

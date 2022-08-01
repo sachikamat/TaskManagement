@@ -5,6 +5,7 @@ import {Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
 import Wrapper from '../Layout/Wrapper';
 import { useParams } from 'react-router-dom';
+import React from "react";
 
 const theme = createTheme({
   typography: {
