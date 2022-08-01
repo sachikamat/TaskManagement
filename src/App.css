@@ -21,7 +21,7 @@ nav {
   /* background-size: cover; */
   /* background-position-y: -222px;
   background-position-x: 34px ; */
-  background-color: #273238;
+  background-color: #e0e3e4;
 }
 .login_page{
   height: 100vh;
@@ -84,6 +84,27 @@ main {
   font-size: 3rem;
   display: grid;
   place-items: center;
+}
+
+/* ADMIN DASHBOARD */
+.admin_greeting{
+  padding:30px;
+  background-color: #6c7ae0;
+  color:white;
+  width: 600px;
+  border-radius: 8px;
+}
+
+.admin_greeting p{
+  font-size :18px;
+  margin-right: 100px;
+}
+
+h1 {
+  /* text-align: center;
+  color: rgb(0, 0, 0); */
+  padding:10px;
+  font-size: 24px;
 }
 
 /* Sidebar */
@@ -426,10 +447,7 @@ th{
   font-size: 16px;
 }
 
-.h1style {
-  text-align: center;
-  color: white;
-}
+
 
 .tasks-tabs {
   display: flex;
@@ -578,7 +596,7 @@ th{
 
 .tabletoptext {
   padding-bottom: 10px;
-  color:white;
+  color:rgb(0, 0, 0);
   text-align: center;
 }
 

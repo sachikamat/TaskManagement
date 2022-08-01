@@ -1,31 +1,45 @@
-import { Delete,Edit,Visibility } from "@material-ui/icons"
-import { ActionButton } from "./ActionButton"
+import { Delete, Edit, Visibility } from "@material-ui/icons";
+import { ActionButton } from "./ActionButton";
 
-export const ViewButton = () => {
+export const ViewButton = ({dialogTitle,dialogContent}) => {
   return (
     <>
-      <ActionButton actionButton={<Visibility/>} dialogTitle='View Task' dialogContent='Viewing the task'  />
+      <ActionButton
+        actionButton={<Visibility />}
+        dialogTitle={dialogTitle}
+        dialogContent={dialogContent}
+      />
     </>
-  )
-}
+  );
+};
 
 
-
-export const EditButton = () => {
-    return (
-      <>
-              <ActionButton actionButton={<Edit/>} dialogTitle='Edit Task' dialogContent='Editing the task' alternateActionButton dialogAction='Save Changes' actionButton_color="success"/>
-
-      </>
-    )
-  }
-  
-
-export const DeleteButton = () => {
-return (
+export const EditButton = ({dialogContent,dialogTitle}) => {
+  return (
     <>
-          <ActionButton actionButton={<Delete/> } dialogTitle='Delete Task' dialogContent='Are you sure you want to delete the selected task?' alternateActionButton dialogAction='Confirm Delete'  actionButton_color="error"  />
-
+      <ActionButton
+        actionButton={<Edit />}
+        dialogTitle={dialogTitle}
+        dialogContent={dialogContent}
+        alternateActionButton
+        dialogAction="Save Changes"
+        actionButton_color="success"
+      />
     </>
-)
-}
+  );
+};
+
+export const DeleteButton = ({dialogContent,dialogTitle}) => {
+  return (
+    <>
+      <ActionButton
+        actionButton={<Delete />}
+        dialogTitle={dialogTitle}
+        dialogContent={dialogContent}
+        alternateActionButton
+        dialogAction="Confirm Delete"
+        actionButton_color="error"
+      />
+    </>
+  );
+};

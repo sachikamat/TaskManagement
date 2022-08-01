@@ -94,7 +94,7 @@ const SideBar = ({ children }) => {
       },
     },
   };
-  const navStyle={height:70,padding:20,paddingLeft:12}
+  const navStyle={height:70,padding:20,paddingLeft:8}
 
 
   return (
@@ -113,7 +113,7 @@ const SideBar = ({ children }) => {
           className={`sidebar `}
         >
           <div className='logo' style={navStyle}>
-                    <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />
+                  {isOpen ?  <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />: <img src={process.env.PUBLIC_URL+'/asterLogo_light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}}/>}
                 </div>
           <div className="top_section">
             <AnimatePresence>
@@ -125,7 +125,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  Asterdio Inc.
+                  Asterdio 
                 </motion.h1>
               )}
             </AnimatePresence>
