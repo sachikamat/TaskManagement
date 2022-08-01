@@ -144,12 +144,13 @@ main {
 
 .routes .icon{
   color: #00D563;
-} {
+}
+ /* {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 5px;
-}
+} */
 .link {
   display: flex;
   color: white;
