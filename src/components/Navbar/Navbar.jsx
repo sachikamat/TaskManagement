@@ -1,10 +1,10 @@
 import "./Navbar.css"
 
 function Navbar(){
-    const navStyle={height:40,marginBottom:0}
+    const navStyle={height:50,marginBottom:30}
     return(
         <>
-            <nav className="navItems">
+            <nav>
                 <div className='logo' style={navStyle}>
                     <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />
                 </div>

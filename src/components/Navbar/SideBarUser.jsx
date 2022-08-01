@@ -83,7 +83,7 @@ const SideBarUser = ({ children }) => {
       },
     },
   };
-  const navStyle={height:30,padding:20,paddingLeft:12}
+  const navStyle={height:70,padding:20,paddingLeft:12}
 
   return (
     <>
