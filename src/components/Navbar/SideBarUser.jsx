@@ -5,7 +5,7 @@ import { BiCog } from "react-icons/bi";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenuUser from "./SidebarMenuUser";
-
+import React from "react";
 const routes = [
   
   {

@@ -18,7 +18,7 @@ export default function AdminDashboard() {
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-sm-5 admin xyz card p-2">
+            <div class="col-sm-5 admin xyz card p-3">
               <div className="content">
                 <div className="content-main">
                   <h4>Tasks</h4>
@@ -264,11 +264,11 @@ export default function AdminDashboard() {
 
               {/* <h1 ><b>Tasks</b></h1> */}
             </div>
-            <div class="col-sm-5  admin xyz card p-2 ">
+            <div class="col-sm-5  admin xyz card p-3 ">
               <h4>Team members</h4>
               <div className="table-wrapper">
                 <table className="table">
-                  <thead className="thead-light">
+                  <thead className="thead-light member-card">
                     <tr>
                       <tr></tr>
                       <th scope="col">Name</th>
@@ -278,8 +278,8 @@ export default function AdminDashboard() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="trhover">
-                      <td>
+                    <tr class="trhover member-card">
+                      <td >
                         <img
                           alt="#"
                           src={process.env.PUBLIC_URL + "/pic.jpg"}
@@ -298,7 +298,7 @@ export default function AdminDashboard() {
                         </a>
                       </td>
                     </tr>
-                    <tr class="trhover">
+                    <tr class="trhover member-card">
                       <td>
                         <img
                           alt="#"
@@ -318,7 +318,7 @@ export default function AdminDashboard() {
                         </a>
                       </td>
                     </tr>
-                    <tr class="trhover">
+                    <tr class="trhover member-card">
                       <td>
                         <img
                           alt="#"
@@ -338,7 +338,7 @@ export default function AdminDashboard() {
                         </a>
                       </td>
                     </tr>
-                    <tr class="trhover">
+                    <tr class="trhover member-card">
                       <td>
                         <img
                           alt="#"
@@ -363,7 +363,7 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div class="col-sm-5  admin xyz notice card p-2 ">
+            <div class="col-sm-5  admin xyz notice card p-3 ">
               <div className="content">
                 <div className="content-main">
                   <h4>Notice</h4>
@@ -400,48 +400,72 @@ export default function AdminDashboard() {
                         id="tab-03"
                       >
                         <div class="noticecard">
-                          <h6>Meeting with Principal</h6>
-                          <p>
-                            There is a meet with the principal
-                            <span>Time: 5:04 PM</span>
-                          </p>
+                          <div class="number">1.</div>
+                          <div class="noticecard-text">
+                            <h6>Meeting with Principal</h6>
+                            <p>
+                              There is a meet with the principal
+                              <span>Time: 5:04 PM</span>
+                            </p>
+                          </div>
+
                         </div>
                         <div class="noticecard">
-                          <h6>Meeting with Principal</h6>
-                          <p>
-                            There is a meet with the principal
-                            <span>Time: 5:04 PM</span>
-                          </p>
+                          <div class="number">2.</div>
+                          <div class="noticecard-text">
+                            <h6>Meeting with Principal</h6>
+                            <p>
+                              There is a meet with the principal
+                              <span>Time: 5:04 PM</span>
+                            </p>
+                          </div>
+
                         </div>
                         <div class="noticecard">
-                          <h6>Meeting with Principal</h6>
-                          <p>
-                            There is a meet with the principal
-                            <span>Time: 5:04 PM</span>
-                          </p>
+                          <div class="number">3.</div>
+                          <div class="noticecard-text">
+                            <h6>Meeting with Principal</h6>
+                            <p>
+                              There is a meet with the principal
+                              <span>Time: 5:04 PM</span>
+                            </p>
+                          </div>
+
                         </div>
                       </div>
                       <div role="tabpanel" className="tab-pane" id="tab-04">
                         <div class="noticecard">
-                          <h6>There was a meet with Principal</h6>
-                          <p>
-                            There is a meet with the principal
-                            <span>Date: 7/27/2022</span>
-                          </p>
+                          <div class="number">1.</div>
+                          <div class="noticecard-text">
+                            <h6>There was a meet with Principal</h6>
+                            <p>
+                              There is a meet with the principal
+                              <span>Date: 7/27/2022</span>
+                            </p>
+                          </div>
+
                         </div>
                         <div class="noticecard">
-                          <h6>There was a meet with Principal</h6>
-                          <p>
-                            There is a meet with the principal
-                            <span>Date: 7/27/2022</span>
-                          </p>
+                          <div class="number">2.</div>
+                          <div class="noticecard-text">
+                            <h6>There was a meet with Principal</h6>
+                            <p>
+                              There is a meet with the principal
+                              <span>Date: 7/27/2022</span>
+                            </p>
+                          </div>
+
                         </div>
                         <div class="noticecard">
-                          <h6>There was a meet with Principal</h6>
-                          <p>
-                            There is a meet with the principal
-                            <span>Date: 7/27/2022</span>
-                          </p>
+                          <div class="number">3.</div>
+                          <div class="noticecard-text">
+                            <h6>There was a meet with Principal</h6>
+                            <p>
+                              There is a meet with the principal
+                              <span>Date: 7/27/2022</span>
+                            </p>
+                          </div>
+
                         </div>
                       </div>
                     </div>

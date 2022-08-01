@@ -1,6 +1,7 @@
 import { ViewButton, EditButton, DeleteButton } from "../Layout/ActionDialogBox";
 import Wrapper from "../Layout/Wrapper";
 import Table from 'react-bootstrap/Table';
+import React from "react";
 // import { Paper } from "@material-ui/core";
 const createData = (
   id,

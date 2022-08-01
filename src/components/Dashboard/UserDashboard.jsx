@@ -5,12 +5,12 @@ const UserDashboard = () => {
   return (
     <>
       <Wrapper userSideBar>
-        <h1 className="h1style">
-          <center>User Dashboard</center>
+        <h1 className="h1style userh1">
+          User Dashboard!!
         </h1>
         <div className="container-properties">
           <div className="card-container">
-            <ul>
+            <ul className="pd-ul">
               <li>
                 <div className="card">
                   <ul>
@@ -53,7 +53,7 @@ const UserDashboard = () => {
                   </ul>
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <div className="card">
                   <ul>
                     <li className="card-left">
@@ -65,9 +65,9 @@ const UserDashboard = () => {
                     </li>
                   </ul>
                 </div>
-              </li>
+              </li> */}
             </ul>
-            <div class="col-sm-5 offset-sm-1 admin-user xyz user-task-card  p-2">
+            <div class="col-sm-5  admin-user xyz user-task-card  p-3">
               <div className="content">
                 <div className="content-main">
                   <h4>Tasks</h4>
@@ -156,6 +156,34 @@ const UserDashboard = () => {
                             <div class="taskicon">
                               <img
                                 src={process.env.PUBLIC_URL + "/sachi.png"}
+                                alt="#"
+                              ></img>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tasks-card">
+                          <div class="desctext">
+                            <div class="number">1.</div>
+                            <div class="tasktext">Finish Sidebar</div>
+                          </div>
+                          <div class="descimage">
+                            <div class="taskicon">
+                              <img
+                                src={process.env.PUBLIC_URL + "/pic.jpg"}
+                                alt="#"
+                              ></img>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tasks-card">
+                          <div class="desctext">
+                            <div class="number">1.</div>
+                            <div class="tasktext">Finish Sidebar</div>
+                          </div>
+                          <div class="descimage">
+                            <div class="taskicon">
+                              <img
+                                src={process.env.PUBLIC_URL + "/pic.jpg"}
                                 alt="#"
                               ></img>
                             </div>
