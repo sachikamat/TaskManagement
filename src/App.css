@@ -9,7 +9,7 @@
   --red: #c21a17;
   --inred: #f02b11;
   --green:#66d715;
-  --blue: #007BFF;
+  --blue: #6c7ae0;
   --hoverblue:#83bdfc;
   
   
@@ -34,6 +34,7 @@ nav {
 }
 .login_page{
   height: 100vh;
+  background-color: #6c7ae0;
   /* background-image: url('/public/blue_bg.jpg');
   background-repeat: no-repeat;
   background-size: cover; */
@@ -131,13 +132,10 @@ h1 {
   align-items: center;
   justify-content: space-between;
   padding: 15px 10px;
-  color: #00D563;
- 
-  
-  
+  color: white;
 }
 .logo {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 0;
 }
 .bars {
@@ -164,7 +162,7 @@ h1 {
 }
 
 .routes .icon{
-  color: #00D563;
+  color: #79b0fb;
 }
  /* {
   margin-top: 15px;
@@ -226,7 +224,7 @@ h1 {
   
   float:right;
   
-  color: #00D563;
+  color: #6c7ae0;
   margin-top: 2.5vh;
   
 }
@@ -328,7 +326,7 @@ th{
   margin-right: 1vh;
   width: 80vh;
   border-radius: 20px;
-  border: 5px solid #00D563;
+  border: 5px solid #6c7ae0;
 }
 
 .view-details{
@@ -412,9 +410,9 @@ th{
 }
 
 .tasks-card:hover {
-  background-color: var(--hoverblue);
+  background-color: #97a2e8;
   cursor: pointer;
-
+  
 }
 
 .row {
@@ -462,12 +460,6 @@ th{
   font-size: 16px;
 }
 
-.h1style {
-  text-align: center;
-  color: white;
-  font-size: 48px;
-  color: #00D563;
-}
 
 .tasks-tabs {
   display: flex;
@@ -940,10 +932,4 @@ th{
 }
 .userh1{
   margin-top: -15vh;
-}
-.link_text{
-  color: #00D563;
-}
-.routes .icon{
-  color: #00D563;
 }
