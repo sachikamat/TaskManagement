@@ -25,11 +25,9 @@ const rows = [
 const ManageUser = () => {
   return (
     <>
-      <Wrapper adminSidebar>
+      <Wrapper adminSidebar navHeader page_title="Manage Users">
         <div className="content" id="blur">
-          <div className="content-top"></div>
           <div className="content-bottom">
-            <h2 class="tabletoptext">Manage Users</h2>
             <div className="table-wrapper ttw">
               <Table responsive="sm" striped hover>
                 <thead className="table_header">
@@ -54,7 +52,7 @@ const ManageUser = () => {
                       <td>{row.statusOf}</td>
                       <td>
                         {
-                          <div>
+                          <div className="action_column">
                             <EditButton
                               dialogTitle="Edit User"
                               dialogContent={<EditUserInfo 

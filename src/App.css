@@ -15,6 +15,11 @@
   
 }
 
+/* color-theme */
+/* light purple: #b2b8e3
+puprle: #6c7ae0
+hoverblue: #83bdfc */
+
 nav {
   padding: 20px 0px 20px 20px;
   display: flex;
@@ -74,10 +79,97 @@ nav {
   /* background-color: azure; */
 }
 
-/* 
-.login_container{
-  text-align:center;
-} */
+
+/* dashboard wala header */
+
+.nav_header{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 10px 0px 10px;
+  background-color:#b2b8e3;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+
+.nav_userInfo h3{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+/* TEAM CARD  */
+
+/* MUI Card ko styling override gareko for team member card */
+.dashboard_container .css-bhp9pd-MuiPaper-root-MuiCard-root{
+  max-height:342px;
+  overflow-y:auto;
+}
+
+.teamCard h3{
+  color: #4c58a1;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.nav_userInfo{
+  display:flex;
+  color:black;
+}
+
+.nav_header h2 {
+  /* text-align: center;
+  color: rgb(0, 0, 0); */
+  padding:10px;
+  font-size: 28px;
+}
+/* dashboard */
+.dashboard_container{
+  display:flex;
+}
+/* TEAM CARD */
+.teamCard{
+  /* background-color:#9fa5c8; */
+  width: 350px;
+}
+
+.teamCard_title{
+  margin-left:20px;
+  margin-bottom: 0;
+  padding:10px 0px 0px 0px;
+  color:#6874b8;
+  font-size: 22px;
+}
+
+.teamCardContent{
+  display:flex;
+  flex-direction: column;
+  padding:30px;
+  gap:5px;
+}
+
+.teamMember{
+  display:flex;
+  /* align-items: center; */
+  background-color:rgba(204, 206, 225, 0.818) ;
+
+  padding:10px 0px 0px 10px;
+  gap:10px;
+  border-radius: 5px;
+  border: 1px solid rgba(155, 155, 155, 0.629);
+}
+
+.teamMember:hover{
+  background:#b2b8e3;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.userInfo p{
+  margin-bottom: 5px;
+  color: #7a85c1;
+}
+
 
 /* ABHAYA'S CSS FROM DOWN HERE */
 
@@ -97,7 +189,7 @@ main {
 }
 
 /* ADMIN DASHBOARD */
-.admin_greeting{
+.user_greeting{
   padding:30px;
   background-color: #6c7ae0;
   color:white;
@@ -105,16 +197,9 @@ main {
   border-radius: 8px;
 }
 
-.admin_greeting p{
+.user_greeting p{
   font-size :18px;
   margin-right: 100px;
-}
-
-h1 {
-  /* text-align: center;
-  color: rgb(0, 0, 0); */
-  padding:10px;
-  font-size: 24px;
 }
 
 /* Sidebar */
@@ -607,11 +692,6 @@ th{
 
 }
 
-.tabletoptext {
-  padding-bottom: 10px;
-  color:rgb(0, 0, 0);
-  text-align: center;
-}
 
 #blur.active {
   background: #b8b5b5;
@@ -875,6 +955,11 @@ th{
   padding-top: 20px !important;
 }
 
+.action_column{
+  display: flex;
+  justify-content: center;
+}
+
 .ttw {
   background: white;
   max-height: 600px;
@@ -931,3 +1016,12 @@ th{
 .userh1{
   margin-top: -15vh;
 }
+
+/* WRAPPER */
+.container_wrapper{
+  display:flex;
+}
+.wrapper_children{
+  width:100%
+}
+

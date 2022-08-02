@@ -1,11 +1,10 @@
 import { Grid, Paper, TextField, Typography,makeStyles, createTheme, ThemeProvider,Button,InputAdornment} from '@material-ui/core'
-import {useState} from 'react'
+import {useState,React} from 'react'
 import SubmitButton from '../Layout/SubmitButton';
 import {Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
 import Wrapper from '../Layout/Wrapper';
 import { useParams } from 'react-router-dom';
-import React from "react";
 
 const theme = createTheme({
   typography: {
@@ -45,7 +44,7 @@ export const ChangePassword = () => {
 
   return (
     <>
-      <Wrapper adminSidebar={findUser()} userSideBar={!findUser()}>
+      <Wrapper adminSidebar={findUser()} userSideBar={!findUser()} navHeader>
         
         <ThemeProvider theme={theme}>
           <div className="mainDiv">

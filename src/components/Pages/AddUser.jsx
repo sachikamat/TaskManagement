@@ -79,8 +79,8 @@ export default function AddUser() {
     <>
 
       <ThemeProvider theme={theme}>
-        <Wrapper adminSidebar>
-        <div className="mainDiv">
+        <Wrapper adminSidebar navHeader>
+        
           <Paper className={classes.paperStyle}>
             <Typography
               className="formHeading"
@@ -204,7 +204,6 @@ export default function AddUser() {
               <SubmitButton button_name="ADD" button_id="addTask_btn" />
             </Grid>
           </Paper>
-        </div>
         </Wrapper>
       </ThemeProvider>
     </>

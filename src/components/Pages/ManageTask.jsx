@@ -31,8 +31,7 @@ const rows = [
 const ManageTask = () => {
   return (
     <>
-      <Wrapper adminSidebar>
-            <h2 class="tabletoptext">Manage tasks</h2>
+      <Wrapper adminSidebar navHeader page_title="Manage tasks">
             <div className="ttw">
               <Table responsive='sm' striped hover>
                 <thead className="table_header" >
@@ -55,14 +54,14 @@ const ManageTask = () => {
                       <td>{row.statusOf}</td>
                       <td>{row.duration}</td>
                       <td>{
-                        <>
+                        <div className="action_column">
                           <ViewButton dialogTitle="View Task" dialogContent="Viewing the task"/>
                           <EditButton dialogTitle="Edit Task" dialogContent="Editing this task"/>
                           <DeleteButton
                           dialogTitle="Delete Task"
                           dialogContent="Are you sure you want to delete the selected task?"
                           />
-                        </>
+                        </div>
                         }</td>
                       <td>{row.taskAllocated}</td>
                     </tr>

@@ -45,7 +45,7 @@ export const UserTask = () => {
   };
   return (
     <>
-  <Wrapper userSideBar>
+  <Wrapper userSideBar navHeader>
         <div className="mainDiv">
         <TableContainer
           component={Paper}

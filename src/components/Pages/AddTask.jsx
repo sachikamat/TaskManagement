@@ -54,7 +54,7 @@ export default function AddTask() {
 
   return (
     <>
-      <Wrapper adminSidebar>
+      <Wrapper adminSidebar navHeader>
         <ThemeProvider theme={theme}>
           {/* <div className='mainDiv'> */}
           <Paper className="paperStyle">

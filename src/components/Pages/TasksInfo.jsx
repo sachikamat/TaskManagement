@@ -45,7 +45,7 @@ const TasksInfo = () => {
   };
   return (
     <>
-    <Wrapper userSideBar>
+    <Wrapper userSideBar navHeader>
       <ThemeProvider theme={theme}>
        
           <div className="mainDiv">   
