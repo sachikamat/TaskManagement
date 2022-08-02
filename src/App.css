@@ -9,7 +9,7 @@
   --red: #c21a17;
   --inred: #f02b11;
   --green:#66d715;
-  --blue: #007BFF;
+  --blue: #6c7ae0;
   --hoverblue:#83bdfc;
   
   
@@ -30,10 +30,11 @@ nav {
   /* background-size: cover; */
   /* background-position-y: -222px;
   background-position-x: 34px ; */
-  background-color: #273238;
+  background-color: #e0e3e4;
 }
 .login_page{
   height: 100vh;
+  background-color: #6c7ae0;
   /* background-image: url('/public/blue_bg.jpg');
   background-repeat: no-repeat;
   background-size: cover; */
@@ -95,6 +96,27 @@ main {
   place-items: center;
 }
 
+/* ADMIN DASHBOARD */
+.admin_greeting{
+  padding:30px;
+  background-color: #6c7ae0;
+  color:white;
+  width: 600px;
+  border-radius: 8px;
+}
+
+.admin_greeting p{
+  font-size :18px;
+  margin-right: 100px;
+}
+
+h1 {
+  /* text-align: center;
+  color: rgb(0, 0, 0); */
+  padding:10px;
+  font-size: 24px;
+}
+
 /* Sidebar */
 .sidebar {
   background-color: #273238;
@@ -110,13 +132,10 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 15px 10px;
-  color: #00D563;
- 
-  
-  
+  color: white;
 }
 .logo {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 0;
 }
 .bars {
@@ -143,7 +162,7 @@ main {
 }
 
 .routes .icon{
-  color: #00D563;
+  color: #79b0fb;
 }
  /* {
   margin-top: 15px;
@@ -205,7 +224,7 @@ main {
   
   float:right;
   
-  color: #00D563;
+  color: #6c7ae0;
   margin-top: 2.5vh;
   
 }
@@ -307,7 +326,7 @@ th{
   margin-right: 1vh;
   width: 80vh;
   border-radius: 20px;
-  border: 5px solid #00D563;
+  border: 5px solid #6c7ae0;
 }
 
 .view-details{
@@ -391,9 +410,9 @@ th{
 }
 
 .tasks-card:hover {
-  background-color: var(--hoverblue);
+  background-color: #97a2e8;
   cursor: pointer;
-
+  
 }
 
 .row {
@@ -441,12 +460,6 @@ th{
   font-size: 16px;
 }
 
-.h1style {
-  text-align: center;
-  color: white;
-  font-size: 48px;
-  color: #00D563;
-}
 
 .tasks-tabs {
   display: flex;
@@ -597,7 +610,7 @@ th{
 
 .tabletoptext {
   padding-bottom: 10px;
-  color:white;
+  color:rgb(0, 0, 0);
   text-align: center;
 }
 
@@ -919,10 +932,4 @@ th{
 }
 .userh1{
   margin-top: -15vh;
-}
-.link_text{
-  color: #00D563;
-}
-.routes .icon{
-  color: #00D563;
 }

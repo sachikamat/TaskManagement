@@ -3,14 +3,16 @@
     {
       "id": 1,
       "uname":"Sachi Kamat",
+      "email":"sachikamat@gmail.com",
       "phone":"01-4334288",
-      "email":"sachikamat@gmail.com"
+      "statusOf":"active"
     },
     {
       "id": 2,
       "uname":"Indu Kamat",
+      "email":"indukamat@gmail.com",
       "phone":"01-4231697",
-      "email":"indukamat@gmail.com"
+      "statusOf":"active"
     }
   ]
 }

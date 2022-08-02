@@ -1,13 +1,21 @@
 import React from "react";
 import Wrapper from "../Layout/Wrapper";
 import toggle from "../Layout/toggle"
+// import { Paper } from "@material-ui/core";
 
 
 export default function AdminDashboard() {
   return (
     <>
       <Wrapper adminSidebar>
-        <h1 class="h1style">Welcome to Our Dashboard!!!</h1>
+        <h1 class="h1style">Dashboard</h1>
+
+        <div className="admin_greeting">
+          <h2>Hi, Sachi Kamat!</h2>
+          <p>
+            Welcome to your dashboard. You can view and update your tasks here. You can also view your meeting schedules.
+          </p>
+        </div>
         <div class="container">
           <div class="row">
             <div class="col-sm-5 admin xyz card p-3">
@@ -262,7 +270,7 @@ export default function AdminDashboard() {
                 <table className="table">
                   <thead className="thead-light member-card">
                     <tr>
-                      <tr ></tr>
+                      <tr></tr>
                       <th scope="col">Name</th>
 
                       <th scope="col">Phone</th>
