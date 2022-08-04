@@ -17,11 +17,7 @@ const theme = createTheme({
 
 //defining styles for various components
 const useStyles=makeStyles(theme=>({
-  paperStyle:{
-    padding:20, 
-    width:'50%', 
-    margin:'auto',
-  },
+  
   gridContainer:{
     paddingRight:40,
     paddingLeft:40,
@@ -81,7 +77,7 @@ export default function AddUser() {
       <ThemeProvider theme={theme}>
         <Wrapper adminSidebar navHeader>
         
-          <Paper className={classes.paperStyle}>
+          <Paper className="paperStyle">
             <Typography
               className="formHeading"
               style={{ textAlign: "center" }}

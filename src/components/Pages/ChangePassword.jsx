@@ -17,7 +17,7 @@ const theme = createTheme({
 const useStyles = makeStyles((theme) => ({
   paperStyle: {
     padding: 20,
-    width: "50%",
+    // width: "50%",
     margin: "auto",
   },
 }));
@@ -47,8 +47,7 @@ export const ChangePassword = () => {
       <Wrapper adminSidebar={findUser()} userSideBar={!findUser()} navHeader>
         
         <ThemeProvider theme={theme}>
-          <div className="mainDiv">
-          <p>{findUser()}</p>
+          <div className="password_container">
             <Paper className={classes.paperStyle}>
               <Typography className="formHeading" variant="h5">
                 CHANGE PASSWORD

@@ -51,6 +51,15 @@ export const TeamCard = () => {
   );
 }
 
+export const TaskCard=({task_title,taskCard_title})=>(
+  <Card className="task_card">
+    <h2>{taskCard_title}</h2>
+    <ul>
+      {task_title}
+    </ul>
+  </Card>
+)
+
 //TASK COUNT CARD
 export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
   <div className="card">
@@ -66,3 +75,10 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
     </ul>
   </div>
 );
+
+
+export const EventCard=()=>(
+  <div className="event-card">
+    
+  </div>
+)

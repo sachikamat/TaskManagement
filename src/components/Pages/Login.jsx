@@ -7,20 +7,11 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   paperStyle: {
-    // padding: 30,
     width: 380,
     textAlign: "center",
-    margin: " auto",
-    display: "flex",
-    // borderRadius:8,
+    display: "flex"
   },
-  login_btn: {
-    backgroundColor: "#00d563",
-    color: "white",
-    fontWeight: 400,
-    marginTop: 20,
-    marginBottom: 30,
-  },
+  
   logoStyle: { height: 60, width: 60, margin: 20 },
   heading: {
     fontSize: 20,
@@ -29,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     marginLeft: 10,
     marginBottom: 10,
-  },
-  login_banner: {
-    width: 300,
-    height: 400,
   },
 }));
 

@@ -15,6 +15,22 @@
   
 }
 
+/* .event-card{
+  background-color:#6c7ae0;
+  border-radius: 50%
+} */
+
+/* .event-card:before{
+  height: 100px;;
+  width: 100px;;
+  position:absolute;
+  content:" ";
+  top:192px;
+  background-color: #121844;
+  transform: rotate(45deg);
+  z-index:1;
+} */
+
 /* color-theme */
 /* light purple: #b2b8e3
 puprle: #6c7ae0
@@ -46,7 +62,8 @@ nav {
 }
 .login_container{
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
+  gap:100px;
 }
 
 .login_banner{
@@ -58,6 +75,7 @@ nav {
   background-size: cover;
   margin-right: 30px; */
   padding:80px;
+  margin-left: 160px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -105,6 +123,7 @@ nav {
 .dashboard_container .css-bhp9pd-MuiPaper-root-MuiCard-root{
   max-height:342px;
   overflow-y:auto;
+  background-color: #dce5eb;
 }
 
 .teamCard h3{
@@ -124,17 +143,15 @@ nav {
   padding:10px;
   font-size: 28px;
 }
-/* dashboard */
-.dashboard_container{
-  display:flex;
-}
+
+
 /* TEAM CARD */
 .teamCard{
   /* background-color:#9fa5c8; */
   width: 350px;
 }
 
-.teamCard_title{
+.teamCard_title, .task_card h2{
   margin-left:20px;
   margin-bottom: 0;
   padding:10px 0px 0px 0px;
@@ -152,12 +169,12 @@ nav {
 .teamMember{
   display:flex;
   /* align-items: center; */
-  background-color:rgba(204, 206, 225, 0.818) ;
+  background-color:rgb(201 205 241 / 82%) ;
 
   padding:10px 0px 0px 10px;
   gap:10px;
   border-radius: 5px;
-  border: 1px solid rgba(155, 155, 155, 0.629);
+  /* border: 1px solid rgba(155, 155, 155, 0.629); */
 }
 
 .teamMember:hover{
@@ -170,6 +187,68 @@ nav {
   color: #7a85c1;
 }
 
+/* TASK CARD */
+
+.taskcards_container{
+  display:flex;
+  gap:34px;
+  margin-top: 20px;
+}
+.taskcards_container .css-bhp9pd-MuiPaper-root-MuiCard-root{
+  min-width: 330px;
+  min-height: 250px;
+}
+
+.ongoing_card .css-bhp9pd-MuiPaper-root-MuiCard-root{
+  background-color: #93beba;
+}
+
+.ongoing_card h2{
+  color:#0d3733;
+}
+
+.ongoing_card ul li:hover {
+  background-color: #5487ab;
+  color: white;
+}
+.pending_card .css-bhp9pd-MuiPaper-root-MuiCard-root{
+  background-color: #db908b;
+}
+
+.pending_card h2{
+  color:#9f1d14;
+}
+
+.pending_card ul li:hover {
+  background-color: #db5e55;
+  color: white;
+}
+
+.completed_card .css-bhp9pd-MuiPaper-root-MuiCard-root{
+  background-color: #a5d370;
+}
+
+.completed_card h2{
+  color:#376204;
+}
+
+.completed_card ul li:hover {
+  background-color: #66a358;
+  color: white;
+}
+
+.task_card ul li{
+  background-color:rgb(201 205 241 / 50%) ;
+  margin-top:10px;
+  padding:10px 0px 10px 10px;
+  border-radius: 5px;
+}
+
+.task_card ul{
+  list-style-type:none;
+  padding-right:18px;
+  padding-left: 18px;
+}
 
 /* ABHAYA'S CSS FROM DOWN HERE */
 
@@ -1025,3 +1104,8 @@ th{
   width:100%
 }
 
+.dashboard_container{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
