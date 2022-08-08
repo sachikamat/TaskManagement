@@ -16,7 +16,7 @@ const Wrapper = ({navBar,navHeader,children,adminSidebar,userSideBar,page_title,
         <main className="wrapper_children">
           {navHeader && <NavHeader page_title={page_title} />}
           <div className="dashboard_container">
-            <div>{children}</div>
+            <div className="main_children">{children}</div>
             <div className="right_layout">{adminSidebar && <AdminRightLayout />}</div>
           </div>
         </main>

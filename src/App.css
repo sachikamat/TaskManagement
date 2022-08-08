@@ -81,6 +81,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .login_banner h1{
@@ -148,7 +149,7 @@ nav {
 /* TEAM CARD */
 .teamCard{
   /* background-color:#9fa5c8; */
-  width: 350px;
+  width: 22vw;
 }
 
 .teamCard_title, .task_card h2{
@@ -195,7 +196,8 @@ nav {
   margin-top: 20px;
 }
 .taskcards_container .css-bhp9pd-MuiPaper-root-MuiCard-root{
-  min-width: 330px;
+  width: 19vw;
+  min-width: 14vw;
   min-height: 250px;
 }
 
@@ -240,7 +242,7 @@ nav {
 .task_card ul li{
   background-color:rgb(201 205 241 / 50%) ;
   margin-top:10px;
-  padding:10px 0px 10px 10px;
+  padding:10px 10px 10px 10px;
   border-radius: 5px;
 }
 
@@ -1108,4 +1110,14 @@ th{
   display:flex;
   justify-content:space-between;
   gap:20px;
+}
+
+.right_layout{
+  position:fixed;
+  right:0px;
+}
+
+.main_children{
+  min-width: 62vw;
+  max-width: 72vw;
 }
