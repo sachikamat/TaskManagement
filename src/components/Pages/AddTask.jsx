@@ -54,7 +54,7 @@ export default function AddTask() {
 
   return (
     <>
-      <Wrapper adminSidebar>
+      <Wrapper adminSidebar navHeader>
         <ThemeProvider theme={theme}>
           {/* <div className='mainDiv'> */}
           <Paper className="paperStyle">
@@ -64,10 +64,10 @@ export default function AddTask() {
 
             <Grid container>
               <Grid container className="gridContainer">
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={3}>
                   <Typography>User</Typography>
                 </Grid>
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={9}>
                   <FormControl fullWidth>
                     <Select
                       id="selectedUser"
@@ -95,10 +95,10 @@ export default function AddTask() {
               </Grid>
 
               <Grid container className="gridContainer">
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={3}>
                   <Typography>Task</Typography>
                 </Grid>
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={9}>
                   <TextField
                     id="taskSubject"
                     size="small"
@@ -109,10 +109,10 @@ export default function AddTask() {
               </Grid>
 
               <Grid container className="gridContainer">
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={3}>
                   <Typography>Priority</Typography>
                 </Grid>
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={9}>
                   <FormControl fullWidth>
                     <Select
                       id="selectedPriority"
@@ -140,10 +140,10 @@ export default function AddTask() {
               </Grid>
 
               <Grid container className="gridContainer">
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={3}>
                   <Typography>Description</Typography>
                 </Grid>
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={9}>
                   <TextField
                     id="taskDescription"
                     multiline
@@ -155,10 +155,10 @@ export default function AddTask() {
               </Grid>
 
               <Grid container className="gridContainer">
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={3}>
                   <Typography>Status</Typography>
                 </Grid>
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={9}>
                   <FormControl fullWidth>
                     <Select
                       id="selectedStatus"

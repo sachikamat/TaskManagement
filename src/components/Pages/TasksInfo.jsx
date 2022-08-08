@@ -1,12 +1,12 @@
 import { Paper, Typography,FormControl, Select, MenuItem} from '@material-ui/core'
 import { Table, TableContainer, TableCell, TableRow, createTheme, ThemeProvider  } from '@mui/material'
-import { useState, useEffect } from 'react'
+import {React, useState, useEffect } from 'react'
 import axios from 'axios'
 import SubmitButton from '../Layout/SubmitButton'
 import './Pages.css'
 import { useParams } from 'react-router-dom'
 import Wrapper from '../Layout/Wrapper'
-import React from "react";
+import {API} from '../config'
 
 // import {Divider} from '@mui/material';
 
@@ -29,11 +29,11 @@ const TasksInfo = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3002/tasks/${id}`)
+      .get(`${API}/task/${id}`)
       .then((res) => {
         console.log(res);
-        setTaskInfo(res.data);
-        setStatus(res.data.status)
+        setTaskInfo(res.data.task);
+        setStatus(res.data.task.task_status)
       })
       .catch((err) => {
         console.log(err);
@@ -45,7 +45,7 @@ const TasksInfo = () => {
   };
   return (
     <>
-    <Wrapper userSideBar>
+    <Wrapper userSideBar navHeader>
       <ThemeProvider theme={theme}>
        
           <div className="mainDiv">   
@@ -64,7 +64,7 @@ const TasksInfo = () => {
                       TASK
                     </Typography>
                   </TableCell>
-                  <TableCell>{taskInfo.task}</TableCell>
+                  <TableCell>{taskInfo.title}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell variant="head">

@@ -28,7 +28,7 @@ function App() {
             <Route exact path="/:currentUser/settings/2fa" element={<ChangePassword />} />
             <Route exact path="/user/dashboard" element={<UserDashboard/> } />
             <Route exact path="/user/tasks" element={<UserTask />} />
-            <Route exact path="/user/tasks/taskInfo/:id" element={<TasksInfo />} />
+            <Route exact path="/user/tasks/:id" element={<TasksInfo />} />
             <Route exact path="/test" element={<Test />} />
           </Routes>
       </Router>

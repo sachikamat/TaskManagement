@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 import './Pages.css'
 import Wrapper from '../Layout/Wrapper';
-
+import {API} from '../config'
 const theme = createTheme({
   typography: {
     allVariants:{
@@ -24,29 +24,28 @@ const Action = ({handleAction})=>(
 
 export const UserTask = () => {
   const [tasks, setTasks] = useState([]);
-
+  
   useEffect(() => {
     axios
-      .get("http://localhost:3002/tasks")
+      .get(`${API}/task/tasks`)
       .then((res) => {
-        console.log(res);
-        setTasks(res.data);
+        setTasks(res.data.tasks);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[tasks]);
 
 
   let navigate = useNavigate();
   const routeChange = (id) => {
-    let path = `/user/tasks/taskInfo/${id}`;
+    let path = `/user/tasks/${id}`;
     navigate(path);
   };
   return (
     <>
-  <Wrapper userSideBar>
-        <div className="mainDiv">
+  <Wrapper userSideBar navHeader>
+        
         <TableContainer
           component={Paper}
           className="paperStyle"
@@ -78,26 +77,25 @@ export const UserTask = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {tasks.map((task) => (
+              {tasks.map((task,index) => (
                 <TableRow
                   key={task.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {task.id}
+                    {index+1}
                   </TableCell>
-                  <TableCell>{task.task}</TableCell>
+                  <TableCell>{task.title}</TableCell>
                   <TableCell>{task.description}</TableCell>
-                  <TableCell>{task.status}</TableCell>
+                  <TableCell>{task.task_status}</TableCell>
                   <TableCell>
-                    <Action handleAction={()=>routeChange(task.id)} />{" "}
+                    <Action handleAction={()=>routeChange(task._id)} />{" "}
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-      </div>
       </Wrapper>
     </>
   );
