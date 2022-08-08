@@ -63,7 +63,8 @@ nav {
 .login_container{
   display:flex;
   justify-content:center;
-  gap:100px;
+  gap:146px;
+  width:99vw;
 }
 
 .login_banner{
@@ -74,8 +75,8 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
   margin-right: 30px; */
-  padding:80px;
-  margin-left: 160px;
+  /* padding:80px;
+  margin-left: 160px; */
   color: white;
   display: flex;
   flex-direction: column;
@@ -93,10 +94,6 @@ nav {
   font-size: 20px;
 }
 
-.login_form{
-  padding:30px 40px 35px 40px;
-  /* background-color: azure; */
-}
 
 
 /* dashboard wala header */

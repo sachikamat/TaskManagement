@@ -1,4 +1,4 @@
-// import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Paper,  TextField, FormControlLabel,makeStyles} from '@material-ui/core';
 import { Checkbox} from '@mui/material';
 import Wrapper from '../Layout/Wrapper';
@@ -9,9 +9,9 @@ import AuthContext  from '../context/AuthProvider';
 import axios from '../api/axios'
 const useStyles = makeStyles((theme) => ({
   paperStyle: {
-    width: 450,
+    width: 344,
     textAlign: "center",
-    display: "flex"
+    padding: 36,
   },
   
   logoStyle: { height: 60, width: 60, margin: 20 },
@@ -47,9 +47,9 @@ export default function Login() {
   },[email,password])
   
   //navigation to dashboard after clicking on login button
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const path = "/admin/dashboard";
+  const path = "/admin/dashboard";
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -92,21 +92,22 @@ export default function Login() {
   return (
     <>
     {success ? (
-      <section>
-        <h1>You are logged in!</h1>
-      </section>
+      
+        navigate(path)
+     
     ):(
       <section className="login_page">
-        <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live = "assertive">{errMsg}</p>
+        
         <Wrapper navBar>
+        <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live = "assertive">{errMsg}</p>
           <div className="login_container">
             <div className="login_banner">
               <h1>WELCOME BACK!</h1>
               <p>You can sign in to access with your existing account.</p>
             </div>
-
+            <div className="login_form">
             <Paper elevation={20} className={classes.paperStyle}>
-              <div className="login_form">
+              
                 <div>
                   <img
                     src={process.env.PUBLIC_URL + "/asterLogo.png"}
@@ -148,8 +149,9 @@ export default function Login() {
                   button_name="Login"
                   fullWidth
                 />
-              </div>
+              
             </Paper>
+            </div>
           </div>
         </Wrapper>
       </section>
