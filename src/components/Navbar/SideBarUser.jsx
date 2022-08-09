@@ -42,6 +42,7 @@ const routes = [
         path: "/",
         name: "Logout ",
         icon: <FaUser />,
+        
       },
      
     ],
@@ -51,30 +52,10 @@ const routes = [
 ];
 
 const SideBarUser = ({ children }) => {
-  // let navigate = useNavigate
-  // const handleLogout = () =>{
-  //   localStorage.setItem('token', '')
-  //   localStorage.setItem('id', '')
-  //   navigate('/')
-  // }
+  
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  // const inputAnimation = {
-  //   hidden: {
-  //     width: 0,
-  //     padding: 0,
-  //     transition: {
-  //       duration: 0.2,
-  //     },
-  //   },
-  //   show: {
-  //     width: "140px",
-  //     padding: "5px 15px",
-  //     transition: {
-  //       duration: 0.2,
-  //     },
-  //   },
-  // };
+  
 
   const showAnimation = {
     hidden: {
@@ -132,27 +113,7 @@ const SideBarUser = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          {/* <div className="userprofile">
-            <FaUser/>Welcome!!!User
-          </div> */}
-
-          {/* <div className="search">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                />
-              )}
-            </AnimatePresence>
-          </div> */}
+          
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {
@@ -172,6 +133,7 @@ const SideBarUser = ({ children }) => {
                   key={index}
                   className="link"
                   activeClassName="active"
+                  // onClick={()=>{console.log('LOGGED OUT')}}
                 >
                   <div className="icon">{route.icon}</div>
                   <AnimatePresence>
