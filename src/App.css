@@ -325,7 +325,6 @@ main {
 }
 
 .routes .icon{
-<<<<<<< HEAD
   color: #00D563;
 } 
 
@@ -758,7 +757,6 @@ th{
 .admin-user {
   width: 160vh;
   border-radius: 20px;
-<<<<<<< HEAD
   max-height: 40vh;
   border: 5px solid #00D563;
 }
@@ -767,11 +765,8 @@ th{
   color:white;
   text-align: center;
 }
-=======
 
-}
 
->>>>>>> backup
 
 #blur.active {
   background: #b8b5b5;
