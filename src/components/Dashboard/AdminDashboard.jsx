@@ -48,107 +48,6 @@ export default function AdminDashboard() {
                   taskCard_title="Pending Tasks"
                 />
               </div>
-<<<<<<< HEAD
-
-              {/* <h1 ><b>Tasks</b></h1> */}
-            </div>
-            <div class="col-sm-5  admin xyz card p-3 ">
-              <h4>Team members</h4>
-              <div className="table-wrapper">
-                <table className="table">
-                  <thead className="thead-light member-card">
-                    <tr>
-                      <tr ></tr>
-                      <th scope="col">Name</th>
-
-                      <th scope="col">Phone</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="trhover member-card">
-                      <td >
-                        <img
-                          alt="#"
-                          src={process.env.PUBLIC_URL + "/pic.jpg"}
-                        ></img>
-                      </td>
-                      <td>Abhaya Mani Paudel</td>
-
-                      <td>9818884133</td>
-                      <td>
-                        <a
-                          className="activeinactive-details"
-                          href="/"
-                          onClick={toggle}
-                        >
-                          Active
-                        </a>
-                      </td>
-                    </tr>
-                    <tr class="trhover member-card">
-                      <td>
-                        <img
-                          alt="#"
-                          src={process.env.PUBLIC_URL + "/jeevika.png"}
-                        ></img>
-                      </td>
-                      <td>Jeevika Shakya</td>
-
-                      <td>9818884133</td>
-                      <td>
-                        <a
-                          className="inactiveactive-details"
-                          href="/"
-                          onClick={toggle}
-                        >
-                          Inactive
-                        </a>
-                      </td>
-                    </tr>
-                    <tr class="trhover member-card">
-                      <td>
-                        <img
-                          alt="#"
-                          src={process.env.PUBLIC_URL + "/kamal.png"}
-                        ></img>
-                      </td>
-                      <td>Kamal Pandit</td>
-
-                      <td>9818884133</td>
-                      <td>
-                        <a
-                          className="activeinactive-details"
-                          href="/"
-                          onClick={toggle}
-                        >
-                          Active
-                        </a>
-                      </td>
-                    </tr>
-                    <tr class="trhover member-card">
-                      <td>
-                        <img
-                          alt="#"
-                          src={process.env.PUBLIC_URL + "/sachi.png"}
-                        ></img>
-                      </td>
-                      <td>Sachi Kamat</td>
-
-                      <td>9121884133</td>
-                      <td>
-                        <a
-                          className="activeinactive-details"
-                          href="/"
-                          onClick={toggle}
-                        >
-                          Active
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-=======
               <div className="ongoing_card">
                 <TaskCard
                   task_title={ongoing_tasks}
@@ -160,7 +59,6 @@ export default function AdminDashboard() {
                   task_title={completed_tasks}
                   taskCard_title="Completed Tasks"
                 />
->>>>>>> backup
               </div>
             </div>
           <div class="container">
