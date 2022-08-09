@@ -52,8 +52,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // refreshPage()
     
     try{
       const response = await axios.post(LOGIN_URL,
@@ -65,8 +67,12 @@ export default function Login() {
         )
         console.log(JSON.stringify(response?.data))
         const token = response?.data?.token
+        const userID = response?.data?.userID
+        localStorage.setItem('token',token)
+        localStorage.setItem('id',userID)
         // const roles = response?.data?.role
         setId(response?.data?.userID)
+        console.log(JSON.stringify(response?.data),"ID FROM SET STATE",id)
         setRole(response?.data?.role)
         setAuth({email, password, role, token})
         setSuccess(true)

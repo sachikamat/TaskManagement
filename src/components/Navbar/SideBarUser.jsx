@@ -6,16 +6,19 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenuUser from "./SidebarMenuUser";
 import React from "react";
+
+const userID = localStorage.getItem('id')
+
 const routes = [
   
   {
-    path: "/user/dashboard",
+    path: `/user/dashboard/${userID}`,
     name: "Dashboard",
     icon: <FaHome />,
   },
   
   {
-    path: "/user/tasks",
+    path: `/user/${userID}/tasks`,
     name: "Tasks",
     icon: <MdMessage />,
     exact: true,
@@ -48,6 +51,12 @@ const routes = [
 ];
 
 const SideBarUser = ({ children }) => {
+  // let navigate = useNavigate
+  // const handleLogout = () =>{
+  //   localStorage.setItem('token', '')
+  //   localStorage.setItem('id', '')
+  //   navigate('/')
+  // }
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   // const inputAnimation = {
@@ -184,7 +193,7 @@ const SideBarUser = ({ children }) => {
           </section>
         </motion.div>
 
-        <main>{children}</main>
+        {/* <main>{children}</main> */}
       </div>
     
     </>

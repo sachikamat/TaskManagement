@@ -1,16 +1,51 @@
-import React from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { TaskCountCard } from "../Layout/Cards";
 import Wrapper from "../Layout/Wrapper";
+import {  useParams } from 'react-router-dom'
+import axios from "axios";
+import { API } from "../config";
+import AuthContext  from '../context/AuthProvider';
 
+
+const token = localStorage.getItem("token")
+
+axios.interceptors.request.use(
+  config => {
+    config.headers.authorization = `Bearer ${token}`
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
 
 const UserDashboard = () => {
+  const { auth } = useContext(AuthContext)
+  console.log(auth)
+  let {id} = useParams()
+  console.log(id)
+  // const GETUSER_URL=`user/${id}`
+  const [user,setUser] = useState({})
+
+  
+  useEffect(()=>{
+    axios
+    .get(`${API}/user/${id}`)
+    .then((res)=>{
+      setUser(res.data.user)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[id])
+  console.log(user)
   return (
     <>
-      <Wrapper userSideBar navHeader>
+      <Wrapper userSideBar navHeader page_title="Dashboard" user_name={user.name} user_role={user.role}>
         <div className="dashboard_container">
           <div>
             <div className="user_greeting">
-              <h2>Hi, Mary Smith!</h2>
+              <h2>Hi, {user.name}!</h2>
               <p>
                 Welcome to your dashboard. You can view and update your tasks
                 here. You can also view your meeting schedules.
