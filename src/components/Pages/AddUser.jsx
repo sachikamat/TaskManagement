@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import {Paper,  TextField, Grid, Typography, makeStyles, FormControl, Select, MenuItem,IconButton, createTheme, ThemeProvider,Button,InputAdornment} from '@material-ui/core';
 import {AccountCircleRounded,PhotoCamera,Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
 import SubmitButton from '../Layout/SubmitButton';
 import Wrapper from '../Layout/Wrapper';
+import axios from '../api/axios'
+import AuthContext from '../context/AuthProvider';
 
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
@@ -41,6 +43,9 @@ const useStyles=makeStyles(theme=>({
 
 }))
 
+
+const ADDUSER_URL = '/user/register'
+
 //defining an array of roles for the dropdown menu
 const roles=[
   'Frontend Developer',
@@ -50,6 +55,32 @@ const roles=[
 ]
 
 export default function AddUser() {
+  const { setAuth } = useContext(AuthContext)
+  const userRef = useRef()
+  const errRef = useRef()
+
+  const [user,setUser]=useState(
+    {
+      email:"",
+      password:"",
+      name:"",
+      mobile:"",
+      phone:"",
+      role:"Select a role",
+      success:false
+    }
+  )
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name,setName] = useState("")
+  const [mobile,setMobile] = useState("")
+  const [phone,setPhone] = useState("")
+  const [showPassword, setShowPassword] = useState(false);
+  const [role, setRole] = useState("Select a role");
+  const [success,setSuccess]=useState(false)
+  const [errMsg,setErrMsg] = useState("")
+
   const classes = useStyles(); //allows you to use styles as objects. You can use classes.anyStyle
 
   const [image, setImage] = useState();
@@ -57,26 +88,30 @@ export default function AddUser() {
     setImage(URL.createObjectURL(e.target.files[0]));
   };
 
-  const [showPassword, setShowPassword] = useState(false);
+  
 
   const handlePasswordToggle = (e) => {
     setShowPassword(!showPassword);
   };
 
-  //select bhako role ko value chaiyema use this---
-  const [role, setRole] = useState("Select a role");
+  const handleSubmit = async(e)=> {
+    e.preventDefault();
+    
 
-  const handleChange = (event) => {
-    setRole(event.target.value);
-  };
+  }
+
+  //select bhako role ko value chaiyema use this---
+  
+
+  // const handleChange = (event) => {
+  //   setRole(event.target.value);
+  // };
   //---//
 
   return (
     <>
-
       <ThemeProvider theme={theme}>
         <Wrapper adminSidebar navHeader>
-        
           <Paper className="paperStyle">
             <Typography
               className="formHeading"
@@ -89,10 +124,12 @@ export default function AddUser() {
               <Grid item xs={6} md={8}>
                 <Typography>Name</Typography>
                 <TextField
-                  id="userName"
+                  value={name}
+                  ref={userRef}
                   size="small"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => setName(e.target.value)}
                 ></TextField>
               </Grid>
               <Grid item xs={6} md={4}>
@@ -123,32 +160,35 @@ export default function AddUser() {
               <Grid item xs={6} md={6}>
                 <Typography>Phone</Typography>
                 <TextField
-                  id="userPhone"
+                  value={phone}
                   size="small"
                   type="number"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => setPhone(e.target.value)}
                 ></TextField>
               </Grid>
               <Grid item xs={6} md={6}>
                 <Typography>Mobile No.</Typography>
                 <TextField
-                  id="userMobile"
+                  value={mobile}
                   size="small"
                   type="number"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => setMobile(e.target.value)}
                 ></TextField>
               </Grid>
 
               <Grid item xs={12} md={6}>
                 <Typography>Email</Typography>
                 <TextField
-                  id="userEmail"
+                  value={email}
                   size="small"
                   type="email"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => setEmail(e.target.value)}
                 ></TextField>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -156,7 +196,7 @@ export default function AddUser() {
                 <FormControl fullWidth>
                   <Select
                     value={role}
-                    onChange={handleChange}
+                    onChange={(e) => setRole(e.target.value)}
                     style={{ height: 40 }}
                     variant="outlined"
                     defaultValue={role}
@@ -181,6 +221,7 @@ export default function AddUser() {
                 <Typography>Password</Typography>
                 <TextField
                   size="small"
+                  value={password}
                   type={showPassword ? "text" : "password"}
                   variant="outlined"
                   InputProps={{
@@ -193,11 +234,15 @@ export default function AddUser() {
                     ),
                   }}
                   fullWidth
+                  onChange={(e) => setPassword(e.target.value)}
                 ></TextField>
               </Grid>
             </Grid>
             <Grid container xs={12} md={12} className="gridButton">
-              <SubmitButton button_name="ADD" button_id="addTask_btn" />
+              <SubmitButton
+                button_name="ADD"
+                handleChange={(e) => handleSubmit(e)}
+              />
             </Grid>
           </Paper>
         </Wrapper>

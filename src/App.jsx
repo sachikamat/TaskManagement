@@ -20,13 +20,13 @@ function App() {
       <Router>
           <Routes>
             <Route exact path="/" element={<Login />} />
-            <Route exact path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route exact path="/admin/dashboard/:id" element={<AdminDashboard />} />
             <Route exact path="/admin/adduser" element={<AddUser />} />
             <Route exact path="/admin/manageuser" element={<ManageUser/> } />
             <Route exact path="/admin/addtasks" element={<AddTask />} />
             <Route exact path="/admin/managetasks" element={<ManageTask/> } />
             <Route exact path="/:currentUser/settings/2fa" element={<ChangePassword />} />
-            <Route exact path="/user/dashboard" element={<UserDashboard/> } />
+            <Route exact path="/user/dashboard/:id" element={<UserDashboard/> } />
             <Route exact path="/user/tasks" element={<UserTask />} />
             <Route exact path="/user/tasks/:id" element={<TasksInfo />} />
             <Route exact path="/test" element={<Test />} />

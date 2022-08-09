@@ -35,6 +35,8 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [id, setId] = useState("");
   const [errMsg,setErrMsg] = useState("")
   const [success,setSuccess]=useState(false)
   
@@ -49,7 +51,7 @@ export default function Login() {
   //navigation to dashboard after clicking on login button
   const navigate = useNavigate();
 
-  const path = "/admin/dashboard";
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -63,9 +65,10 @@ export default function Login() {
         )
         console.log(JSON.stringify(response?.data))
         const token = response?.data?.token
-        const roles = response?.data?.role
-        setAuth({email, password, roles, token})
-        console.log(email, password);
+        // const roles = response?.data?.role
+        setId(response?.data?.userID)
+        setRole(response?.data?.role)
+        setAuth({email, password, role, token})
         setSuccess(true)
         setEmail('')
         setPassword('')
@@ -77,7 +80,9 @@ export default function Login() {
       else if (err.response?.status === 400){
         setErrMsg('Missing username or password')
       }
-
+      else if (err.response?.status === 404){
+        setErrMsg('Invalid email')
+      }
       else if(err.response?.status===401){
         setErrMsg('Unauthorized')
       }
@@ -86,20 +91,22 @@ export default function Login() {
       }
       errRef.current.focus()
     }
+    
     // navigate(path);
   };
   //
+  const admin_path = `/admin/dashboard/${id}`;
+  const user_path = `/user/dashboard/${id}`;
   return (
     <>
     {success ? (
-      
-        navigate(path)
+      (role!=="Project Manager")?(navigate(user_path)):(navigate(admin_path))  
      
     ):(
       <section className="login_page">
         
         <Wrapper navBar>
-        <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live = "assertive">{errMsg}</p>
+        
           <div className="login_container">
             <div className="login_banner">
               <h1>WELCOME BACK!</h1>
@@ -144,6 +151,7 @@ export default function Login() {
                     label="Remember me"
                   />
                 </div>
+                <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live = "assertive" style={{color:'#ff0000'}}>{errMsg}</p>
                 <SubmitButton
                   handleChange={(e)=>handleSubmit(e)}
                   button_name="Login"
