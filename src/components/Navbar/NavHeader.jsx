@@ -1,7 +1,7 @@
 import React from "react";
 import { AccountCircle } from "@material-ui/icons";
 
-const NavHeader = ({page_title}) => {
+const NavHeader = ({page_title,user_name,user_role}) => {
   return (
     <>
       <div className="nav_header">
@@ -10,8 +10,8 @@ const NavHeader = ({page_title}) => {
         </div>
         <div className="nav_userInfo">
           <div>
-            <h3>Mary Smith</h3>
-            <p>Project Manager</p>
+            <h3>{user_name}</h3>
+            <p>{user_role}</p>
           </div>
           <div>
             <AccountCircle style={{ fontSize: 45 }} />
