@@ -285,7 +285,7 @@ main {
   background-color: #273238;
   color: white;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-y: auto;
   font-size: 20px;
   border-right: 1px solid black;
 }
@@ -325,15 +325,9 @@ main {
 }
 
 .routes .icon{
-  color: #00D563;
-} 
-
-/* {
-=======
   color: #79b0fb;
 }
  /* {
->>>>>>> backup
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -725,47 +719,56 @@ th{
   height: 40px;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
 }
+
+/* Track */
 ::-webkit-scrollbar-track {
   background: floralwhite;
   border-radius: 100px;
 }
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(222, 222, 222);
   border-radius: 100px;
 }
+
+/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+
 }
+
 .xyz::-webkit-scrollbar {
   width: 4px;
   border-radius: 100px;
 }
+
+/* Track */
 .xyz::-webkit-scrollbar-track {
   background: #ffffff;
   border-radius: 100px;
 }
+
+/* Handle */
 .xyz::-webkit-scrollbar-thumb {
   background: rgb(222, 222, 222);
   border-radius: 100px;
 }
+
+/* Handle on hover */
 .xyz::-webkit-scrollbar-thumb:hover {
   background: #555;
-} */
+}
+
+
 .admin-user {
   width: 160vh;
   border-radius: 20px;
-  max-height: 40vh;
-  border: 5px solid #00D563;
-}
-.tabletoptext {
-  padding-bottom: 10px;
-  color:white;
-  text-align: center;
-}
 
+}
 
 
 #blur.active {
