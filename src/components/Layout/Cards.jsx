@@ -63,16 +63,16 @@ export const TaskCard=({task_title,taskCard_title})=>(
 //TASK COUNT CARD
 export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
   <div className="card">
-    <ul>
-      <li className="card-left">
+    
+      <div className="card-left">
         <i class={taskCountIcon}></i>
         <div className="total-leave"></div>
-      </li>
-      <li className="card-right">
+      </div>
+      <div className="card-right">
         <div className="days-no">{taskCount}</div>
         <div className="leave-type-card">{taskCount_title}</div>
-      </li>
-    </ul>
+      </div>
+   
   </div>
 );
 
@@ -82,3 +82,33 @@ export const EventCard=()=>(
     
   </div>
 )
+
+export const TaskCountCardContainer=()=>(
+  <div className="card-container">
+                <ul className="pd-ul">
+                  <li>
+                    <TaskCountCard
+                      taskCount={12}
+                      taskCount_title="Tasks"
+                      taskCountIcon="fa fa-tasks bx1"
+                    />
+                  </li>
+                  <li>
+                    <TaskCountCard
+                      taskCount={3}
+                      taskCount_title="Tasks"
+                      taskCountIcon="fa fa-bar-chart bx5"
+                    />
+                  </li>
+
+                  <li>
+                    <TaskCountCard
+                      taskCount={9}
+                      taskCount_title="Tasks Remaining"
+                      taskCountIcon="fa fa-bars bx3"
+                    />
+                  </li>
+                </ul>
+                
+              </div>
+  )

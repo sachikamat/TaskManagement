@@ -4,6 +4,7 @@ import NavHeader from "../Navbar/NavHeader";
 import SideBar from "../Navbar/SideBar";
 import SideBarUser from "../Navbar/SideBarUser";
 import AdminRightLayout from "./AdminRightLayout";
+import UserRightLayout from "./UserRightLayout";
 const Wrapper = ({
   navBar,
   navHeader,
@@ -29,6 +30,7 @@ const Wrapper = ({
             <div className="main_children">{children}</div>
             <div className="right_layout">
               {adminSidebar && <AdminRightLayout />}
+              {userSideBar && <UserRightLayout/>}
             </div>
           </div>
         </main>
