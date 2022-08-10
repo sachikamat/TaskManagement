@@ -1,36 +1,49 @@
 import { ViewButton, EditButton, DeleteButton } from "../Layout/ActionDialogBox";
 import Wrapper from "../Layout/Wrapper";
 import Table from 'react-bootstrap/Table';
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { API } from "../config";
+import { EditTaskInfo } from "./EditTaskInfo";
+// import TasksInfo from "./TasksInfo";
+import {ViewTask} from "./ViewTask";
 // import { Paper } from "@material-ui/core";
-const createData = (
-  id,
-  subject,
-  priority,
-  statusOf,
-  duration,
- 
-  taskAllocated
-) => {
-  return { id, subject, priority, statusOf, duration, taskAllocated };
-};
 
-
-
-const rows = [
-  createData(1, "Login Form", "Medium", "Pending", "1 week", "Sachi"),
-  createData(2, "Signup Form", "Low", "Pending", "1 day", "Sachi"),
-  createData(3, "Find bugs", "Urgent", "Pending", "2 weeks", "Sachi"),
-  createData(4, "Create Database", "High", "Pending", "3 days", "Sachi"),
-  createData(4, "Create Database", "High", "Pending", "3 days", "Sachi"),
-  createData(4, "Create Database", "High", "Pending", "3 days", "Sachi"),
-  createData(4, "Create Database", "High", "Pending", "3 days", "Sachi"),
-  createData(4, "Create Database", "High", "Pending", "3 days", "Sachi"),
-];
 
 const ManageTask = () => {
+  const [tasks,setTasks]=useState([])
+  
+  const [users, setUsers] = useState([]);
+
+  const handleDelete = (id) => {
+    axios.delete(`${API}/task/delete/${id}`);
+    window.location.reload()
+  };
+  useEffect(()=>{
+    axios
+    .get(`${API}/task/tasks`)
+    .then((res)=>{
+      setTasks(res.data.tasks)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[])
+
+  useEffect(()=>{
+    axios.get(`${API}/user/users`)
+    .then((res)=>{
+      setUsers(res.data.users)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[tasks])
+  console.log(users)
+  
   return (
     <>
+    
       <Wrapper adminSidebar navHeader page_title="Manage tasks">
             <div className="ttw">
               <Table responsive='sm' striped hover>
@@ -40,30 +53,56 @@ const ManageTask = () => {
                     <th scope="col">TASK</th>
                     <th scope="col">PRIORITY</th>
                     <th scope="col">STATUS</th>
-                    <th scope="col">DURATION</th>
-                    <th className="action_col" scope="col">ACTION</th>
+                    {/* <th scope="col">DURATION</th> */}
+                    
                     <th scope="col">TASK ALLOCATED</th>
+                    <th className="action_col" scope="col">ACTION</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((row) => (
-                    <tr className="table_row" key={row.id}>
-                      <td class="paddingtoptd">{row.id}</td>
-                      <td>{row.subject}</td>
+                  {tasks.map((row,index) => (
+                    <tr className="table_row" key={index+1}>
+                      <td className="paddingtoptd">{index+1}</td>
+                      <td>{row.title}</td>
                       <td>{row.priority}</td>
-                      <td>{row.statusOf}</td>
-                      <td>{row.duration}</td>
+                      <td>{row.task_status}</td>
+                      {/* <td>{row.duration}</td> */}
+                      {/* <td>{users.find(user=>user._id===row.user).name}</td> */}
+                      {/* {console.log(users.find(user=>user._id===row.user).name)} */}
+                      <td>{row.user}</td>
                       <td>{
                         <div className="action_column">
-                          <ViewButton dialogTitle="View Task" dialogContent="Viewing the task"/>
-                          <EditButton dialogTitle="Edit Task" dialogContent="Editing this task"/>
+                          <ViewButton dialogTitle="View Task" 
+                          dialogContent={
+                            <ViewTask
+                            title={row.title}
+                            description={row.description}
+                            priority={row.priority}
+                            task_status={row.task_status}
+                            user={row.user}
+                            />
+                          }/>
+                          <EditButton 
+                          dialogTitle="Edit Task" 
+                          dialogContent={
+                            <EditTaskInfo
+                            title={row.title}
+                            description={row.description}
+                            priority={row.priority}
+                            task_status={row.task_status}
+                            user={row.user}
+                            />
+
+                          }
+                          
+                          />
                           <DeleteButton
                           dialogTitle="Delete Task"
                           dialogContent="Are you sure you want to delete the selected task?"
+                          handleDelete={() => handleDelete(row._id)}
                           />
                         </div>
                         }</td>
-                      <td>{row.taskAllocated}</td>
                     </tr>
                   ))}
                 </tbody>

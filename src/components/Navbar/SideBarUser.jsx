@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FaBars, FaHome, FaLock, FaUser } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
@@ -7,18 +7,21 @@ import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenuUser from "./SidebarMenuUser";
 import React from "react";
 
-const userID = localStorage.getItem('id')
+// const userID = localStorage.getItem('id')
 
+
+const SideBarUser = ({ children }) => {
+const id=useParams().id
 const routes = [
   
   {
-    path: `/user/dashboard/${userID}`,
+    path: `/user/dashboard/${id}`,
     name: "Dashboard",
     icon: <FaHome />,
   },
   
   {
-    path: `/user/${userID}/tasks`,
+    path: `/user/${id}/tasks`,
     name: "Tasks",
     icon: <MdMessage />,
     exact: true,
@@ -34,7 +37,7 @@ const routes = [
     subRoutes: [
       
       {
-        path: "/user/settings/2fa",
+        path: `/user/${id}settings/2fa`,
         name: "Change Password",
         icon: <FaLock />,
       },
@@ -50,8 +53,6 @@ const routes = [
   
  
 ];
-
-const SideBarUser = ({ children }) => {
   
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -91,9 +92,10 @@ const SideBarUser = ({ children }) => {
           }}
           className={`sidebar `}
         >
-           <div className='logo' style={navStyle}>
-                    <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />
-                </div>
+           
+          <div className='logo' style={navStyle}>
+            {isOpen ?  <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />: <img src={process.env.PUBLIC_URL+'/asterLogo_light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}}/>}
+          </div>
           <div className="top_section">
             <AnimatePresence>
               {isOpen && (

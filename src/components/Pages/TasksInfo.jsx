@@ -48,7 +48,7 @@ const TasksInfo = () => {
     <Wrapper userSideBar navHeader>
       <ThemeProvider theme={theme}>
        
-          <div className="mainDiv">   
+            
             <TableContainer
               component={Paper}
               className="paperStyle"
@@ -122,7 +122,7 @@ const TasksInfo = () => {
                 </TableRow>
               </Table>
             </TableContainer>
-          </div>
+          
       </ThemeProvider>
       </Wrapper>
     </>

@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const ChangePassword = () => {
   const {currentUser} = useParams()
+  // const id = useParams()
   console.log(currentUser,'cUser')
 
   const classes = useStyles();

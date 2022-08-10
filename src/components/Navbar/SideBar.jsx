@@ -1,81 +1,78 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FaBars, FaHome, FaLock, FaUser } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
-const routes = [
-  
-  {
-    path: "/admin/dashboard",
-    name: "Dashboard",
-    icon: <FaHome />,
-  },
-  {
-    path: "/admin/users",
-    name: "Users",
-    icon: <FaUser />,
-    subRoutes: [
-      {
-        path: "/admin/adduser",
-        name: "Add User ",
-        icon: <FaUser />,
-      },
-      
-      {
-        path: "/admin/manageuser",
-        name: "Manage User",
-        icon: <FaUser />,
-      },
-    ],
-  },
-  {
-    path: "/tasks",
-    name: "Tasks",
-    icon: <MdMessage />,
-    exact: true,
-    subRoutes: [
-      {
-        path: "/admin/addtasks",
-        name: "Add Tasks ",
-        icon: <FaUser />,
-      },
-      {
-        path: "/admin/managetasks",
-        name: "Manage Tasks",
-        icon: <FaLock />,
-      },
-     
-    ],
-  },
 
-  
-  {
-    path: "/settings",
-    name: "Settings",
-    icon: <BiCog />,
-    exact: true,
-    subRoutes: [
-      
-      {
-        path: "/admin/settings/2fa",
-        name: "Change Password",
-        icon: <FaLock />,
-      },
-      {
-        path: "/",
-        name: "Logout ",
-        icon: <FaUser />,
-      },
-     
-    ],
-  },
-  
- 
-];
-const SideBar = ({ children }) => {
+
+const SideBar = () => {
+  const id = useParams().id;
+
+  const routes = [
+    {
+      path: `/admin/dashboard/${id}`,
+      name: "Dashboard",
+      icon: <FaHome />,
+    },
+    {
+      path: "/admin/users",
+      name: "Users",
+      icon: <FaUser />,
+      subRoutes: [
+        {
+          path: `/admin/${id}/adduser`,
+          name: "Add User ",
+          icon: <FaUser />,
+        },
+
+        {
+          path: `/admin/${id}/manageuser`,
+          name: "Manage User",
+          icon: <FaUser />,
+        },
+      ],
+    },
+    {
+      path: "/tasks",
+      name: "Tasks",
+      icon: <MdMessage />,
+      exact: true,
+      subRoutes: [
+        {
+          path: `/admin/${id}/addtasks`,
+          name: "Add Tasks ",
+          icon: <FaUser />,
+        },
+        {
+          path: `/admin/${id}/managetasks`,
+          name: "Manage Tasks",
+          icon: <FaLock />,
+        },
+      ],
+    },
+
+    {
+      path: "/settings",
+      name: "Settings",
+      icon: <BiCog />,
+      exact: true,
+      subRoutes: [
+        {
+          path: `/admin/${id}/settings/2fa` ,
+          name: "Change Password",
+          icon: <FaLock />,
+        },
+        {
+          path: "/",
+          name: "Logout ",
+          icon: <FaUser />,
+        },
+      ],
+    },
+  ];
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -95,8 +92,7 @@ const SideBar = ({ children }) => {
       },
     },
   };
-  const navStyle={height:70,padding:20,paddingLeft:8}
-
+  const navStyle = { height: 70, padding: 20, paddingLeft: 8 };
 
   return (
     <>
@@ -113,9 +109,23 @@ const SideBar = ({ children }) => {
           }}
           className={`sidebar `}
         >
-          <div className='logo' style={navStyle}>
-                  {isOpen ?  <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />: <img src={process.env.PUBLIC_URL+'/asterLogo_light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}}/>}
-                </div>
+          <div className="logo" style={navStyle}>
+            {isOpen ? (
+              <img
+                src={process.env.PUBLIC_URL + "/asterdio-light.png"}
+                alt=""
+                className="logo_image"
+                style={{ maxHeight: "100%" }}
+              />
+            ) : (
+              <img
+                src={process.env.PUBLIC_URL + "/asterLogo_light.png"}
+                alt=""
+                className="logo_image"
+                style={{ maxHeight: "100%" }}
+              />
+            )}
+          </div>
           <div className="top_section">
             <AnimatePresence>
               {isOpen && (
@@ -126,7 +136,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  Asterdio 
+                  Asterdio
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -174,7 +184,7 @@ const SideBar = ({ children }) => {
             })}
           </section>
         </motion.div>
-{/* 
+        {/* 
         <main>{children}</main> */}
       </div>
     </>

@@ -21,11 +21,11 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Login />} />
             <Route exact path="/admin/dashboard/:id" element={<AdminDashboard />} />
-            <Route exact path="/admin/adduser" element={<AddUser />} />
-            <Route exact path="/admin/manageuser" element={<ManageUser/> } />
-            <Route exact path="/admin/addtasks" element={<AddTask />} />
-            <Route exact path="/admin/managetasks" element={<ManageTask/> } />
-            <Route exact path="/:currentUser/settings/2fa" element={<ChangePassword />} />
+            <Route exact path="/admin/:id/adduser" element={<AddUser />} />
+            <Route exact path="/admin/:id/manageuser" element={<ManageUser/> } />
+            <Route exact path="/admin/:id/addtasks" element={<AddTask />} />
+            <Route exact path="/admin/:id/managetasks" element={<ManageTask/> } />
+            <Route exact path="/:currentUser/:id/settings/2fa" element={<ChangePassword />} />
             <Route exact path="/user/dashboard/:id" element={<UserDashboard/> } />
             <Route exact path="/user/:id/tasks" element={<UserTask />} />
             <Route exact path="/user/tasks/:id" element={<TasksInfo />} />

@@ -36,9 +36,7 @@ export const UserTask = () => {
         console.log(id)
         setTasks(res.data.results);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      ;
   },[id]);
 
 

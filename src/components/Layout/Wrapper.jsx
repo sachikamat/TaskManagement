@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import NavHeader from "../Navbar/NavHeader";
 import SideBar from "../Navbar/SideBar";
 import SideBarUser from "../Navbar/SideBarUser";
-import AdminRightLayout from "./AdminRightLayout";
+import {AdminRightLayout} from "./AdminRightLayout";
 import UserRightLayout from "./UserRightLayout";
 const Wrapper = ({
   navBar,
@@ -25,12 +25,20 @@ const Wrapper = ({
           {userSideBar && <SideBarUser />}
         </div>
         <main className="wrapper_children">
-        <div className="top_layout">{navHeader && <NavHeader page_title={page_title} user_role={user_role} user_name={user_name} />}</div>
+          <div className="top_layout">
+            {navHeader && (
+              <NavHeader
+                page_title={page_title}
+                user_role={user_role}
+                user_name={user_name}
+              />
+            )}
+          </div>
           <div className="dashboard_container">
             <div className="main_children">{children}</div>
             <div className="right_layout">
               {adminSidebar && <AdminRightLayout />}
-              {userSideBar && <UserRightLayout/>}
+              {userSideBar && <UserRightLayout />}
             </div>
           </div>
         </main>

@@ -1,33 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Wrapper from "../Layout/Wrapper";
-// import togglepopup from "../Layout/toggle";
 import Table from "react-bootstrap/Table";
 import { EditButton, DeleteButton } from "../Layout/ActionDialogBox";
 import { EditUserInfo } from "./EditUserInfo";
-
-const createData = (id, uname, email, phone, statusOf, action) => {
-  return { id, uname, email, phone, statusOf, action };
-};
-
-const rows = [
-  createData(1, "Sachi Kamat", "sachikamat1@gmail.com", 9807123456, "active"),
-  createData(
-    2,
-    "Abhaya Mani Paudel",
-    "abhayamani@gmail.com",
-    9807123456,
-    "active"
-  ),
-  createData(3, "Jeevika Shakya", "jeevika@gmail.com", 9807123456, "active"),
-  createData(4, "Kamal Pandit", "kamal_p@gmail.com", 9807123456, "active"),
-];
+import axios from "axios";
+import { API } from "../config";
 
 const ManageUser = () => {
+  const currentUserId=localStorage.getItem('id')
+  const handleDelete = (id) => {
+    axios.delete(`${API}/user/delete/${id}`);
+  };
+
+  const handleEdit = (id) => {
+    axios.put(`${API}/user/${id}`);
+  };
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${API}/user/users`)
+      .then((res) => {
+        setUsers(res.data.users);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  
   return (
     <>
       <Wrapper adminSidebar navHeader page_title="Manage Users">
-        <div className="content" id="blur">
-          <div className="content-bottom">
+        
             <div className="table-wrapper ttw">
               <Table responsive="sm" striped hover>
                 <thead className="table_header">
@@ -36,6 +39,7 @@ const ManageUser = () => {
                     <th scope="col">NAME</th>
                     <th scope="col">EMAIL</th>
                     <th scope="col">PHONE</th>
+                    <th scope="col">MOBILE</th>
                     <th scope="col">STATUS</th>
                     <th className="action_col" scope="col">
                       ACTION
@@ -43,39 +47,47 @@ const ManageUser = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((row) => (
-                    <tr className="table_row" key={row.id}>
-                      <td class="paddingtoptd">{row.id}</td>
-                      <td>{row.uname}</td>
+                  {users.map((row, index) => (
+                    (row._id===currentUserId ? 
+                    users.splice(index,1):
+                    <tr className="table_row" key={index + 1}>
+                      <td className="">{index + 1}</td>
+                      <td>{row.name}</td>
                       <td>{row.email}</td>
                       <td>{row.phone}</td>
-                      <td>{row.statusOf}</td>
+                      <td>{row.mobile}</td>
+
+                      <td>{row.status}</td>
                       <td>
                         {
                           <div className="action_column">
                             <EditButton
                               dialogTitle="Edit User"
-                              dialogContent={<EditUserInfo 
-                                uname ={row.uname}
-                                email={row.email}
-                                phone={row.phone}
-                                statusOf={row.statusOf}
-                                />}
+                              handleEdit={() => handleEdit(row._id)}
+                              dialogContent={
+                                <EditUserInfo
+                                  name={row.name}
+                                  email={row.email}
+                                  phone={row.phone}
+                                  mobile={row.mobile}
+                                  status={row.status}
+                                />
+                              }
                             />
                             <DeleteButton
-                            dialogTitle="Delete User"
-                            dialogContent="Are you sure you want to delete the selected user?"
+                              dialogTitle="Delete User"
+                              dialogContent="Are you sure you want to delete the selected user?"
+                              handleDelete={() => handleDelete(row._id)}
                             />
                           </div>
                         }
                       </td>
                     </tr>
-                  ))}
+                  )))}
                 </tbody>
               </Table>
             </div>
-          </div>
-        </div>
+          
       </Wrapper>
     </>
   );
