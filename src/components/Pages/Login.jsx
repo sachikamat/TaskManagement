@@ -52,8 +52,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // refreshPage()
     
     try{
       const response = await axios.post(LOGIN_URL,
@@ -63,10 +65,13 @@ export default function Login() {
           withCredentials:true
         }
         )
-        console.log(JSON.stringify(response?.data))
+        
         const token = response?.data?.token
-        // const roles = response?.data?.role
-        setId(response?.data?.userID)
+        const userID =response?.data?.userID
+        localStorage.setItem('token',token)
+        localStorage.setItem('id',userID)
+        setId(userID)
+        console.log(JSON.stringify(response?.data))
         setRole(response?.data?.role)
         setAuth({email, password, role, token})
         setSuccess(true)
@@ -100,6 +105,7 @@ export default function Login() {
   return (
     <>
     {success ? (
+      
       (role!=="Project Manager")?(navigate(user_path)):(navigate(admin_path))  
      
     ):(

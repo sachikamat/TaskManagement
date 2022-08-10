@@ -1,15 +1,11 @@
 import React from "react";
 import { Table, Paper, Typography, TextField } from "@material-ui/core";
 import { TableContainer, TableCell, TableRow } from "@mui/material";
-// import { useState, useEffect } from 'react'
-// import axios from 'axios'
-// import SubmitButton from '../Layout/SubmitButton'
-import "./Pages.css";
 
-export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
+export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
   return (
-    <div>
-      <TableContainer
+    <>
+    <TableContainer
         component={Paper}
         className="paperStyle"
         sx={{ maxWidth: 700 }}
@@ -23,44 +19,34 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
               <Typography 
               variant="header" 
               className="tableHead">
-                NAME
+                Title
               </Typography>
             </TableCell>
             <TableCell>
               <TextField 
               variant="outlined" 
               size="small" 
-              value={name} />
+              value={title} />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell variant="head">
               <Typography variant="header" className="tableHead">
-                EMAIL
+                DESCRIPTION
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={email} />
+              <TextField variant="outlined" size="small" value={description} />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell variant="head">
               <Typography variant="header" className="tableHead">
-                PHONE
+                PRIORITY
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={phone} />
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell variant="head">
-              <Typography variant="header" className="tableHead">
-                MOBILE
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <TextField variant="outlined" size="small" value={mobile} />
+              <TextField variant="outlined" size="small" value={priority} />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -70,11 +56,21 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={status} />
+              <TextField variant="outlined" size="small" value={task_status} />
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell variant="head">
+              <Typography variant="header" className="tableHead">
+                USER
+              </Typography>
+            </TableCell>
+            <TableCell>
+              <TextField variant="outlined" size="small" value={user} />
             </TableCell>
           </TableRow>
         </Table>
       </TableContainer>
-    </div>
-  );
-};
+    </>
+  )
+}

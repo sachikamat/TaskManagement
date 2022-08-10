@@ -8,14 +8,15 @@ export const ActionButton = ({
   actionButton,
   dialogAction,
   actionButton_color,
-  alternateActionButton
+  alternateActionButton,
+  handleClose
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCancel = () => {
     setOpen(false);
   };
 
@@ -40,7 +41,7 @@ export const ActionButton = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant='contained' onClick={handleClose}>Cancel</Button>
+          <Button variant='contained' onClick={handleCancel}>Cancel</Button>
           {alternateActionButton &&
           <Button variant="contained" color={actionButton_color} onClick={handleClose} autoFocus>
             {dialogAction}

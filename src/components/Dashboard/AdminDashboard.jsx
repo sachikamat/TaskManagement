@@ -3,10 +3,28 @@ import Wrapper from "../Layout/Wrapper";
 import axios from 'axios';
 import { EventCard, TaskCard } from "../Layout/Cards";
 import {API} from '../config'
+import { useParams } from "react-router-dom";
+
+
 
 export default function AdminDashboard() {
+  let {id} = useParams()
+  console.log(id)
+  // const GETUSER_URL=`user/${id}`
+  const [user,setUser] = useState({})
   const [tasks, setTasks] = useState([]);
   
+  useEffect(()=>{
+    axios
+    .get(`${API}/user/${id}`)
+    .then((res)=>{
+      setUser(res.data.user)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[id])
+
   useEffect(() => {
     axios
       .get(`${API}/task/tasks`)
@@ -30,7 +48,7 @@ export default function AdminDashboard() {
   console.log(pending_tasks,ongoing_tasks,completed_tasks)
   return (
     <>
-      <Wrapper adminSidebar navHeader page_title="Dashboard">
+      <Wrapper adminSidebar navHeader page_title="Dashboard" user_name={user.name} user_role={user.role}>
         <div>
           <div className="user_greeting">
             <h2>Hi, Mary Smith!</h2>
@@ -61,9 +79,9 @@ export default function AdminDashboard() {
                 />
               </div>
             </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-5  admin xyz notice card p-3 ">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-5  admin xyz notice card p-3 ">
                 <div className="content">
                   <div className="content-main">
                     <h4>Notice</h4>
@@ -93,15 +111,15 @@ export default function AdminDashboard() {
                           </li>
                         </ul>
                       </div>
-                      <div class="tab-content">
+                      <div className="tab-content">
                         <div
                           role="tabpanel"
                           className="tab-pane active"
                           id="tab-03"
                         >
-                          <div class="noticecard">
-                            <div class="number">1.</div>
-                            <div class="noticecard-text">
+                          <div className="noticecard">
+                            <div className="number">1.</div>
+                            <div className="noticecard-text">
                               <h6>Meeting with Principal</h6>
                               <p>
                                 There is a meet with the principal
@@ -109,9 +127,9 @@ export default function AdminDashboard() {
                               </p>
                             </div>
                           </div>
-                          <div class="noticecard">
-                            <div class="number">2.</div>
-                            <div class="noticecard-text">
+                          <div className="noticecard">
+                            <div className="number">2.</div>
+                            <div className="noticecard-text">
                               <h6>Meeting with Principal</h6>
                               <p>
                                 There is a meet with the principal
@@ -119,9 +137,9 @@ export default function AdminDashboard() {
                               </p>
                             </div>
                           </div>
-                          <div class="noticecard">
-                            <div class="number">3.</div>
-                            <div class="noticecard-text">
+                          <div className="noticecard">
+                            <div className="number">3.</div>
+                            <div className="noticecard-text">
                               <h6>Meeting with Principal</h6>
                               <p>
                                 There is a meet with the principal
@@ -131,9 +149,9 @@ export default function AdminDashboard() {
                           </div>
                         </div>
                         <div role="tabpanel" className="tab-pane" id="tab-04">
-                          <div class="noticecard">
-                            <div class="number">1.</div>
-                            <div class="noticecard-text">
+                          <div className="noticecard">
+                            <div className="number">1.</div>
+                            <div className="noticecard-text">
                               <h6>There was a meet with Principal</h6>
                               <p>
                                 There is a meet with the principal
@@ -141,9 +159,9 @@ export default function AdminDashboard() {
                               </p>
                             </div>
                           </div>
-                          <div class="noticecard">
-                            <div class="number">2.</div>
-                            <div class="noticecard-text">
+                          <div className="noticecard">
+                            <div className="number">2.</div>
+                            <div className="noticecard-text">
                               <h6>There was a meet with Principal</h6>
                               <p>
                                 There is a meet with the principal
@@ -151,9 +169,9 @@ export default function AdminDashboard() {
                               </p>
                             </div>
                           </div>
-                          <div class="noticecard">
-                            <div class="number">3.</div>
-                            <div class="noticecard-text">
+                          <div className="noticecard">
+                            <div className="number">3.</div>
+                            <div className="noticecard-text">
                               <h6>There was a meet with Principal</h6>
                               <p>
                                 There is a meet with the principal

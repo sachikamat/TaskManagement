@@ -5,6 +5,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 import './Pages.css'
+import { useParams } from 'react-router-dom'
 import Wrapper from '../Layout/Wrapper';
 import {API} from '../config'
 const theme = createTheme({
@@ -22,19 +23,21 @@ const Action = ({handleAction})=>(
   </>
 )
 
+// const userID = localStorage.getItem('id')
 export const UserTask = () => {
+  let {id} = useParams()
+
   const [tasks, setTasks] = useState([]);
   
   useEffect(() => {
     axios
-      .get(`${API}/task/tasks`)
+      .get(`${API}/task/assignedtask/${id}`)
       .then((res) => {
-        setTasks(res.data.tasks);
+        console.log(id)
+        setTasks(res.data.results);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  },[tasks]);
+      ;
+  },[id]);
 
 
   let navigate = useNavigate();
@@ -79,7 +82,7 @@ export const UserTask = () => {
             <TableBody>
               {tasks.map((task,index) => (
                 <TableRow
-                  key={task.id}
+                  key={task._id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">

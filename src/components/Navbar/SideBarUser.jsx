@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FaBars, FaHome, FaLock, FaUser } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
@@ -6,16 +6,22 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenuUser from "./SidebarMenuUser";
 import React from "react";
+
+// const userID = localStorage.getItem('id')
+
+
+const SideBarUser = ({ children }) => {
+const id=useParams().id
 const routes = [
   
   {
-    path: "/user/dashboard",
+    path: `/user/dashboard/${id}`,
     name: "Dashboard",
     icon: <FaHome />,
   },
   
   {
-    path: "/user/tasks",
+    path: `/user/${id}/tasks`,
     name: "Tasks",
     icon: <MdMessage />,
     exact: true,
@@ -31,7 +37,7 @@ const routes = [
     subRoutes: [
       
       {
-        path: "/user/settings/2fa",
+        path: `/user/${id}settings/2fa`,
         name: "Change Password",
         icon: <FaLock />,
       },
@@ -39,6 +45,7 @@ const routes = [
         path: "/",
         name: "Logout ",
         icon: <FaUser />,
+        
       },
      
     ],
@@ -46,26 +53,10 @@ const routes = [
   
  
 ];
-
-const SideBarUser = ({ children }) => {
+  
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  // const inputAnimation = {
-  //   hidden: {
-  //     width: 0,
-  //     padding: 0,
-  //     transition: {
-  //       duration: 0.2,
-  //     },
-  //   },
-  //   show: {
-  //     width: "140px",
-  //     padding: "5px 15px",
-  //     transition: {
-  //       duration: 0.2,
-  //     },
-  //   },
-  // };
+  
 
   const showAnimation = {
     hidden: {
@@ -101,9 +92,10 @@ const SideBarUser = ({ children }) => {
           }}
           className={`sidebar `}
         >
-           <div className='logo' style={navStyle}>
-                    <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />
-                </div>
+           
+          <div className='logo' style={navStyle}>
+            {isOpen ?  <img src={process.env.PUBLIC_URL+'/asterdio-light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}} />: <img src={process.env.PUBLIC_URL+'/asterLogo_light.png'} alt="" className='logo_image' style={{maxHeight:'100%'}}/>}
+          </div>
           <div className="top_section">
             <AnimatePresence>
               {isOpen && (
@@ -123,27 +115,7 @@ const SideBarUser = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          {/* <div className="userprofile">
-            <FaUser/>Welcome!!!User
-          </div> */}
-
-          {/* <div className="search">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                />
-              )}
-            </AnimatePresence>
-          </div> */}
+          
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {
@@ -163,6 +135,7 @@ const SideBarUser = ({ children }) => {
                   key={index}
                   className="link"
                   activeClassName="active"
+                  // onClick={()=>{console.log('LOGGED OUT')}}
                 >
                   <div className="icon">{route.icon}</div>
                   <AnimatePresence>
@@ -184,7 +157,7 @@ const SideBarUser = ({ children }) => {
           </section>
         </motion.div>
 
-        <main>{children}</main>
+        {/* <main>{children}</main> */}
       </div>
     
     </>
