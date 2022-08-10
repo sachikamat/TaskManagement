@@ -1,4 +1,6 @@
-import { Card } from '@mui/material';
+import { CardContent, Typography } from '@material-ui/core';
+import { AddBox } from '@material-ui/icons';
+import { Button, Card, CardActions } from '@mui/material';
 import React from 'react'
 
 
@@ -32,7 +34,21 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
 
 export const EventCard=()=>(
   <div className="event-card">
-    
+    <Card className="event">
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Today's Events
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          We will have today's events here
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button>
+          <AddBox style={{fontSize:50}} />
+        </Button>
+      </CardActions>
+    </Card>
   </div>
 )
 

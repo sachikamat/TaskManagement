@@ -122,6 +122,7 @@ nav {
   max-height:316px;
   overflow-y:auto;
   background-color: #dce5eb;
+  min-width: 170px;;
 }
 
 .teamCard h3{
@@ -268,10 +269,10 @@ main {
 
 /* ADMIN DASHBOARD */
 .user_greeting{
-  padding:30px;
+  padding:25px;
   background-color: #6c7ae0;
   color:white;
-  width: 600px;
+  max-width: 600px;
   border-radius: 8px;
 }
 
@@ -1103,17 +1104,32 @@ th{
 }
 
 .dashboard_container{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-direction: row-reverse;
+  /* flex-wrap: wrap; */
 }
 
 .right_layout{
-  position:fixed;
+  /* position:fixed; */
   right:0px;
 }
 
 .main_children{
   min-width: 62vw;
   max-width: 72vw;
+}
+
+.event{
+  display:flex;
+  justify-content:flex-end;
+  /* padding: 20px; */
+  min-height:200px;
+}
+
+.dash_top{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
