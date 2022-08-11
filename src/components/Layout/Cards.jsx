@@ -1,5 +1,8 @@
-import { Card } from '@mui/material';
+import { CardContent, Typography } from '@material-ui/core';
+// import { AddBox } from '@material-ui/icons';
+import {  Card, CardActions, CardHeader } from '@mui/material';
 import React from 'react'
+import { AddEventButton } from './ActionDialogBox';
 
 
 //TEAM MEMBER CARD
@@ -30,12 +33,25 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
 );
 
 
-export const EventCard=()=>(
-  <div className="event-card">
-    
-  </div>
-)
 
+export const EventCard = () => {
+  
+  return (
+    <div className="event-card">
+      <Card>
+        <CardHeader title="Today's Events" subheader="August 11, 2022" />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            We will have today's events here
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <AddEventButton />
+        </CardActions>
+      </Card>
+    </div>
+  );
+};
 export const TaskCountCardContainer=()=>(
   <div className="card-container">
                 <ul className="pd-ul">

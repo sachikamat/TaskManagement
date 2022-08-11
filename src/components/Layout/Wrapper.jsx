@@ -35,11 +35,12 @@ const Wrapper = ({
             )}
           </div>
           <div className="dashboard_container">
-            <div className="main_children">{children}</div>
-            <div className="right_layout">
+          <div className="right_layout">
               {adminSidebar && <AdminRightLayout />}
               {userSideBar && <UserRightLayout />}
             </div>
+            <div className="main_children">{children}</div>
+            
           </div>
         </main>
       </div>
