@@ -1,6 +1,7 @@
-import { Delete,Edit,Visibility } from "@material-ui/icons"
+import { AddCircle, Delete,Edit,Visibility } from "@material-ui/icons"
 import { ActionButton } from "./ActionButton"
 import React from "react";
+import { AddEvent } from "../Pages/AddEvent";
 
 export const ViewButton = ({dialogTitle,dialogContent,handleView}) => {
   return (
@@ -43,6 +44,19 @@ export const DeleteButton = ({dialogContent,dialogTitle,handleDelete}) => {
         dialogAction="Confirm Delete"
         actionButton_color="error"
         handleClose={handleDelete}
+      />
+    </>
+  );
+};
+
+export const AddEventButton = ({handleView}) => {
+  return (
+    <>
+      <ActionButton
+        actionButton={<p className="addevent_p">ADD EVENT <AddCircle/> </p> }
+        dialogTitle="Add Event"
+        dialogContent={<AddEvent/>}
+        handleClose={handleView}
       />
     </>
   );

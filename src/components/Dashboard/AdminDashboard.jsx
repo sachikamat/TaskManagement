@@ -62,7 +62,7 @@ export default function AdminDashboard() {
                 here. You can also view your meeting schedules.
               </p>
             </div>
-            <EventCard />
+            <EventCard  />
             <div className="taskcards_container">
               <div className="pending_card">
                 <TaskCard
