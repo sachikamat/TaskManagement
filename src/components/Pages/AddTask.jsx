@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import {Paper, Grid, Typography,  FormControl, Select, MenuItem, createTheme, ThemeProvider, TextField} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import {Paper, Grid, Typography,  FormControl, MenuItem, createTheme, ThemeProvider, } from '@mui/material';
+import {Select,TextField} from '@material-ui/core'
 import './Pages.css'
 import SubmitButton from '../Layout/SubmitButton';
 import Wrapper from '../Layout/Wrapper';
+import axios from 'axios';
+import { API } from '../config';
+import { useParams } from 'react-router-dom';
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
   typography: {
@@ -12,14 +16,6 @@ const theme = createTheme({
   },
 });
 
-
-//defining an array of roles for the dropdown menu
-const users=[
-  'Abhaya Mani Paudel',
-  'Jeevika Shakya',
-  'Kamal Pandit',
-  'Sachi Kamat'
-]
 
 const priorities=[
   'Low',
@@ -35,6 +31,26 @@ const statusAll=[
 ]
 
 export default function AddTask() {
+  const id = useParams().id
+  console.log(id)
+  const [result,setResult]=useState([])
+  let users=[]
+  useEffect(() => {
+    axios
+      .get(`${API}/user/users`)
+      .then((res) => {
+        
+        setResult(res.data.users)
+        console.log(result)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },[result]);
+  result.map((user)=>(
+    ((user._id!==id) ? users.push(user.name): null)
+  ))
+  
   //select bhako role ko value chaiyema use this---
   const [user, setUser] = useState("Select user");
   const [priority, setPriority] = useState("Select priority");

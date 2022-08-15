@@ -41,8 +41,8 @@ export const UserTask = () => {
 
 
   let navigate = useNavigate();
-  const routeChange = (id) => {
-    let path = `/user/tasks/${id}`;
+  const routeChange = (taskid) => {
+    let path = `/user/${id}/tasks/${taskid}`;
     navigate(path);
   };
   return (

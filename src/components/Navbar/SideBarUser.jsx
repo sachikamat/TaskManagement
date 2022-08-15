@@ -89,7 +89,7 @@ const routes = [
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpen ? "14vw" : "3vw",
+            width: isOpen ? "15vw" : "3vw",
 
             transition: {
               duration: 0.5,

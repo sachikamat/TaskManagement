@@ -1,5 +1,5 @@
 import { Paper, Typography,FormControl, Select, MenuItem} from '@material-ui/core'
-import { Table, TableContainer, TableCell, TableRow, createTheme, ThemeProvider  } from '@mui/material'
+import { Table, TableContainer, TableCell, TableRow, createTheme, ThemeProvider,Button  } from '@mui/material'
 import {React, useState, useEffect } from 'react'
 import axios from 'axios'
 import SubmitButton from '../Layout/SubmitButton'
@@ -23,13 +23,13 @@ const statusAll = ["Pending", "Ongoing", "Completed"];
 
 
 const TasksInfo = () => {
-  let {id} = useParams()
+  let {taskid} = useParams()
   const [status, setStatus] = useState("Select status");
   const [taskInfo,setTaskInfo]=useState({})
 
   useEffect(() => {
     axios
-      .get(`${API}/task/${id}`)
+      .get(`${API}/task/${taskid}`)
       .then((res) => {
         console.log(res);
         setTaskInfo(res.data.task);
@@ -38,24 +38,18 @@ const TasksInfo = () => {
       .catch((err) => {
         console.log(err);
       });
-  },[id]);
-  // useEffect(()=>{
-  //   axios
-  //   .put(`${API}/task/update/${id}`,status)
-  //   .then((res)=>{
-  //     console.log(res.data.task.task_status)
-  //   })
-  // })
+  },[taskid]);
+ 
   const handleChangeStatus = (event) => {
     setStatus(event.target.value);
   };
-
-  // const handleUpdate = async (taskInfo) => {
-  //   await axios.put(`${API}/task/update/${id}`)
-  //   const taskInfoClone = [...taskInfo]
-  //   const index = taskInfoClone.indexOf(task_status)
-  //   taskInfoClone[index]=status
-  //   setTaskInfo(taskInfoClone)
+  const updateTask = () =>
+    axios
+      .put(`${API}/task/update/${taskid}`, {
+        
+        task_status:status
+      })
+      .then(window.location.reload());
   // }
   return (
     <>
@@ -125,13 +119,17 @@ const TasksInfo = () => {
                     </FormControl>
                   </TableCell>
                   <TableCell>
-                    {" "}
                     <SubmitButton
                       button_name="Update Status"
                       button_id="updateStatus_btn"
+                      handleChange={()=>updateTask()}
                       // handleChange={()=> handleUpdate(taskInfo.task_status)}
                     />
                   </TableCell>
+                </TableRow>
+                <TableRow>
+                        <TableCell fullWidth><Button>START TASK</Button></TableCell>
+                
                 </TableRow>
               </Table>
             </TableContainer>
