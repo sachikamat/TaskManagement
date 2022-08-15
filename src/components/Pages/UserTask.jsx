@@ -31,7 +31,7 @@ export const UserTask = () => {
   
   useEffect(() => {
     axios
-      .get(`${API}/task/assignedtask/${id}`)
+      .get(`${API}/task/assignedtask/tasks/${id}`)
       .then((res) => {
         console.log(id)
         setTasks(res.data.results);

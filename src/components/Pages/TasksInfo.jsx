@@ -39,16 +39,28 @@ const TasksInfo = () => {
         console.log(err);
       });
   },[id]);
-  
+  // useEffect(()=>{
+  //   axios
+  //   .put(`${API}/task/update/${id}`,status)
+  //   .then((res)=>{
+  //     console.log(res.data.task.task_status)
+  //   })
+  // })
   const handleChangeStatus = (event) => {
     setStatus(event.target.value);
   };
+
+  // const handleUpdate = async (taskInfo) => {
+  //   await axios.put(`${API}/task/update/${id}`)
+  //   const taskInfoClone = [...taskInfo]
+  //   const index = taskInfoClone.indexOf(task_status)
+  //   taskInfoClone[index]=status
+  //   setTaskInfo(taskInfoClone)
+  // }
   return (
     <>
     <Wrapper userSideBar navHeader>
       <ThemeProvider theme={theme}>
-       
-            
             <TableContainer
               component={Paper}
               className="paperStyle"
@@ -117,6 +129,7 @@ const TasksInfo = () => {
                     <SubmitButton
                       button_name="Update Status"
                       button_id="updateStatus_btn"
+                      // handleChange={()=> handleUpdate(taskInfo.task_status)}
                     />
                   </TableCell>
                 </TableRow>

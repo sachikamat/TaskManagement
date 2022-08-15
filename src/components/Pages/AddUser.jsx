@@ -75,7 +75,7 @@ export default function AddUser() {
     <>
 
       <ThemeProvider theme={theme}>
-        <Wrapper adminSidebar navHeader>
+        <Wrapper adminSidebar navHeader >
         
           <Paper className="paperStyle">
             <Typography

@@ -15,6 +15,7 @@ const ManageTask = () => {
   
   const [users, setUsers] = useState([]);
 
+
   const handleDelete = (id) => {
     axios.delete(`${API}/task/delete/${id}`);
     window.location.reload()
@@ -69,6 +70,7 @@ const ManageTask = () => {
                       {/* <td>{row.duration}</td> */}
                       {/* <td>{users.find(user=>user._id===row.user).name}</td> */}
                       {/* {console.log(users.find(user=>user._id===row.user).name)} */}
+                      {console.log(users.map((user)=>(user.createdAt.valueOf())))}
                       <td>{row.user}</td>
                       <td>{
                         <div className="action_column">
@@ -86,11 +88,12 @@ const ManageTask = () => {
                           dialogTitle="Edit Task" 
                           dialogContent={
                             <EditTaskInfo
-                            title={row.title}
-                            description={row.description}
-                            priority={row.priority}
-                            task_status={row.task_status}
-                            user={row.user}
+                            task_id={row._id}
+                            prevTitle={row.title}
+                            prevDescription={row.description}
+                            prevPriority={row.priority}
+                            prevTask_status={row.task_status}
+                            prevUser={row.user}
                             />
 
                           }

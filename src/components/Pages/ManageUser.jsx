@@ -12,9 +12,9 @@ const ManageUser = () => {
     axios.delete(`${API}/user/delete/${id}`);
   };
 
-  const handleEdit = (id) => {
-    axios.put(`${API}/user/${id}`);
-  };
+  // const handleEdit = () => {
+  //   console.log('edit')
+  // };
   const [users, setUsers] = useState([]);
   useEffect(() => {
     axios
@@ -63,14 +63,15 @@ const ManageUser = () => {
                           <div className="action_column">
                             <EditButton
                               dialogTitle="Edit User"
-                              handleEdit={() => handleEdit(row._id)}
+                              // handleEdit={() => handleEdit()}
                               dialogContent={
                                 <EditUserInfo
-                                  name={row.name}
-                                  email={row.email}
-                                  phone={row.phone}
-                                  mobile={row.mobile}
-                                  status={row.status}
+                                  u_id={row._id}
+                                  prevName={row.name}
+                                  prevEmail={row.email}
+                                  prevPhone={row.phone}
+                                  prevMobile={row.mobile}
+                                  prevStatus={row.status}
                                 />
                               }
                             />

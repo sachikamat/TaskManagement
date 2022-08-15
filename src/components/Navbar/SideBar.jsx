@@ -6,9 +6,16 @@ import { BiCog } from "react-icons/bi";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
+import { useNavigate } from "react-router-dom";
 
 
 const SideBar = () => {
+
+  const navigate=useNavigate()
+  function changeLocation(placeToGo){
+    navigate(placeToGo, { replace: true });
+    window.location.reload();
+}
   const id = useParams().id;
 
   const routes = [
@@ -164,6 +171,7 @@ const SideBar = () => {
                   key={index}
                   className="link"
                   activeClassName="active"
+                  onClick={() => changeLocation(route.path)}
                 >
                   <div className="icon">{route.icon}</div>
                   <AnimatePresence>

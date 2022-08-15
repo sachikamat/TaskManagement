@@ -6,11 +6,18 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenuUser from "./SidebarMenuUser";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 // const userID = localStorage.getItem('id')
 
 
 const SideBarUser = ({ children }) => {
+  const navigate=useNavigate()
+  function changeLocation(placeToGo){
+    navigate(placeToGo, { replace: true });
+    window.location.reload();
+}
 const id=useParams().id
 const routes = [
   
@@ -37,7 +44,7 @@ const routes = [
     subRoutes: [
       
       {
-        path: `/user/${id}settings/2fa`,
+        path: `/user/${id}/settings/2fa`,
         name: "Change Password",
         icon: <FaLock />,
       },
@@ -135,6 +142,7 @@ const routes = [
                   key={index}
                   className="link"
                   activeClassName="active"
+                  onClick={() => changeLocation(route.path)}
                   // onClick={()=>{console.log('LOGGED OUT')}}
                 >
                   <div className="icon">{route.icon}</div>
