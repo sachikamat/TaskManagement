@@ -344,13 +344,13 @@ main {
   text-decoration: none;
 }
 .link:hover {
-  border-right: 4px solid white;
+  /* border-right: 4px solid white; */
   background: rgb(70, 78, 69);
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   color:#79b0fb
 }
 .active {
-  border-right: 4px solid white;
+  /* border-right: 4px solid white; */
   background: rgb(70, 78, 69);
   color:#79b0fb;
 }
@@ -1136,4 +1136,30 @@ th{
 
 .addevent_p{
   margin:0
+}
+
+.edit_dialog_btns{
+  display: flex;
+  gap:10px;
+  justify-content: flex-end;
+  padding:10px
+}
+.edit_dialog_btns .css-sghohy-MuiButtonBase-root-MuiButton-root{
+  background-color: #d32f2f;
+}
+
+.edit_btn{
+  display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+.edit_btn .css-sghohy-MuiButtonBase-root-MuiButton-root{
+  background-color: #2e7d32;
+}
+.edit_btn .css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
+  background-color: #246327;
+}
+.dialog_header{
+  display: flex;
+  justify-content:space-between
 }

@@ -1,12 +1,30 @@
-import React from "react";
-import { Table, Paper, Typography, TextField } from "@material-ui/core";
-import { TableContainer, TableCell, TableRow } from "@mui/material";
+import React, { useState } from "react";
+import { Table, Paper, Typography, TextField ,} from "@material-ui/core";
+import { TableContainer, TableCell, TableRow,Button } from "@mui/material";
 // import { useState, useEffect } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 // import SubmitButton from '../Layout/SubmitButton'
 import "./Pages.css";
+import { API } from "../config";
 
-export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
+export const EditUserInfo = ({ prevName, prevEmail, prevPhone,prevMobile, prevStatus,u_id }) => {
+  const [name,setName]=useState(prevName)
+  const [email,setEmail]=useState(prevEmail)
+  const [phone,setPhone]= useState(prevPhone)
+  const [mobile,setMobile] = useState(prevMobile)
+  const [status,setStatus] = useState(prevStatus)
+  const userID=u_id
+
+  const updateUser = () =>
+    axios
+      .put(`${API}/user/${userID}`, {
+        name: name,
+        email: email,
+        phone: phone,
+        mobile: mobile,
+        status: status,
+      })
+      .then(window.location.reload());
   return (
     <div>
       <TableContainer
@@ -20,17 +38,17 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
         <Table>
           <TableRow>
             <TableCell variant="head">
-              <Typography 
-              variant="header" 
-              className="tableHead">
+              <Typography variant="header" className="tableHead">
                 NAME
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField 
-              variant="outlined" 
-              size="small" 
-              value={name} />
+              <TextField
+                variant="outlined"
+                size="small"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -40,7 +58,12 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={email} />
+              <TextField
+                variant="outlined"
+                size="small"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -50,7 +73,12 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={phone} />
+              <TextField
+                variant="outlined"
+                size="small"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -60,7 +88,12 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={mobile} />
+              <TextField
+                variant="outlined"
+                size="small"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -70,11 +103,25 @@ export const EditUserInfo = ({ name, email, phone,mobile, status }) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={status} />
+              <TextField
+                variant="outlined"
+                size="small"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              />
             </TableCell>
           </TableRow>
         </Table>
       </TableContainer>
+      
+        
+        <div className='edit_btn'>
+        <Button variant="contained" onClick={()=>updateUser()}  autoFocus>
+          Save Changes
+        </Button>
+        </div>
+        
+      
     </div>
   );
 };

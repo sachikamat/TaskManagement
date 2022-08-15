@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AccountCircle } from "@material-ui/icons";
+import { useParams } from "react-router-dom";
+import { API } from "../config";
+import axios from "axios";
 
-const NavHeader = ({page_title,user_name,user_role}) => {
+const NavHeader = ({page_title}) => {
+  let {id} = useParams()
+  // console.log(id)
+  // const GETUSER_URL=`user/${id}`
+  const [user,setUser] = useState({})
+  
+  useEffect(()=>{
+    axios
+    .get(`${API}/user/${id}`)
+    .then((res)=>{
+      setUser(res.data.user)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[id])
   return (
     <>
       <div className="nav_header">
@@ -10,8 +28,8 @@ const NavHeader = ({page_title,user_name,user_role}) => {
         </div>
         <div className="nav_userInfo">
           <div>
-            <h3>{user_name}</h3>
-            <p>{user_role}</p>
+            <h3>{user.name}</h3>
+            <p>{user.role}</p>
           </div>
           <div>
             <AccountCircle style={{ fontSize: 45 }} />

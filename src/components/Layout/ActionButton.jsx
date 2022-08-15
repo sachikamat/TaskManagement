@@ -1,6 +1,8 @@
-import {Button, Dialog,DialogTitle,DialogContent,DialogContentText,DialogActions} from '@mui/material'
+import {Button, Dialog,DialogTitle,DialogContent,DialogActions} from '@mui/material'
 import { useState } from 'react';
 import React from "react";
+import { IconButton } from '@material-ui/core';
+import { Cancel } from '@material-ui/icons';
 
 export const ActionButton = ({
   dialogTitle,
@@ -8,7 +10,7 @@ export const ActionButton = ({
   actionButton,
   dialogAction,
   actionButton_color,
-  alternateActionButton,
+  // dialogActionContainer,
   handleClose
 }) => {
   const [open, setOpen] = useState(false);
@@ -34,20 +36,27 @@ export const ActionButton = ({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
+        <div className='dialog_header'>
+
+        <DialogTitle id="alert-dialog-title">{dialogTitle} </DialogTitle>
+        <IconButton variant='contained' onClick={handleCancel}><Cancel style={{color:'#d32f2f'}}/> </IconButton>
+        </div>
+        
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          
             {dialogContent}
-          </DialogContentText>
+          
         </DialogContent>
+        {dialogAction &&
         <DialogActions>
-          <Button variant='contained' onClick={handleCancel}>Cancel</Button>
-          {alternateActionButton &&
+          
+          
           <Button variant="contained" color={actionButton_color} onClick={handleClose} autoFocus>
             {dialogAction}
           </Button>
-          }
+          
         </DialogActions>
+}
       </Dialog>
     </>
   );

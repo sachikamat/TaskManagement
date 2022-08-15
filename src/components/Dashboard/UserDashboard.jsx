@@ -41,7 +41,7 @@ const UserDashboard = () => {
 
   useEffect(()=>{
     axios
-    .get(`${API}/task/assignedtask/${id}`)
+    .get(`${API}/task/assignedtask/tasks/${id}`)
     .then((res)=>{
       setAssignedTask(res.data.results)
     })
@@ -63,7 +63,7 @@ const UserDashboard = () => {
   console.log(assignedTask)
   return (
     <>
-      <Wrapper userSideBar navHeader page_title="Dashboard" user_name={user.name} user_role={user.role}>
+      <Wrapper userSideBar navHeader page_title="Dashboard" >
         <div className="dashboard_container">
           <div>
             

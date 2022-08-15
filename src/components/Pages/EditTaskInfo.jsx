@@ -1,8 +1,30 @@
 import React from "react";
 import { Table, Paper, Typography, TextField } from "@material-ui/core";
-import { TableContainer, TableCell, TableRow } from "@mui/material";
+import { TableContainer, TableCell, TableRow,Button } from "@mui/material";
+import { useState } from "react";
+import axios from 'axios'
+import { API } from "../config";
 
-export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
+
+export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_status,prevUser,task_id}) => {
+  const[title,setTitle]=useState(prevTitle)
+  const[description,setDescription]=useState(prevDescription)
+  const[priority,setPriority]=useState(prevPriority)
+  const[task_status,setTask_status]=useState(prevTask_status)
+  const[user,setUser]=useState(prevUser)
+  const taskID=task_id
+
+  const updateUser = () =>
+    axios
+      .put(`${API}/task/update/${taskID}`, {
+        title: title,
+        description:description,
+        priority:priority,
+        task_status:task_status,
+        user:user
+      })
+      .then(window.location.reload());
+
   return (
     <>
     <TableContainer
@@ -26,7 +48,8 @@ export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
               <TextField 
               variant="outlined" 
               size="small" 
-              value={title} />
+              value={title}
+              onChange={(e)=>setTitle(e.target.value)} />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -36,7 +59,7 @@ export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={description} />
+              <TextField variant="outlined" size="small" value={description} onChange={(e)=>setDescription(e.target.value)} />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -46,7 +69,7 @@ export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={priority} />
+              <TextField variant="outlined" size="small" value={priority} onChange={(e)=>setPriority(e.target.value)} />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -56,7 +79,7 @@ export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={task_status} />
+              <TextField variant="outlined" size="small" value={task_status} onChange={(e)=>setTask_status(e.target.value)} />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -66,11 +89,16 @@ export const EditTaskInfo = ({title,description,priority,task_status,user}) => {
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={user} />
+              <TextField variant="outlined" size="small" value={user} onChange={(e)=>setUser(e.target.value)}/>
             </TableCell>
           </TableRow>
         </Table>
       </TableContainer>
+      <div className='edit_btn'>
+        <Button variant="contained" onClick={()=>updateUser()}  autoFocus>
+          Save Changes
+        </Button>
+        </div>
     </>
   )
 }

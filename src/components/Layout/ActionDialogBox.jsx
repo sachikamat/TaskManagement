@@ -25,7 +25,7 @@ export const EditButton = ({dialogContent,dialogTitle,handleEdit}) => {
         dialogTitle={dialogTitle}
         dialogContent={dialogContent}
         alternateActionButton
-        dialogAction="Save Changes"
+        // dialogAction="Save Changes"
         actionButton_color="success"
         handleClose={handleEdit}
       />
@@ -55,7 +55,10 @@ export const AddEventButton = ({handleView}) => {
       <ActionButton
         actionButton={<p className="addevent_p">ADD EVENT <AddCircle/> </p> }
         dialogTitle="Add Event"
+        dialogAction="Add"
+        alternateActionButton
         dialogContent={<AddEvent/>}
+        actionButton_color='success'
         handleClose={handleView}
       />
     </>
