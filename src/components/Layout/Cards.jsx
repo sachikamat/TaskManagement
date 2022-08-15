@@ -1,7 +1,9 @@
 import { CardContent, Typography } from '@material-ui/core';
 // import { AddBox } from '@material-ui/icons';
 import {  Card, CardActions, CardHeader } from '@mui/material';
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { API } from '../config';
 import { AddEventButton } from './ActionDialogBox';
 
 
@@ -35,14 +37,29 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
 
 
 export const EventCard = () => {
+  const [events,setEvents]=useState([])
+  useEffect(()=>{
+    axios
+    .get(`${API}/event/events`)
+    .then((response)=>{
+      setEvents(response.data.events)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  })
+  const today = new Date().toLocaleDateString()
+  const event_list=events.map((event)=>
+    <li>{event.eventTitle}</li>
+  )
   
   return (
     <div className="event-card">
       <Card>
-        <CardHeader title="Today's Events" subheader="August 11, 2022" />
+        <CardHeader title="Today's Events" subheader={today} />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            We will have today's events here
+            <ul>{event_list}</ul>
           </Typography>
         </CardContent>
         <CardActions>
@@ -52,28 +69,28 @@ export const EventCard = () => {
     </div>
   );
 };
-export const TaskCountCardContainer=()=>(
+export const TaskCountCardContainer=({pending_count,ongoing_count,completed_count})=>(
   <div className="card-container">
                 <ul className="pd-ul">
                   <li>
                     <TaskCountCard
-                      taskCount={12}
-                      taskCount_title="Tasks"
+                      taskCount={pending_count}
+                      taskCount_title="Pending Tasks"
                       taskCountIcon="fa fa-tasks bx1"
                     />
                   </li>
                   <li>
                     <TaskCountCard
-                      taskCount={3}
-                      taskCount_title="Tasks"
+                      taskCount={ongoing_count}
+                      taskCount_title="Ongoing Tasks"
                       taskCountIcon="fa fa-bar-chart bx5"
                     />
                   </li>
 
                   <li>
                     <TaskCountCard
-                      taskCount={9}
-                      taskCount_title="Tasks Remaining"
+                      taskCount={completed_count}
+                      taskCount_title="Completed Tasks"
                       taskCountIcon="fa fa-bars bx3"
                     />
                   </li>

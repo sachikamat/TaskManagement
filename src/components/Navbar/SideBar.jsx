@@ -13,8 +13,8 @@ const SideBar = () => {
 
   const navigate=useNavigate()
   function changeLocation(placeToGo){
-    navigate(placeToGo, { replace: true });
-    window.location.reload();
+    navigate(placeToGo, { replace: true })
+    window.location.reload()
 }
   const id = useParams().id;
 
@@ -106,7 +106,7 @@ const SideBar = () => {
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpen ? "200px" : "45px",
+            width: isOpen ? "15vw" : "3vw",
 
             transition: {
               duration: 0.5,

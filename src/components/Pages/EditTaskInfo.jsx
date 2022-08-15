@@ -1,6 +1,6 @@
 import React from "react";
-import { Table, Paper, Typography, TextField } from "@material-ui/core";
-import { TableContainer, TableCell, TableRow,Button } from "@mui/material";
+import { Table, Paper, Typography, TextField,Select } from "@material-ui/core";
+import { TableContainer, TableCell, TableRow,Button,MenuItem,FormControl, } from "@mui/material";
 import { useState } from "react";
 import axios from 'axios'
 import { API } from "../config";
@@ -10,17 +10,27 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
   const[title,setTitle]=useState(prevTitle)
   const[description,setDescription]=useState(prevDescription)
   const[priority,setPriority]=useState(prevPriority)
-  const[task_status,setTask_status]=useState(prevTask_status)
+  const task_status=prevTask_status
+  // const[task_status,setTask_status]=useState(prevTask_status)
   const[user,setUser]=useState(prevUser)
   const taskID=task_id
+  const priorities=[
+    'Low',
+    'Medium',
+    'High',
+    'Urgent'
+  ]
+  const handleChangePriority = (event) => {
+    setPriority(event.target.value);
+  };
 
-  const updateUser = () =>
+  const updateTask = () =>
     axios
       .put(`${API}/task/update/${taskID}`, {
         title: title,
         description:description,
         priority:priority,
-        task_status:task_status,
+        // task_status:task_status,
         user:user
       })
       .then(window.location.reload());
@@ -41,7 +51,7 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
               <Typography 
               variant="header" 
               className="tableHead">
-                Title
+                TITLE
               </Typography>
             </TableCell>
             <TableCell>
@@ -69,7 +79,30 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={priority} onChange={(e)=>setPriority(e.target.value)} />
+              {/* <TextField variant="outlined" size="small" value={priority} onChange={(e)=>setPriority(e.target.value)} /> */}
+              <FormControl fullWidth>
+                    <Select
+                      id="selectedPriority"
+                      variant="outlined"
+                      value={priority}
+                      onChange={handleChangePriority}
+                      defaultValue={priority}
+                      style={{ height: 40 }}
+                    >
+                      <MenuItem value="Select priority">
+                        <em style={{ fontStyle: "normal", color: "gray" }}>
+                          Select priority
+                        </em>
+                      </MenuItem>
+                      {priorities.map((priority) => {
+                        return (
+                          <MenuItem key={priority} value={priority}>
+                            {priority}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
             </TableCell>
           </TableRow>
           <TableRow>
@@ -79,7 +112,10 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={task_status} onChange={(e)=>setTask_status(e.target.value)} />
+              {/* <TextField variant="outlined" size="small" value={task_status} onChange={(e)=>setTask_status(e.target.value)} /> */}
+              <Typography variant="header" className="tableHead">
+                  {task_status}
+                </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
@@ -95,7 +131,7 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
         </Table>
       </TableContainer>
       <div className='edit_btn'>
-        <Button variant="contained" onClick={()=>updateUser()}  autoFocus>
+        <Button variant="contained" onClick={()=>updateTask()}  autoFocus>
           Save Changes
         </Button>
         </div>

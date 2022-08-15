@@ -15,10 +15,12 @@
   
 }
 
-/* .event-card{
-  background-color:#6c7ae0;
-  border-radius: 50%
-} */
+.event-card .css-bhp9pd-MuiPaper-root-MuiCard-root{
+  background-color:#dce5eb;
+  min-width: 310px;
+  max-height: 300px;
+  overflow-y: auto;
+}
 
 /* .event-card:before{
   height: 100px;;
@@ -118,7 +120,7 @@ nav {
 /* TEAM CARD  */
 
 /* MUI Card ko styling override gareko for team member card */
-.dashboard_container .css-bhp9pd-MuiPaper-root-MuiCard-root{
+.right_layout .css-bhp9pd-MuiPaper-root-MuiCard-root{
   max-height:316px;
   overflow-y:auto;
   background-color: #dce5eb;
@@ -237,14 +239,14 @@ nav {
   color: white;
 }
 
-.task_card ul li{
+.task_card ul li, .event-card ul li{
   background-color:rgb(201 205 241 / 50%) ;
   margin-top:10px;
   padding:10px 10px 10px 10px;
   border-radius: 5px;
 }
 
-.task_card ul{
+.task_card ul, .event-card ul{
   list-style-type:none;
   padding-right:18px;
   padding-left: 18px;
