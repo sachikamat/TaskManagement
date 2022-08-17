@@ -1,25 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table, Paper, Typography, TextField,Select } from "@material-ui/core";
 import { TableContainer, TableCell, TableRow,Button,MenuItem,FormControl, } from "@mui/material";
 import { useState } from "react";
 import axios from 'axios'
 import { API } from "../config";
+import { useParams } from "react-router-dom";
 
 
 export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_status,prevUser,task_id}) => {
   const[title,setTitle]=useState(prevTitle)
   const[description,setDescription]=useState(prevDescription)
   const[priority,setPriority]=useState(prevPriority)
-  const task_status=prevTask_status
-  // const[task_status,setTask_status]=useState(prevTask_status)
   const[user,setUser]=useState(prevUser)
+  const[task_status,setTask_status]=useState(prevTask_status)
+  
   const taskID=task_id
+  const id = useParams().id
+  console.log(id)
+  const [result,setResult]=useState([])
+  let users=[]
+  useEffect(() => {
+    axios
+      .get(`${API}/user/users`)
+      .then((res) => {
+        
+        setResult(res.data.users)
+        console.log(result)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },[result]);
+  result.map((user)=>(
+    ((user._id!==id) ? users.push(user): null)
+  ))
+  
+  //select bhako role ko value chaiyema use this---
+  
   const priorities=[
     'Low',
     'Medium',
     'High',
     'Urgent'
   ]
+  const statusAll=[
+    'Pending',
+    'Ongoing',
+    'Completed'
+  ]
+
   const handleChangePriority = (event) => {
     setPriority(event.target.value);
   };
@@ -30,7 +59,7 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
         title: title,
         description:description,
         priority:priority,
-        // task_status:task_status,
+        task_status:task_status,
         user:user
       })
       .then(window.location.reload());
@@ -112,10 +141,30 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
               </Typography>
             </TableCell>
             <TableCell>
-              {/* <TextField variant="outlined" size="small" value={task_status} onChange={(e)=>setTask_status(e.target.value)} /> */}
-              <Typography variant="header" className="tableHead">
-                  {task_status}
-                </Typography>
+            <FormControl fullWidth>
+                    <Select
+                      id="selectedStatus"
+                      variant="outlined"
+                      value={task_status}
+                      onChange={(e)=>setTask_status(e.target.value)}
+                      // defaultValue={task_status}
+                      style={{ height: 40 }}
+                    >
+                      <MenuItem value="Select status">
+                        <em style={{ fontStyle: "normal", color: "gray" }}>
+                          Select status
+                        </em>
+                      </MenuItem>
+                      {statusAll.map((status) => {
+                        return (
+                          <MenuItem key={status} value={status}>
+                            {status}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+              
             </TableCell>
           </TableRow>
           <TableRow>
@@ -125,7 +174,31 @@ export const EditTaskInfo = ({prevTitle,prevDescription,prevPriority,prevTask_st
               </Typography>
             </TableCell>
             <TableCell>
-              <TextField variant="outlined" size="small" value={user} onChange={(e)=>setUser(e.target.value)}/>
+              {/* <TextField variant="outlined" size="small" value={user} onChange={(e)=>setUser(e.target.value)}/> */}
+              <FormControl fullWidth>
+                    <Select
+                      id="selectedUser"
+                      // label={user.name}
+                      value={user}
+                      variant="outlined"
+                      onChange={(e)=>setUser(e.target.value)}
+                      defaultValue={user.name}
+                      style={{ height: 40 }}
+                    >
+                      <MenuItem value="Select user">
+                        <em style={{ fontStyle: "normal", color: "gray" }}>
+                          Select user
+                        </em>
+                      </MenuItem>
+                      {users.map((user) => {
+                        return (
+                          <MenuItem key={user} value={user._id}>
+                            {user.name}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
             </TableCell>
           </TableRow>
         </Table>

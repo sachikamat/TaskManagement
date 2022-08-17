@@ -53,9 +53,9 @@ export const AddEventButton = ({handleView}) => {
   return (
     <>
       <ActionButton
-        actionButton={<p className="addevent_p">ADD EVENT <AddCircle/> </p> }
+        actionButton={<p className="addevent_p"> <AddCircle fontSize='large'/> </p> }
         dialogTitle="Add Event"
-        dialogAction="Add"
+        // dialogAction="Add"
         alternateActionButton
         dialogContent={<AddEvent/>}
         actionButton_color='success'

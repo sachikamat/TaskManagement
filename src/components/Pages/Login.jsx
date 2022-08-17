@@ -1,19 +1,19 @@
 import {useNavigate} from 'react-router-dom';
 import {Paper,  TextField, FormControlLabel,makeStyles} from '@material-ui/core';
 import { Checkbox} from '@mui/material';
-import Wrapper from '../Layout/Wrapper';
 import SubmitButton from '../Layout/SubmitButton';
 import React, {  useContext, useEffect, useRef, useState } from "react";
-// import { useDispatch } from 'react-redux';
 import AuthContext  from '../context/AuthProvider';
 import axios from '../api/axios'
+import Navbar from '../Navbar/Navbar';
+
 const useStyles = makeStyles((theme) => ({
   paperStyle: {
     width: 344,
     textAlign: "center",
     padding: 36,
   },
-  
+
   logoStyle: { height: 60, width: 60, margin: 20 },
   heading: {
     fontSize: 20,
@@ -25,79 +25,73 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LOGIN_URL = '/user/login'
+const LOGIN_URL = "/user/login";
 
 export default function Login() {
-  const { setAuth } = useContext(AuthContext)
-  const userRef = useRef()
-  const errRef = useRef()
+  const { setAuth } = useContext(AuthContext);
+  const userRef = useRef();
+  const errRef = useRef();
   const classes = useStyles();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
   const [id, setId] = useState("");
-  const [errMsg,setErrMsg] = useState("")
-  const [success,setSuccess]=useState(false)
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
   // const [status,setStatus]=useState();
-  
-  useEffect(()=>{
-    userRef.current.focus()
-  },[])
-  
-  useEffect(()=>{
-    setErrMsg('')
-  },[email,password])
-  
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [email, password]);
+
   //navigation to dashboard after clicking on login button
   const navigate = useNavigate();
 
-  
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     // refreshPage()
-    
-    try{
-      const response = await axios.post(LOGIN_URL,
-        JSON.stringify({email,password}),
+
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ email, password }),
         {
-          headers: {'Content-Type': 'application/json'},
-          withCredentials:true
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
         }
-        )
-        
-        const token = response?.data?.token
-        const userID =response?.data?.userID
-        localStorage.setItem('token',token)
-        localStorage.setItem('id',userID)
-        setId(userID)
-        console.log(JSON.stringify(response?.data))
-        setRole(response?.data?.role)
-        setAuth({email, password, role, token})
-        setSuccess(true)
-        setEmail('')
-        setPassword('')
+      );
+
+      const token = response?.data?.token;
+      const userID = response?.data?.userID;
+      localStorage.setItem("token", token);
+      localStorage.setItem("id", userID);
+      setId(userID);
+      console.log(JSON.stringify(response?.data));
+      setRole(response?.data?.role);
+      setAuth({ email, password, role, token });
+      setSuccess(true);
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No server response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing username or password");
+      } else if (err.response?.status === 404) {
+        setErrMsg("Invalid email");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
     }
-    catch(err){
-      if(!err?.response){
-        setErrMsg('No server response')
-      }
-      else if (err.response?.status === 400){
-        setErrMsg('Missing username or password')
-      }
-      else if (err.response?.status === 404){
-        setErrMsg('Invalid email')
-      }
-      else if(err.response?.status===401){
-        setErrMsg('Unauthorized')
-      }
-      else{
-        setErrMsg('Login Failed')
-      }
-      errRef.current.focus()
-    }
-    
+
     // navigate(path);
   };
   //
@@ -105,23 +99,23 @@ export default function Login() {
   const user_path = `/user/dashboard/${id}`;
   return (
     <>
-    {success ? (
-      
-      (role!=="Project Manager")?(navigate(user_path)):(navigate(admin_path))  
-     
-    ):(
-      <section className="login_page">
-        
-        <Wrapper navBar>
-        
+      {success ? (
+        role !== "Project Manager" ? (
+          navigate(user_path)
+        ) : (
+          navigate(admin_path)
+        )
+      ) : (
+        <section className="login_page">
+          <Navbar />
+
           <div className="login_container">
             <div className="login_banner">
               <h1>WELCOME BACK!</h1>
               <p>You can sign in to access with your existing account.</p>
             </div>
             <div className="login_form">
-            <Paper elevation={20} className={classes.paperStyle}>
-              
+              <Paper elevation={20} className={classes.paperStyle}>
                 <div>
                   <img
                     src={process.env.PUBLIC_URL + "/asterLogo.png"}
@@ -158,19 +152,24 @@ export default function Login() {
                     label="Remember me"
                   />
                 </div>
-                <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live = "assertive" style={{color:'#ff0000'}}>{errMsg}</p>
+                <p
+                  ref={errRef}
+                  className={errMsg ? "errmsg" : "offscreen"}
+                  aria-live="assertive"
+                  style={{ color: "#ff0000" }}
+                >
+                  {errMsg}
+                </p>
                 <SubmitButton
-                  handleChange={(e)=>handleSubmit(e)}
+                  handleChange={(e) => handleSubmit(e)}
                   button_name="Login"
                   fullWidth
                 />
-              
-            </Paper>
+              </Paper>
             </div>
           </div>
-        </Wrapper>
-      </section>
-    )}
+        </section>
+      )}
     </>
   );
 }

@@ -41,12 +41,13 @@ export default function AddTask() {
       .then((res) => {
         
         setResult(res.data.users)
-        console.log(result)
+        // console.log(result)
       })
       .catch((err) => {
         console.log(err);
       });
   },[result]);
+
   result.map((user)=>(
     ((user._id!==id) ? users.push(user.name): null)
   ))
@@ -59,15 +60,7 @@ export default function AddTask() {
   const handleChange = (event) => {
     setUser(event.target.value);
   };
-  //---//
-  const handleChangePriority = (event) => {
-    setPriority(event.target.value);
-  };
-
-  const handleChangeStatus = (event) => {
-    setStatus(event.target.value);
-  };
-
+  
   return (
     <>
       <Wrapper adminSidebar navHeader >
@@ -134,7 +127,7 @@ export default function AddTask() {
                       id="selectedPriority"
                       variant="outlined"
                       value={priority}
-                      onChange={handleChangePriority}
+                      onChange={(e)=>setPriority(e.target.value)}
                       defaultValue={priority}
                       style={{ height: 40 }}
                     >
@@ -180,7 +173,7 @@ export default function AddTask() {
                       id="selectedStatus"
                       variant="outlined"
                       value={status}
-                      onChange={handleChangeStatus}
+                      onChange={(e)=>setStatus(e.target.value)}
                       defaultValue={status}
                       style={{ height: 40 }}
                     >

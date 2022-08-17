@@ -4,7 +4,8 @@ import {  Card, CardActions, CardHeader } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { API } from '../config';
-import { AddEventButton } from './ActionDialogBox';
+import { ViewEvent } from '../Pages/ViewEvent';
+import { AddEventButton, DeleteButton, ViewButton } from './ActionDialogBox';
 
 
 //TEAM MEMBER CARD
@@ -36,7 +37,10 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
 
 
 
-export const EventCard = () => {
+export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader}) => {
+  const handleDelete = (id) => {
+    axios.delete(`${API}/event/delete/${id}`);
+  };
   const [events,setEvents]=useState([])
   useEffect(()=>{
     axios
@@ -48,22 +52,33 @@ export const EventCard = () => {
       console.log(err);
     });
   })
-  const today = new Date().toLocaleDateString()
-  const event_list=events.map((event)=>
-    <li>{event.eventTitle}</li>
-  )
+  
+  const event_list = events.map((event) => (
+    <li className='eventlist'>
+      <div>{event.eventTitle}</div>
+      <div>
+        {viewEvent && <ViewButton dialogTitle={"View Event"} dialogContent={<ViewEvent eventTitle={event.eventTitle} eventDate={event.eventDate} eventDetail={event.eventDetail} />} />}
+        {deleteEvent && <DeleteButton dialogTitle={"Delete Event"} dialogContent={"Are you sure you want to delete the selected event?"} handleDelete={() => handleDelete(event._id)}  />
+}      </div>
+    </li>
+  ));
   
   return (
     <div className="event-card">
       <Card>
-        <CardHeader title="Today's Events" subheader={today} />
+        <CardHeader 
+        title={eventHeader} 
+        subheader={subheader} 
+        action = {<AddEventButton />}
+        />
+        
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             <ul>{event_list}</ul>
           </Typography>
         </CardContent>
         <CardActions>
-          <AddEventButton />
+          
         </CardActions>
       </Card>
     </div>

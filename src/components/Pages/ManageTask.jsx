@@ -70,8 +70,8 @@ const ManageTask = () => {
                       {/* <td>{row.duration}</td> */}
                       {/* <td>{users.find(user=>user._id===row.user).name}</td> */}
                       {/* {console.log(users.find(user=>user._id===row.user).name)} */}
-                      {console.log(users.map((user)=>(user.createdAt.valueOf())))}
-                      <td>{row.user}</td>
+                      {/* {console.log(users.map((user)=>(user.createdAt.valueOf())))} */}
+                      <td>{row.user.name}</td>
                       <td>{
                         <div className="action_column">
                           <ViewButton dialogTitle="View Task" 
@@ -81,7 +81,7 @@ const ManageTask = () => {
                             description={row.description}
                             priority={row.priority}
                             task_status={row.task_status}
-                            user={row.user}
+                            user={row.user.name}
                             />
                           }/>
                           <EditButton 
@@ -93,7 +93,7 @@ const ManageTask = () => {
                             prevDescription={row.description}
                             prevPriority={row.priority}
                             prevTask_status={row.task_status}
-                            prevUser={row.user}
+                            prevUser={row.user._id}
                             />
 
                           }

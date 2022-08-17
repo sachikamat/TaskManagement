@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from '@mui/material';
 import axios from 'axios';
 import { API } from '../config';
+import { EventCard } from './Cards';
 // import { TeamCard } from './Cards'
 
 export const Team = ({ name, position, icon }) => (
@@ -34,7 +35,8 @@ export const AdminRightLayout = ({name,role}) => {
   });
   return (
     <>
-      <Card className="teamCard">
+    <div className='admin_RightLayout'>
+    <Card className="teamCard">
         <h2 className="teamCard_title">Team Members</h2>
         <CardContent className="teamCardContent">
           {users.map((user)=>(
@@ -48,6 +50,9 @@ export const AdminRightLayout = ({name,role}) => {
           
         </CardContent>
       </Card>
+      <EventCard eventHeader={"Events"} viewEvent deleteEvent/>
+    </div>
+      
     </>
   );
 }

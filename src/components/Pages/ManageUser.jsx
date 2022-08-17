@@ -9,7 +9,10 @@ import { API } from "../config";
 const ManageUser = () => {
   const currentUserId=localStorage.getItem('id')
   const handleDelete = (id) => {
-    axios.delete(`${API}/user/delete/${id}`);
+    axios
+    .delete(`${API}/user/delete/${id}`)
+    .then(window.location.reload())
+    
   };
 
   // const handleEdit = () => {

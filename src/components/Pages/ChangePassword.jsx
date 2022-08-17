@@ -55,7 +55,7 @@ export const ChangePassword = () => {
               </Typography>
               <Grid container className="gridContainer">
                 <Grid item xs={12} md={4}>
-                  <Typography>Username:</Typography>
+                  <Typography>Email:</Typography>
                 </Grid>
                 <Grid item xs={12} md={8}>
                   <TextField

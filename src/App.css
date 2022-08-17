@@ -66,7 +66,7 @@ nav {
   display:flex;
   justify-content:center;
   gap:146px;
-  width:99vw;
+  width:98vw;
 }
 
 .login_banner{
@@ -280,14 +280,14 @@ main {
 
 .user_greeting p{
   font-size :18px;
-  margin-right: 100px;
+  /* margin-right: 100px; */
 }
 
 /* Sidebar */
 .sidebar {
   background-color: #273238;
   color: white;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   overflow-y: auto;
   font-size: 20px;
   border-right: 1px solid black;
@@ -1102,7 +1102,8 @@ th{
   display:flex;
 }
 .wrapper_children{
-  width:100%
+  width:100%;
+  min-height: 100vh;
 }
 
 .dashboard_container{
@@ -1164,4 +1165,10 @@ th{
 .dialog_header{
   display: flex;
   justify-content:space-between
+}
+
+.admin_RightLayout{
+  display: flex;
+  flex-direction: column;
+  gap:10px
 }

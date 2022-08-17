@@ -4,7 +4,7 @@ import axios from 'axios';
 import { EventCard, TaskCard } from "../Layout/Cards";
 import {API} from '../config'
 import { useParams } from "react-router-dom";
-
+import moment from 'moment'
 export default function AdminDashboard() {
   let { id } = useParams();
   console.log(id);
@@ -35,15 +35,16 @@ export default function AdminDashboard() {
   }, [tasks]);
 
   const pending_tasks = tasks.map((task) =>
-    task.task_status === "Pending" ? <li>{task.title}</li> : null
+    task.task_status === "Pending" ? <li>{task.title } ( {task.user.name})</li> : null
   );
   const ongoing_tasks = tasks.map((task) =>
-    task.task_status === "Ongoing" ? <li>{task.title}</li> : null
+    task.task_status === "Ongoing" ? <li>{task.title} ({task.user.name})</li> : null
   );
   const completed_tasks = tasks.map((task) =>
-    task.task_status === "Completed" ? <li>{task.title}</li> : null
+    task.task_status === "Completed" ? <li>{task.title} ({task.user.name})</li> : null
   );
   console.log(pending_tasks, ongoing_tasks, completed_tasks);
+  // const today = new Date().toLocaleDateString()
   return (
     <>
       <Wrapper
@@ -62,7 +63,7 @@ export default function AdminDashboard() {
                 here. You can also view your meeting schedules.
               </p>
             </div>
-            <EventCard  />
+            <EventCard eventHeader={"Today's Events"} subheader={moment().format('MMMM Do YYYY')}  />
             <div className="taskcards_container">
               <div className="pending_card">
                 <TaskCard
