@@ -278,23 +278,15 @@ export default function AddUser() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("")
   const [mobile, setMobile] = useState("")
+  // const [phone, setPhone] = useState("")
   const [address, setAddress] = useState("")
   const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("Select a role");
-
-  
- 
-
-  // const handleuserphone = (event) => {
-  //   const user_phone = event.target.value;
-  //   setPhone(user_phone);
-  // };
-
  
  
   const submitUser = async (e) => {
     e.preventDefault();
-    
+    // console.log(name,email,role,address,password,mobile)
     await axios
       .post(
         `${API}/user/register`,
@@ -304,7 +296,8 @@ export default function AddUser() {
           role: role,
           mobile: mobile, 
           address: address,
-          password:password
+          password:password,
+          // phone:phone
         }
        
       )
@@ -391,12 +384,23 @@ export default function AddUser() {
                   <TextField
                     value={address}
                     size="small"
-                    type="number"
+                    type="string"
                     variant="outlined"
                     fullWidth
                     onChange={(e)=>setAddress(e.target.value)}
                   ></TextField>
                 </Grid>
+                {/* <Grid item xs={6} md={6}>
+                  <Typography>Phone</Typography>
+                  <TextField
+                    value={phone}
+                    size="small"
+                    type="string"
+                    variant="outlined"
+                    fullWidth
+                    onChange={(e)=>setPhone(e.target.value)}
+                  ></TextField>
+                </Grid> */}
                 <Grid item xs={6} md={6}>
                   <Typography>Mobile No.</Typography>
                   <TextField

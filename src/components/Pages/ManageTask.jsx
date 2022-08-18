@@ -5,9 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API } from "../config";
 import { EditTaskInfo } from "./EditTaskInfo";
-// import TasksInfo from "./TasksInfo";
 import {ViewTask} from "./ViewTask";
-// import { Paper } from "@material-ui/core";
 
 
 const ManageTask = () => {

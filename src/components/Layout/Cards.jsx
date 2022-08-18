@@ -39,12 +39,15 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
 
 export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader,action,allEvents}) => {
   const today = moment().format('MMMM Do YYYY')
+  const [events,setEvents]=useState([])
+
+
   const handleDelete = (id) => {
     axios
     .delete(`${API}/event/delete/${id}`)
     .then(window.location.reload())
   };
-  const [events,setEvents]=useState([])
+  
   useEffect(()=>{
     axios
     .get(`${API}/event/events`)

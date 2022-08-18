@@ -32,7 +32,7 @@ export const AdminRightLayout = ({name,role}) => {
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[users]);
   return (
     <>
     <div className='admin_RightLayout'>

@@ -55,7 +55,8 @@ export const AddEvent = () => {
             <TableCell>
               <TextField 
               variant="outlined" 
-              size="small" 
+              size="small"
+              placeholder="YYYY-MM-DD" 
               value={eventDate} 
               onChange={(e)=>setEventDate(e.target.value)}
               />
