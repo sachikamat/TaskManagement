@@ -54,7 +54,7 @@ export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader,action,al
     .catch((err) => {
       console.log(err);
     });
-  })
+  },[events])
   
   const event_list = events.map((event) => (
     <li className='eventlist'>
