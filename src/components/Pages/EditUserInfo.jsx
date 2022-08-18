@@ -7,10 +7,10 @@ import axios from 'axios'
 import "./Pages.css";
 import { API } from "../config";
 
-export const EditUserInfo = ({ prevName, prevEmail, prevPhone,prevMobile, prevStatus,u_id }) => {
+export const EditUserInfo = ({ prevName, prevEmail, prevAddress,prevMobile, prevStatus,u_id }) => {
   const [name,setName]=useState(prevName)
   const [email,setEmail]=useState(prevEmail)
-  const [phone,setPhone]= useState(prevPhone)
+  const [address,setAddress]= useState(prevAddress)
   const [mobile,setMobile] = useState(prevMobile)
   const [status,setStatus] = useState(prevStatus)
   const userID=u_id
@@ -20,7 +20,7 @@ export const EditUserInfo = ({ prevName, prevEmail, prevPhone,prevMobile, prevSt
       .put(`${API}/user/${userID}`, {
         name: name,
         email: email,
-        phone: phone,
+        address: address,
         mobile: mobile,
         status: status,
       })
@@ -76,8 +76,8 @@ export const EditUserInfo = ({ prevName, prevEmail, prevPhone,prevMobile, prevSt
               <TextField
                 variant="outlined"
                 size="small"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </TableCell>
           </TableRow>

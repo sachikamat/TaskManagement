@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { API } from '../config';
 import { ViewEvent } from '../Pages/ViewEvent';
 import { AddEventButton, DeleteButton, ViewButton } from './ActionDialogBox';
-
+import moment from 'moment'
 
 //TEAM MEMBER CARD
 
@@ -37,9 +37,12 @@ export const TaskCountCard = ({taskCount,taskCount_title,taskCountIcon}) => (
 
 
 
-export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader}) => {
+export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader,action,allEvents}) => {
+  const today = moment().format('MMMM Do YYYY')
   const handleDelete = (id) => {
-    axios.delete(`${API}/event/delete/${id}`);
+    axios
+    .delete(`${API}/event/delete/${id}`)
+    .then(window.location.reload())
   };
   const [events,setEvents]=useState([])
   useEffect(()=>{
@@ -62,6 +65,11 @@ export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader}) => {
 }      </div>
     </li>
   ));
+  const today_event_list = events.map((event)=>(
+    
+      (moment(event.eventDate).format('MMMM Do YYYY')===today ? <li className='eventlist'>{event.eventTitle}</li> : null)
+    
+  ))
   
   return (
     <div className="event-card">
@@ -69,12 +77,13 @@ export const EventCard = ({subheader,viewEvent,deleteEvent,eventHeader}) => {
         <CardHeader 
         title={eventHeader} 
         subheader={subheader} 
-        action = {<AddEventButton />}
+        action = {action && <AddEventButton />}
         />
         
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            <ul>{event_list}</ul>
+            <ul>{allEvents && event_list}</ul>
+            <ul>{subheader && today_event_list }</ul>
           </Typography>
         </CardContent>
         <CardActions>

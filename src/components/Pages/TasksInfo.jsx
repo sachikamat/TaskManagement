@@ -22,7 +22,62 @@ const theme = createTheme({
 const statusAll = ["Pending", "Ongoing", "Completed"];
 
 
+
 const TasksInfo = () => {
+
+  const [starttime, setStarttime] = useState("");
+  const [endtime, setEndtime] = useState("");
+  const [message, setMessage] = useState("");
+  const [button_label,setButton_label] = useState("START")
+  const [start,setStart] = useState(false)
+
+  const handlestarttime = (event) => {
+    const start_time = event.target.value;
+    setStarttime(start_time);
+  };
+
+  const handleendtime = (event) => {
+    const end_time = event.target.value;
+    setEndtime(end_time);
+  };
+
+  const submitStart = async (e) => {
+    e.preventDefault();
+    setButton_label(" END ")
+    await axios
+      .post(
+        `${API}/timer/addtimer`,
+        {
+          starttime : starttime
+          
+        }
+       
+      )
+      .then((result) => {
+        setMessage(result.data.msg);
+        console.log(result.data);
+        console.log(result.data.msg);
+        
+      });
+  };
+  const submitEnd = async (e) => {
+    e.preventDefault();
+    
+    await axios
+      .post(
+        `${API}/timer/addtimer`,
+        {
+          
+          endtime:endtime
+        }
+       
+      )
+      .then((result) => {
+        setMessage(result.data.msg);
+        console.log(result.data);
+        console.log(result.data.msg);
+      });
+  };
   let {taskid} = useParams()
   const [status, setStatus] = useState("Select status");
   const [taskInfo,setTaskInfo]=useState({})
@@ -128,7 +183,19 @@ const TasksInfo = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                        <TableCell fullWidth><Button>START TASK</Button></TableCell>
+                        {/* <TableCell fullWidth><Button>START TASK</Button></TableCell> */}
+                    <TableCell>
+
+                    <SubmitButton
+                    button_name={button_label}
+                    value={starttime}
+                    onChange={(e)=>setStarttime(e.target.value)}
+                    handleChange={submitStart}
+                    
+                    />
+
+                 
+                    </TableCell>
                 
                 </TableRow>
               </Table>

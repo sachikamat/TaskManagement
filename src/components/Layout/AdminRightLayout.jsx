@@ -50,7 +50,7 @@ export const AdminRightLayout = ({name,role}) => {
           
         </CardContent>
       </Card>
-      <EventCard eventHeader={"Events"} viewEvent deleteEvent/>
+      <EventCard action eventHeader={"Events"} allEvents viewEvent deleteEvent/>
     </div>
       
     </>

@@ -37,7 +37,7 @@ const Test = () => {
               users.map(user=>(
                 <ul>
                   <li>Name:{user.uname}</li>
-                  <li>Phone:{user.phone} </li>
+                  <li>Address:{user.address} </li>
                 </ul>
               ))
             }

@@ -11,6 +11,7 @@ export const ViewButton = ({dialogTitle,dialogContent,handleView}) => {
         dialogTitle={dialogTitle}
         dialogContent={dialogContent}
         handleClose={handleView}
+        close
       />
     </>
   );
@@ -26,8 +27,9 @@ export const EditButton = ({dialogContent,dialogTitle,handleEdit}) => {
         dialogContent={dialogContent}
         alternateActionButton
         // dialogAction="Save Changes"
-        actionButton_color="success"
+        actionButton_color="primary"
         handleClose={handleEdit}
+        close
       />
     </>
   );
@@ -42,8 +44,9 @@ export const DeleteButton = ({dialogContent,dialogTitle,handleDelete}) => {
         dialogContent={dialogContent}
         alternateActionButton
         dialogAction="Confirm Delete"
-        actionButton_color="error"
+        actionButton_color="secondary"
         handleClose={handleDelete}
+        close
       />
     </>
   );
@@ -58,8 +61,9 @@ export const AddEventButton = ({handleView}) => {
         // dialogAction="Add"
         alternateActionButton
         dialogContent={<AddEvent/>}
-        actionButton_color='success'
+        actionButton_color='primary'
         handleClose={handleView}
+        close
       />
     </>
   );

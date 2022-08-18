@@ -1,23 +1,24 @@
 import { NavLink, useParams } from "react-router-dom";
-import { FaBars, FaHome, FaLock, FaUser } from "react-icons/fa";
+import { FaBars, FaHome, FaLock } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenuUser from "./SidebarMenuUser";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
+import Logout from "@mui/icons-material/Logout";
 
 // const userID = localStorage.getItem('id')
 
 
 const SideBarUser = ({ children }) => {
-  const navigate=useNavigate()
-  function changeLocation(placeToGo){
-    navigate(placeToGo, { replace: true });
-    window.location.reload();
-}
+//   const navigate=useNavigate()
+//   function changeLocation(placeToGo){
+//     navigate(placeToGo, { replace: true });
+//     window.location.reload();
+// }
 const id=useParams().id
 const routes = [
   
@@ -48,14 +49,19 @@ const routes = [
         name: "Change Password",
         icon: <FaLock />,
       },
-      {
-        path: "/",
-        name: "Logout ",
-        icon: <FaUser />,
+      // {
+      //   path: "/",
+      //   name: "Logout ",
+      //   icon: <FaUser />,
         
-      },
+      // },
      
     ],
+  },
+  {
+    path: "/",
+    name: "Logout",
+    icon: <Logout fontSize="small" />,
   },
   
  
@@ -82,7 +88,11 @@ const routes = [
     },
   };
   const navStyle={height:70,padding:20,paddingLeft:12}
-
+  const handleLogout = () => {
+    window.localStorage.clear()
+    console.log("logout")
+    // changeLocation(path)
+  }
   return (
     <>
     
@@ -142,7 +152,7 @@ const routes = [
                   key={index}
                   className="link"
                   activeClassName="active"
-                  onClick={() => changeLocation(route.path)}
+                  onClick={ route.name==="Logout" ?handleLogout:null}
                   // onClick={()=>{console.log('LOGGED OUT')}}
                 >
                   <div className="icon">{route.icon}</div>

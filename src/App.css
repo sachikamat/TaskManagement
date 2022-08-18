@@ -121,7 +121,8 @@ nav {
 
 /* MUI Card ko styling override gareko for team member card */
 .right_layout .css-bhp9pd-MuiPaper-root-MuiCard-root{
-  max-height:316px;
+  position: relative;
+  max-height:300px;
   overflow-y:auto;
   background-color: #dce5eb;
   min-width: 170px;;
@@ -1171,4 +1172,21 @@ th{
   display: flex;
   flex-direction: column;
   gap:10px
+}
+
+.eventlist{
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.event-card .MuiCardHeader-root.css-185gdzj-MuiCardHeader-root {
+  position: sticky;
+  top: 0;
+  /* left: 0; */
+  width: 100%;
+  background: #dce5eb;
+  z-index: 2;
+  padding-bottom:0px;
+  padding-top: 4px;
 }

@@ -12,6 +12,7 @@ import './App.css';
 import ManageUser from "./components/Pages/ManageUser";
 import ManageTask from "./components/Pages/ManageTask";
 import React from "react";
+import PrivateRoutes from "./components/context/PrivateRoutes"
 // import { ActionDialogBox } from "./components/Layout/ActionButton";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <div className="App">
       <Router>
           <Routes>
+          <Route element={<PrivateRoutes/>}>
             <Route exact path="/" element={<Login />} />
             <Route exact path="/admin/dashboard/:id" element={<AdminDashboard />} />
             <Route exact path="/admin/:id/adduser" element={<AddUser />} />
@@ -30,6 +32,7 @@ function App() {
             <Route exact path="/user/:id/tasks" element={<UserTask />} />
             <Route exact path="/user/:id/tasks/:taskid" element={<TasksInfo />} />
             <Route exact path="/test" element={<Test />} />
+          </Route>
           </Routes>
       </Router>
     </div>

@@ -2,8 +2,10 @@ import { Paper, Typography} from '@material-ui/core'
 import { Table, TableContainer, TableCell, TableRow} from '@mui/material'
 import {React } from 'react'
 import './Pages.css'
+import moment from 'moment'
 
 export const ViewEvent = ({eventTitle,eventDate,eventDetail}) => {
+  const eventUnix = moment(eventDate).format('MMMM Do YYYY')
     return (
       <>
       <TableContainer
@@ -39,7 +41,7 @@ export const ViewEvent = ({eventTitle,eventDate,eventDetail}) => {
               </TableCell>
               <TableCell>
               <Typography variant="header" className="tableHead">
-                  {eventDate}
+                  {eventUnix}
                 </Typography>
               </TableCell>
             </TableRow>

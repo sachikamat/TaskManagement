@@ -41,7 +41,7 @@ const ManageUser = () => {
                     <th scope="col">S.N.</th>
                     <th scope="col">NAME</th>
                     <th scope="col">EMAIL</th>
-                    <th scope="col">PHONE</th>
+                    <th scope="col">ADDRESS</th>
                     <th scope="col">MOBILE</th>
                     <th scope="col">STATUS</th>
                     <th className="action_col" scope="col">
@@ -57,7 +57,7 @@ const ManageUser = () => {
                       <td className="">{index + 1}</td>
                       <td>{row.name}</td>
                       <td>{row.email}</td>
-                      <td>{row.phone}</td>
+                      <td>{row.address}</td>
                       <td>{row.mobile}</td>
 
                       <td>{row.status}</td>
@@ -72,7 +72,7 @@ const ManageUser = () => {
                                   u_id={row._id}
                                   prevName={row.name}
                                   prevEmail={row.email}
-                                  prevPhone={row.phone}
+                                  prevAddress={row.address}
                                   prevMobile={row.mobile}
                                   prevStatus={row.status}
                                 />

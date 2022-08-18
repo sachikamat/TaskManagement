@@ -5,7 +5,8 @@ import {Visibility, VisibilityOff} from '@material-ui/icons';
 import './Pages.css'
 import Wrapper from '../Layout/Wrapper';
 import { useParams } from 'react-router-dom';
-
+import axios from '../api/axios'
+import { API } from "../config";
 const theme = createTheme({
   typography: {
     allVariants: {
@@ -23,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ChangePassword = () => {
+  
+  const [email, setEmail] =useState('')
+  const [password,setPassword]=useState('')
+  const [confirmpassword,setConfirmPassword]=useState('')
+  const [message, setMessage] = useState("");
+  
   const {currentUser} = useParams()
   // const id = useParams()
   console.log(currentUser,'cUser')
@@ -42,7 +49,28 @@ export const ChangePassword = () => {
   const findUser = ()=>{
     return (currentUser==='admin')? true:false
   }
-
+  const submitPassword = async (e) => {
+    e.preventDefault();
+    
+    await axios
+      .put(
+        `${API}/user/user/changepassword`,
+        {
+          email:email,
+        
+          password:password,
+          confirmpassword:password
+        }
+       
+      )
+      .then((result) => {
+        setMessage(result.data.msg);
+        console.log(result.data,message);
+        console.log(result.data.msg);
+        window.location.reload()
+      });
+  };
+  
   return (
     <>
       <Wrapper adminSidebar={findUser()} userSideBar={!findUser()} navHeader>
@@ -60,6 +88,8 @@ export const ChangePassword = () => {
                 <Grid item xs={12} md={8}>
                   <TextField
                     name="uname"
+                    onChange={(e)=>setEmail(e.target.value)}
+                    value={email}
                     size="small"
                     variant="outlined"
                     fullWidth
@@ -73,6 +103,8 @@ export const ChangePassword = () => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                   <TextField
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
                     size="small"
                     type={showPassword ? "text" : "password"}
                     variant="outlined"
@@ -96,6 +128,8 @@ export const ChangePassword = () => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                   <TextField
+                    onChange={(e)=>setConfirmPassword(e.target.value)}
+                    value ={confirmpassword}
                     size="small"
                     type={showCPassword ? "text" : "password"}
                     variant="outlined"
@@ -117,7 +151,7 @@ export const ChangePassword = () => {
                 </Grid>
               </Grid>
               <Grid container xs={12} md={12} className="gridButton">
-                <SubmitButton button_name="Submit" button_id="changePassword_btn" />
+                <SubmitButton button_name="Submit" handleChange={submitPassword} button_id="changePassword_btn" />
               </Grid>
             </Paper>
           </div>
@@ -126,3 +160,12 @@ export const ChangePassword = () => {
     </>
   );
 };
+
+
+
+
+
+
+
+
+

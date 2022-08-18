@@ -19,7 +19,7 @@ export const AddEvent = () => {
         eventDetail:eventDetail
       })
       .then((response) => {
-        console.log(response);
+        window.location.reload()
       })
     )
   

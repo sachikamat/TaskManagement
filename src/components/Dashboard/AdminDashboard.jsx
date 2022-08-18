@@ -35,7 +35,7 @@ export default function AdminDashboard() {
   }, [tasks]);
 
   const pending_tasks = tasks.map((task) =>
-    task.task_status === "Pending" ? <li>{task.title } ( {task.user.name})</li> : null
+    task.task_status === "Pending" ? <li>{task.title } ({task.user.name})</li> : null
   );
   const ongoing_tasks = tasks.map((task) =>
     task.task_status === "Ongoing" ? <li>{task.title} ({task.user.name})</li> : null
@@ -44,6 +44,7 @@ export default function AdminDashboard() {
     task.task_status === "Completed" ? <li>{task.title} ({task.user.name})</li> : null
   );
   console.log(pending_tasks, ongoing_tasks, completed_tasks);
+  const today = moment().format('MMMM Do YYYY')
   // const today = new Date().toLocaleDateString()
   return (
     <>
@@ -63,7 +64,7 @@ export default function AdminDashboard() {
                 here. You can also view your meeting schedules.
               </p>
             </div>
-            <EventCard eventHeader={"Today's Events"} subheader={moment().format('MMMM Do YYYY')}  />
+            <EventCard eventHeader={"Today's Events"} subheader={today}  />
             <div className="taskcards_container">
               <div className="pending_card">
                 <TaskCard
