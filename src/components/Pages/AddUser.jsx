@@ -222,6 +222,7 @@ import Wrapper from '../Layout/Wrapper';
 import axios from '../api/axios'
 // import AuthContext from '../context/AuthProvider';
 import { API } from "../config";
+import { ActionButton } from '../Layout/ActionButton';
 //defining theme to overRide the default topography fontFamily
 const theme = createTheme({
   typography: {
@@ -343,7 +344,7 @@ export default function AddUser() {
                 ADD USER
               </Typography>
               <Grid container spacing={3} className={classes.gridContainer}>
-                <Grid item xs={6} md={8}>
+                <Grid item xs={12} md={12}>
                   <Typography>Name</Typography>
                   <TextField
                     value={name}
@@ -354,7 +355,7 @@ export default function AddUser() {
                     onChange={(e)=>setName(e.target.value)}
                   ></TextField>
                 </Grid>
-                <Grid item xs={6} md={4}>
+                {/* <Grid item xs={6} md={4}>
                   {
                     // if image chaina bhane icon dekhaucha natra image nai dekhaucha. if else use garya cha tala
                   }
@@ -378,7 +379,7 @@ export default function AddUser() {
                     />
                     <PhotoCamera />
                   </IconButton>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={6} md={6}>
                   <Typography>Address</Typography>
                   <TextField
@@ -473,17 +474,17 @@ export default function AddUser() {
                 </Grid>
               </Grid>
               <Grid container xs={12} md={12} className="gridButton">
-                <SubmitButton
+                {/* <SubmitButton
                   button_name="ADD"
                       handleChange={submitUser}
-                />
-                {/* <ActionButton 
+                /> */}
+                <ActionButton 
               actionButton={<SubmitButton button_name="ADD" handleChange={submitUser} button_id="addTask_btn" />}
               dialogTitle="User Added"
               dialogContent={"A new user has been added"}
               dialogAction={<SubmitButton button_name="Ok" button_id="addTask_btn" />}
               handleClose={()=>(window.location.reload())}
-              /> */}
+              />
               </Grid>
             
           </Paper>

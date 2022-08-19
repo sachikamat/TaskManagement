@@ -224,6 +224,7 @@ import axios from 'axios';
 // <<<<<<< HEAD
 import { API } from "../config";
 import { useParams } from 'react-router-dom';
+import { ActionButton } from '../Layout/ActionButton';
 
 
 //defining theme to overRide the default topography fontFamily
@@ -298,7 +299,7 @@ export default function AddTask() {
         setMessage(result.data.msg);
         console.log(result.data,message);
         console.log(result.data.msg);
-        window.location.reload()
+        // window.location.reload()
       });
   };
 
@@ -467,17 +468,15 @@ export default function AddTask() {
               </Grid>
             </Grid>
             <Grid container xs={12} md={12} className="gridButton">
-              <SubmitButton button_name="ADD" handleChange={submitTask} button_id="addTask_btn" />
+              {/* <SubmitButton button_name="ADD" handleChange={submitTask} button_id="addTask_btn" /> */}
+              <ActionButton 
+              actionButton={<SubmitButton button_name="ADD" handleChange={submitTask} button_id="addTask_btn" />}
+              dialogTitle="Task Added"
+              dialogContent={"A new task has been added"}
+              dialogAction={<SubmitButton button_name="Ok" button_id="addTask_btn" />}
+              handleClose={()=>(window.location.reload())}
+              />
             </Grid>
-
-
-
-
-
-
-
-
-
           </Paper>
           {/* </div> */}
         </ThemeProvider>

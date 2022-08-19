@@ -7,6 +7,7 @@ import Wrapper from '../Layout/Wrapper';
 import { useParams } from 'react-router-dom';
 import axios from '../api/axios'
 import { API } from "../config";
+import { ActionButton } from '../Layout/ActionButton';
 const theme = createTheme({
   typography: {
     allVariants: {
@@ -49,27 +50,53 @@ export const ChangePassword = () => {
   const findUser = ()=>{
     return (currentUser==='admin')? true:false
   }
-  const submitPassword = async (e) => {
-    e.preventDefault();
-    
-    await axios
-      .put(
-        `${API}/user/user/changepassword`,
-        {
-          email:email,
-        
-          password:password,
-          confirmpassword:password
-        }
-       
+
+  const submitPassword = () =>
+    (
+      axios
+      .put(`${API}/user/user/changepassword`, {
+        email:email,
+        newPassword:password,
+        confirmPassword:confirmpassword
+      })
+      .then(
+        // window.location.reload()
+        console.log(password)
+        )
+      // console.log(email,password,confirmpassword)
       )
-      .then((result) => {
-        setMessage(result.data.msg);
-        console.log(result.data,message);
-        console.log(result.data.msg);
-        window.location.reload()
-      });
-  };
+  // const submitPassword = () =>
+  //   (
+  //     axios
+  //     .put(`${API}/user/changepassword`,{
+  //       email:email,
+  //         password:password,
+  //         confirmpassword:confirmpassword
+  //     })
+  //     .then(() => {
+  //       window.location.reload()
+  //     })
+  //   )
+  // const submitPassword = async (e) => {
+  //   e.preventDefault();
+    
+  //   await axios
+  //     .put(
+  //       `${API}/user/user/changepassword`,
+  //       {
+  //         email:email,
+  //         password:password,
+  //         confirmpassword:confirmpassword
+  //       }
+       
+  //     )
+  //     .then((result) => {
+  //       setMessage(result.data.msg);
+  //       console.log(result.data,message);
+  //       console.log(result.data.msg);
+  //       window.location.reload()
+  //     });
+  // };
   
   return (
     <>
@@ -151,7 +178,14 @@ export const ChangePassword = () => {
                 </Grid>
               </Grid>
               <Grid container xs={12} md={12} className="gridButton">
-                <SubmitButton button_name="Submit" handleChange={submitPassword} button_id="changePassword_btn" />
+                {/* <SubmitButton button_name="Submit" handleChange={submitPassword} button_id="changePassword_btn" /> */}
+                <ActionButton 
+              actionButton={<SubmitButton button_name="SUBMIT" handleChange={submitPassword} button_id="addTask_btn" />}
+              dialogTitle="Password changed"
+              dialogContent={"The user's password has been changed"}
+              dialogAction={<SubmitButton button_name="Ok" button_id="addTask_btn" />}
+              handleClose={()=>(window.location.reload())}
+              />
               </Grid>
             </Paper>
           </div>
@@ -160,12 +194,3 @@ export const ChangePassword = () => {
     </>
   );
 };
-
-
-
-
-
-
-
-
-

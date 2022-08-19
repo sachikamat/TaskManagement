@@ -37,27 +37,27 @@ const routes = [
   },
 
   
-  {
-    path: "/user/settings",
-    name: "Settings",
-    icon: <BiCog />,
-    exact: true,
-    subRoutes: [
+  // {
+  //   path: "/user/settings",
+  //   name: "Settings",
+  //   icon: <BiCog />,
+  //   exact: true,
+  //   subRoutes: [
       
-      {
-        path: `/user/${id}/settings/2fa`,
-        name: "Change Password",
-        icon: <FaLock />,
-      },
-      // {
-      //   path: "/",
-      //   name: "Logout ",
-      //   icon: <FaUser />,
+  //     {
+  //       path: `/user/${id}/settings/2fa`,
+  //       name: "Change Password",
+  //       icon: <FaLock />,
+  //     },
+  //     // {
+  //     //   path: "/",
+  //     //   name: "Logout ",
+  //     //   icon: <FaUser />,
         
-      // },
+  //     // },
      
-    ],
-  },
+  //   ],
+  // },
   {
     path: "/",
     name: "Logout",

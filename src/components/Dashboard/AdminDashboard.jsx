@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import moment from 'moment'
 export default function AdminDashboard() {
   let { id } = useParams();
-  console.log(id);
+  // console.log(id);
   // const GETUSER_URL=`user/${id}`
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
@@ -21,7 +21,7 @@ export default function AdminDashboard() {
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  },[user,id]);
 
   useEffect(() => {
     axios
@@ -33,6 +33,7 @@ export default function AdminDashboard() {
         console.log(err);
       });
   }, [tasks]);
+  
 
   const pending_tasks = tasks.map((task) =>
     task.task_status === "Pending" ? <li>{task.title } ({task.user.name})</li> : null
@@ -43,7 +44,7 @@ export default function AdminDashboard() {
   const completed_tasks = tasks.map((task) =>
     task.task_status === "Completed" ? <li>{task.title} ({task.user.name})</li> : null
   );
-  console.log(pending_tasks, ongoing_tasks, completed_tasks);
+  // console.log(pending_tasks, ongoing_tasks, completed_tasks);
   const today = moment().format('MMMM Do YYYY')
   // const today = new Date().toLocaleDateString()
   return (

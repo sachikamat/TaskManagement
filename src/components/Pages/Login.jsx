@@ -1,11 +1,12 @@
 import {useNavigate} from 'react-router-dom';
-import {Paper,  TextField, FormControlLabel,makeStyles} from '@material-ui/core';
-import { Checkbox} from '@mui/material';
+import {Paper,  TextField, FormControlLabel,makeStyles, InputAdornment} from '@material-ui/core';
+import { Button, Checkbox} from '@mui/material';
 import SubmitButton from '../Layout/SubmitButton';
 import React, {  useContext, useEffect, useRef, useState } from "react";
 import AuthContext  from '../context/AuthProvider';
 import axios from '../api/axios'
 import Navbar from '../Navbar/Navbar';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   paperStyle: {
@@ -35,6 +36,7 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("");
   const [id, setId] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -48,6 +50,10 @@ export default function Login() {
   useEffect(() => {
     setErrMsg("");
   }, [email, password]);
+
+  const handlePasswordToggle = (e) => {
+    setShowPassword(!showPassword);
+  };
 
   //navigation to dashboard after clicking on login button
   const navigate = useNavigate();
@@ -91,9 +97,14 @@ export default function Login() {
       }
       errRef.current.focus();
     }
-
-    // navigate(path);
   };
+  const handleKeypress = e => {
+    //it triggers by pressing the enter key
+  if (e.keyCode === 13) {
+    handleSubmit();
+  }
+};
+ 
   //
   const admin_path = `/admin/dashboard/${id}`;
   const user_path = `/user/dashboard/${id}`;
@@ -115,7 +126,9 @@ export default function Login() {
               <p>You can sign in to access with your existing account.</p>
             </div>
             <div className="login_form">
+            
               <Paper elevation={20} className={classes.paperStyle}>
+              <form onSubmit={handleSubmit} >
                 <div>
                   <img
                     src={process.env.PUBLIC_URL + "/asterLogo.png"}
@@ -138,11 +151,21 @@ export default function Login() {
                 />
                 <TextField
                   label="Password"
-                  type="password"
+                  // type="password"
                   placeholder="Enter password"
                   fullWidth
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  type={showPassword ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Button onClick={handlePasswordToggle}>
+                          {!showPassword ? <VisibilityOff /> : <Visibility />}
+                        </Button>
+                      </InputAdornment>
+                    ),
+                  }}
                   required
                   style={{ marginBottom: 20 }}
                 />
@@ -165,6 +188,13 @@ export default function Login() {
                   button_name="Login"
                   fullWidth
                 />
+                {/* <button
+                onClick={(e) => handleSubmit(e)}
+                type='submit'
+                label='Login'
+                /> */}
+                
+              </form>
               </Paper>
             </div>
           </div>

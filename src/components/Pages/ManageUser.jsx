@@ -43,7 +43,7 @@ const ManageUser = () => {
                     <th scope="col">EMAIL</th>
                     <th scope="col">ADDRESS</th>
                     <th scope="col">MOBILE</th>
-                    <th scope="col">STATUS</th>
+                    {/* <th scope="col">STATUS</th> */}
                     <th className="action_col" scope="col">
                       ACTION
                     </th>
@@ -60,7 +60,7 @@ const ManageUser = () => {
                       <td>{row.address}</td>
                       <td>{row.mobile}</td>
 
-                      <td>{row.status}</td>
+                      {/* <td>{row.status}</td> */}
                       <td>
                         {
                           <div className="action_column">

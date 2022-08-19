@@ -12,7 +12,7 @@ export const EditUserInfo = ({ prevName, prevEmail, prevAddress,prevMobile, prev
   const [email,setEmail]=useState(prevEmail)
   const [address,setAddress]= useState(prevAddress)
   const [mobile,setMobile] = useState(prevMobile)
-  const [status,setStatus] = useState(prevStatus)
+  // const [status,setStatus] = useState(prevStatus)
   const userID=u_id
 
   const updateUser = () =>
@@ -22,7 +22,7 @@ export const EditUserInfo = ({ prevName, prevEmail, prevAddress,prevMobile, prev
         email: email,
         address: address,
         mobile: mobile,
-        status: status,
+        // status: status,
       })
       .then(window.location.reload());
   return (
@@ -69,7 +69,7 @@ export const EditUserInfo = ({ prevName, prevEmail, prevAddress,prevMobile, prev
           <TableRow>
             <TableCell variant="head">
               <Typography variant="header" className="tableHead">
-                PHONE
+                ADDRESS
               </Typography>
             </TableCell>
             <TableCell>
@@ -96,7 +96,7 @@ export const EditUserInfo = ({ prevName, prevEmail, prevAddress,prevMobile, prev
               />
             </TableCell>
           </TableRow>
-          <TableRow>
+          {/* <TableRow>
             <TableCell variant="head">
               <Typography variant="header" className="tableHead">
                 STATUS
@@ -110,7 +110,7 @@ export const EditUserInfo = ({ prevName, prevEmail, prevAddress,prevMobile, prev
                 onChange={(e) => setStatus(e.target.value)}
               />
             </TableCell>
-          </TableRow>
+          </TableRow> */}
         </Table>
       </TableContainer>
       
